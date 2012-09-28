@@ -1,0 +1,14 @@
+						</children>
+					</{{module}}>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+	<menu>
+		<{{module}} translate="title" module="{{module}}">
+			<title>{{Module}}</title>
+			<sort_order>{{sort_order}}</sort_order>
+			<depends>
+				<module>{{Namespace}}_{{Module}}</module>
+		 	</depends>
+		 	<children>

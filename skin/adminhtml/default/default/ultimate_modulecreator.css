@@ -1,0 +1,24 @@
+.modulecreator-entity .box .form-list td.value input.input-text, 
+.modulecreator-entity .box .form-list td.value textarea {
+    width: 203px;
+}
+.modulecreator-entity .box .form-list td.value select{
+	width: 209px;
+}
+
+.modulecreator-entity .form-list td.label label{
+	width:155px;
+}
+.modulecreator-attribute .form-list td.label{
+	width:160px;
+}
+.modulecreator-attribute .form-list td.label label{
+	width:150px;
+}
+.modulecreator-attribute .box .form-list td.value input.input-text, 
+.modulecreator-attribute .box .form-list td.value textarea {
+    width: 180px;
+}
+.modulecreator-attribute .box .form-list td.value select{
+	width: 186px;
+}

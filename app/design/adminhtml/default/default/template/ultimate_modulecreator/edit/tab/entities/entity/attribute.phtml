@@ -1,0 +1,198 @@
+<?php 
+/**
+ * Ultimate_ModuleCreator extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @copyright  	Copyright (c) 2012
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */ 
+?>
+<?php $_id = $this->getEntityId().'_'.$this->getIncrement();?>
+<?php $_attribute = $this->getAttributeInstance();?>
+<div class="entry-edit modulecreator-attribute" id="attribute_<?php echo $_id?>">
+	<div class="entry-edit-head">
+		<h4 id="attribute_<?php echo $_id?>_title">
+			<?php if ($_attribute->getLabel()) : ?>
+				<?php echo $_attribute->getLabel();?>
+			<?php else : ?>
+				<?php echo Mage::helper('modulecreator')->__('Attribute %s', $this->getIncrement());?>
+			<?php endif;?>
+		</h4>
+		<div class="right"><button type="button" onclick="if (confirm('<?php echo Mage::helper('modulecreator')->__('Are you sure?')?>')) $(this).up(2).remove()"><?php echo Mage::helper('modulecreator')->__('Remove field');?></button></div>
+	</div>
+	<div class="box">
+		<div class="box-left">
+			<div class="entry-edit-head">
+				<h4><?php echo Mage::helper('modulecreator')->__('Settings');?></h4>
+			</div>
+			<div class="box">
+				<table class="form-list" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr>
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_label">
+									<?php echo Mage::helper('modulecreator')->__('Attribute Label') ?> <span class="required">*</span>
+								</label>
+							</td>
+							<td class="value">
+								<input type="text" class="required-entry input-text" id="attribute_<?php echo $_id?>_label" name="entity[<?php echo $this->getEntityId();?>][attributes][<?php echo $this->getIncrement()?>][label]" value="<?php echo $_attribute->getLabel();?>" onchange="$('attribute_<?php echo $_id?>_title').innerHTML = this.value" />
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Attribute Label'), Mage::helper('modulecreator')->__('This is the attribute label. It will be used for the admin form and the frontend listing.'))?>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_code">
+									<?php echo Mage::helper('modulecreator')->__('Attribute Code') ?> <span class="required">*</span>
+								</label>
+							</td>
+							<td class="value">
+								<input type="text" class="required-entry input-text validate-code" id="attribute_<?php echo $_id?>_code" name="entity[<?php echo $this->getEntityId();?>][attributes][<?php echo $this->getIncrement()?>][code]" value="<?php echo $_attribute->getCode();?>" />
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Attribute Code'), Mage::helper('modulecreator')->__('This is the attribute code. It will be used in the code and in the database.'))?>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_type">
+									<?php echo Mage::helper('modulecreator')->__('Attribute Type') ?> <span class="required">*</span>
+								</label>
+							</td>
+							<td class="value">
+								<?php echo $this->getAttributeTypeSelect('attribute_'.$_id.'_type', 'entity['.$this->getEntityId().'][attributes]['.$this->getIncrement().'][type]', $_attribute->getType());?>
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Attribute Type'), Mage::helper('modulecreator')->__('This will determine the input type of the attribute.'))?>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_position">
+									<?php echo Mage::helper('modulecreator')->__('Position') ?>
+								</label>
+							</td>
+							<td class="value">
+								<input type="text" class="input-text validate-zero-or-greater" id="attribute_<?php echo $_id?>_position" name="entity[<?php echo $this->getEntityId();?>][attributes][<?php echo $this->getIncrement()?>][position]" value="<?php echo $_attribute->getPosition();?>" />
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Position'), Mage::helper('modulecreator')->__('This will determine the position in the admin add/edit form.'))?>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_note">
+									<?php echo Mage::helper('modulecreator')->__('Note') ?>
+								</label>
+							</td>
+							<td class="value">
+								<input type="text" class="input-text" id="attribute_<?php echo $_id?>_note" name="entity[<?php echo $this->getEntityId();?>][attributes][<?php echo $this->getIncrement()?>][note]" value="<?php echo $_attribute->getNote();?>" />
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Note'), Mage::helper('modulecreator')->__('This will be added as a small comment under the input in the admin add/edit form.'))?>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="box-right" id="additional_data_<?php echo $_id?>">
+			<div class="entry-edit-head">
+				<h4><?php echo Mage::helper('modulecreator')->__('Additional Data');?></h4>
+			</div>
+			<div class="box">
+				<table class="form-list" cellpadding="0" cellspacing="0">
+					<tbody>
+						<tr class="type-text">
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_is_name">
+									<?php echo Mage::helper('modulecreator')->__('Acts as name') ?>
+								</label>
+							</td>
+							<td class="value">
+								<input type="radio" class="input-text validate-one-required-by-name" id="attribute_<?php echo $_id?>_is_name" name="entity[<?php echo $this->getEntityId();?>][attributes][is_name]" value="<?php echo $this->getIncrement();?>"<?php echo ($_attribute->getIsName()?' checked="checked"':'');?> />
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Acts as name'), Mage::helper('modulecreator')->__('The attribute marked this way will be used in lists and dropdowns.'))?>
+							</td>
+						</tr>
+						<tr class="type-text type-textarea type-yesno type-timestamp type-int type-decimal">
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_required">
+									<?php echo Mage::helper('modulecreator')->__('Is required') ?>
+								</label>
+							</td>
+							<td class="value">
+								<?php echo $this->getYesNoSelect('attribute_'.$_id.'_required', 'entity['.$this->getEntityId().'][attributes]['.$this->getIncrement().'][required]', $_attribute->getRequired());?>
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Is required'), Mage::helper('modulecreator')->__('Now this is to obvious!!! I can\' belive you clicked the tooltip.'))?>
+							</td>
+						</tr>
+						<tr class="type-textarea">
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_editor">
+									<?php echo Mage::helper('modulecreator')->__('Use WYSIWYG editor') ?>
+								</label>
+							</td>
+							<td class="value">
+								<?php echo $this->getYesNoSelect('attribute_'.$_id.'_editor', 'entity['.$this->getEntityId().'][attributes]['.$this->getIncrement().'][editor]', $_attribute->getEditor());?>
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Use WYSIWYG editor'), Mage::helper('modulecreator')->__('This will allow you to use WYSIWYG editors for texareas.'))?>
+							</td>
+						</tr>
+						<tr class="type-text type-yesno type-timestamp type-int type-decimal">
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_admin_grid">
+									<?php echo Mage::helper('modulecreator')->__('Add in admin grid') ?>
+								</label>
+							</td>
+							<td class="value">
+								<?php echo $this->getYesNoSelect('attribute_'.$_id.'_admin_grid', 'entity['.$this->getEntityId().'][attributes]['.$this->getIncrement().'][admin_grid]', $_attribute->getAdminGrid());?>
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Add in admin grid'), Mage::helper('modulecreator')->__('This will add your attribute to the admin grid.'))?>
+							</td>
+						</tr>
+						<tr class="type-all use-frontend">
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_frontend">
+									<?php echo Mage::helper('modulecreator')->__('Show in frontend') ?>
+								</label>
+							</td>
+							<td class="value">
+								<?php echo $this->getYesNoSelect('attribute_'.$_id.'_frontend', 'entity['.$this->getEntityId().'][attributes]['.$this->getIncrement().'][frontend]', $_attribute->getFrontend());?>
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Show in frontend'), Mage::helper('modulecreator')->__('This will display this attribute on frontend.'))?>
+							</td>
+						</tr>
+						<tr class="type-all use-widget">
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_widget">
+									<?php echo Mage::helper('modulecreator')->__('Show in widget') ?>
+								</label>
+							</td>
+							<td class="value">
+								<?php echo $this->getYesNoSelect('attribute_'.$_id.'_widget', 'entity['.$this->getEntityId().'][attributes]['.$this->getIncrement().'][widget]', $_attribute->getWidget());?>
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Show in widget'), Mage::helper('modulecreator')->__('This will display this attribute in the view widget.'))?>
+							</td>
+						</tr>
+						<tr class="type-all use-rss">
+							<td class="label">
+								<label for="attribute_<?php echo $_id?>_rss">
+									<?php echo Mage::helper('modulecreator')->__('Show in rss') ?>
+								</label>
+							</td>
+							<td class="value">
+								<?php echo $this->getYesNoSelect('attribute_'.$_id.'_rss', 'entity['.$this->getEntityId().'][attributes]['.$this->getIncrement().'][rss]', $_attribute->getRss());?>
+								<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Show in rss'), Mage::helper('modulecreator')->__('This will display this attribute in the rss feed.'))?>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+	$('attribute_<?php echo $_id;?>_type').observe('change', function() {
+		reloadEntity(<?php echo $this->getEntityId()?>);
+	});
+	Event.observe(document,'dom:loaded', function(){ 
+		reloadEntity(<?php echo $this->getEntityId()?>);
+	});
+//]]>
+</script>

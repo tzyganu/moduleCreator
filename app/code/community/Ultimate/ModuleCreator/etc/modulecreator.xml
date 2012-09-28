@@ -1,0 +1,1148 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Ultimate_ModuleCreator extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @copyright  	Copyright (c) 2012
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */ 
+/**
+ * @category	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @author 		Marius Strajeru <marius.strajeru@gmail.com>
+ */  
+ -->
+<config>
+	<files>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin grid.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Grid/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Grid.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_columns_top.php</name>
+				</file>
+				<file>
+					<name>03_grid_attributes.php</name>
+					<scope>attribute</scope>
+					<depend>
+						<admin_grid />
+					</depend>
+				</file>
+				<file>
+					<name>04_grid_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>05_created_at.php</name>
+					<depend>
+						<created_to_grid />
+					</depend>
+				</file>
+				<file>
+					<name>06_updated_at.php</name>
+					<depend>
+						<updated_to_grid />
+					</depend>
+				</file>
+				<file>
+					<name>07_grid_actions.php</name>
+				</file>
+				<file>
+					<name>08_grid_export.php</name>
+				</file>
+				<file>
+					<name>09_columns_footer.php</name>
+				</file>
+				<file>
+					<name>10_mass_action_top.php</name>
+				</file>
+				<file>
+					<name>11_mass_action_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>12_mass_action_flags.php</name>
+					<scope>attribute</scope>
+					<depend_type>
+						<yesno />
+					</depend_type>
+				</file>
+				<file>
+					<name>13_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin edit form.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin block.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin edit tabs.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tabs/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tabs.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin edit form.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Form/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Form.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Flat entity model</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Model/Entity/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/{{Entity}}.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_url.php</name>
+					<depend>
+						<use_frontend />
+					</depend>
+				</file>
+				<file>
+					<name>03_editors.php</name>
+					<scope>attribute</scope>
+					<depend>
+						<editor />
+					</depend>
+				</file>
+				<file>
+					<name>04_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity resource model.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity resource model.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Collection/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/Collection.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity helper.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Helper/Entity/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Helper/{{Entity}}.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_rss.php</name>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>03_file.php</name>
+					<depend>
+						<has_file />
+					</depend>
+				</file>
+				<file>
+					<name>04_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity image helper.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<has_image />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Helper/Entity/Image/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Helper/{{Entity}}/Image.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity frontend view block.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<use_frontend />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Entity/View/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/View.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity frontend list block.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<use_frontend />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Entity/List/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/List.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity RSS block.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<rss />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Entity/Rss/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Rss.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>03_content_top.php</name>
+				</file>
+				<file>
+					<name>04_content.php</name>
+					<scope>attribute</scope>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>05_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity view widget.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<use_frontend />
+				<widget />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Entity/Widget/View/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Widget/View.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>03_template.php</name>
+				</file>
+				<file>
+					<name>04_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>05_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity link widget.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<use_frontend />
+				<widget />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Entity/Widget/Link/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Widget/Link.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity amdin controller.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/controllers/Adminhtml/EntityController/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/Adminhtml/{{Entity}}Controller.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_upload_image.php</name>
+					<scope>attribute</scope>
+					<depend_type>
+						<image />
+					</depend_type>
+				</file>
+				<file>
+					<name>03_upload_files.php</name>
+					<scope>attribute</scope>
+					<depend_type>
+						<file />
+					</depend_type>
+				</file>
+				<file>
+					<name>04_save.php</name>
+				</file>
+				<file>
+					<name>05_exception_upload.php</name>
+					<scope>attribute</scope>
+					<depend_type>
+						<image />
+					</depend_type>
+				</file>
+				<file>
+					<name>05_exception_upload.php</name>
+					<scope>attribute</scope>
+					<depend_type>
+						<file />
+					</depend_type>
+				</file>
+				<file>
+					<name>06_exception.php</name>
+				</file>
+				<file>
+					<name>05_exception_upload.php</name>
+					<scope>attribute</scope>
+					<depend_type>
+						<image />
+					</depend_type>
+				</file>
+				<file>
+					<name>05_exception_upload.php</name>
+					<scope>attribute</scope>
+					<depend_type>
+						<file />
+					</depend_type>
+				</file>
+				<file>
+					<name>07_center.php</name>
+				</file>
+				<file>
+					<name>08_mass_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>09_mass_update.php</name>
+					<scope>attribute</scope>
+					<depend_type>
+						<yesno />
+					</depend_type>
+				</file>
+				<file>
+					<name>10_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin widget controller.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<widget />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/controllers/Adminhtml/Entity/WidgetController/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/Adminhtml/{{Entity}}/WidgetController.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity front controller.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<use_frontend />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/controllers/EntityController/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/{{Entity}}Controller.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_list.php</name>
+					<depend>
+						<frontend_list />
+					</depend>
+				</file>
+				<file>
+					<name>03_list_seo.php</name>
+					<depend>
+						<frontend_list />
+						<frontend_add_seo />
+					</depend>
+				</file>
+				<file>
+					<name>04_list_footer.php</name>
+					<depend>
+						<frontend_list />
+					</depend>
+				</file>
+				<file>
+					<name>05_view.php</name>
+					<depend>
+						<frontend_view />
+					</depend>
+				</file>
+				<file>
+					<name>06_view_status.php</name>
+					<depend>
+						<frontend_view />
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>07_view2.php</name>
+					<depend>
+						<frontend_view />
+					</depend>
+				</file>
+				<file>
+					<name>08_breadcrumbs.php</name>
+					<depend>
+						<frontend_view />
+						<frontend_list />
+					</depend>
+				</file>
+				<file>
+					<name>09_breadcrumbs_footer.php</name>
+					<depend>
+						<frontend_view />
+					</depend>
+				</file>
+				<file>
+					<name>10_view_seo.php</name>
+					<depend>
+						<frontend_view />
+						<frontend_add_seo />
+					</depend>
+				</file>
+				<file>
+					<name>11_view_footer.php</name>
+					<depend>
+						<frontend_view />
+					</depend>
+				</file>
+				<file>
+					<name>12_rss.php</name>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>13_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin file renderer.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<has_file />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Helper/File/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Helper/File.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin image renderer.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<has_image />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Helper/Image/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Helper/Image.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin widget chooser.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<widget />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Widget/Chooser/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Widget/Chooser.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_top_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>03_content.php</name>
+				</file>
+				<file>
+					<name>04_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>05_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin form tab.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tab/Form/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/Form.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_image.php</name>
+					<depend>
+						<has_image />
+					</depend>
+				</file>
+				<file>
+					<name>03_file.php</name>
+					<depend>
+						<has_file />
+					</depend>
+				</file>
+				<file>
+					<name>04_wysiwyg.php</name>
+				</file>
+				<file>
+					<name>05_attributes.php</name>
+					<scope>attribute</scope>
+				</file>
+				<file>
+					<name>06_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>07_rss.php</name>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>08_seo.php</name>
+					<depend>
+						<frontend_add_seo />
+					</depend>
+				</file>
+				<file>
+					<name>09_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Module RSS block.</title>
+			<scope>global</scope>
+			<filetype>php</filetype>
+			<depend>
+				<rss />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Rss/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Rss.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Module base admin controller.</title>
+			<scope>global</scope>
+			<filetype>php</filetype>
+			<from>app/code/codepool/Namespace/Module/Controller/Adminhtml/Module/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Controller/Adminhtml/{{Module}}.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Module default helper.</title>
+			<scope>global</scope>
+			<filetype>php</filetype>
+			<from>app/code/codepool/Namespace/Module/Helper/Data/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Helper/Data.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_entity.php</name>
+					<scope>entity</scope>
+					<depend>
+						<frontend_list />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Module setup model.</title>
+			<scope>global</scope>
+			<filetype>php</filetype>
+			<from>app/code/codepool/Namespace/Module/Model/Resource/Setup/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/Setup.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Install script</title>
+			<scope>global</scope>
+			<filetype>php</filetype>
+			<from>app/code/codepool/Namespace/Module/sql/namespace_module_setup/mysql4-install-0.0.1/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/sql/{{namespace}}_{{module}}_setup/mysql4-install-0.0.1.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_entity.php</name>
+					<scope>entity</scope>
+				</file>
+				<file>
+					<name>03_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Widget xml</title>
+			<scope>global</scope>
+			<filetype>xml</filetype>
+			<from>app/code/codepool/Namespace/Module/etc/widget/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/widget.xml</to>
+			<depend>
+				<widget />
+			</depend>
+			<content>
+				<file>
+					<name>01_top.xml</name>
+				</file>
+				<file>
+					<name>02_entity.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<widget />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.xml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Adminhtml xml</title>
+			<scope>global</scope>
+			<filetype>xml</filetype>
+			<from>app/code/codepool/Namespace/Module/etc/adminhtml/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/adminhtml.xml</to>
+			<content>
+				<file>
+					<name>01_top.xml</name>
+				</file>
+				<file>
+					<name>02_entity_acl.xml</name>
+					<scope>entity</scope>
+				</file>
+				<file>
+					<name>03_center.xml</name>
+				</file>
+				<file>
+					<name>04_entity_menu.xml</name>
+					<scope>entity</scope>
+				</file>
+				<file>
+					<name>05_footer.xml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Config xml</title>
+			<scope>global</scope>
+			<filetype>xml</filetype>
+			<from>app/code/codepool/Namespace/Module/etc/config/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/config.xml</to>
+			<content>
+				<file>
+					<name>01_top.xml</name>
+				</file>
+				<file>
+					<name>02_tables.xml</name>
+					<scope>entity</scope>
+				</file>
+				<file>
+					<name>03_global.xml</name>
+				</file>
+				<file>
+					<name>04_frontend.xml</name>
+					<depend>
+						<use_frontend />
+					</depend>
+				</file>
+				<file>
+					<name>05_default_top.xml</name>
+				</file>
+				<file>
+					<name>06_default.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<use_frontend />
+					</depend>
+				</file>
+				<file>
+					<name>07_default_footer.xml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>System xml</title>
+			<scope>global</scope>
+			<filetype>xml</filetype>
+			<depend>
+				<use_frontend />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/etc/system/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/system.xml</to>
+			<content>
+				<file>
+					<name>01_top.xml</name>
+				</file>
+				<file>
+					<name>02_entity.xml</name>
+					<scope>entity</scope>
+				</file>
+				<file>
+					<name>03_footer.xml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Admin layout file</title>
+			<scope>global</scope>
+			<filetype>xml</filetype>
+			<from>app/design/adminhtml/default/default/layout/namespace_module/</from>
+			<to>app/design/adminhtml/default/default/layout/{{namespace}}_{{module}}.xml</to>
+			<content>
+				<file>
+					<name>01_top.xml</name>
+				</file>
+				<file>
+					<name>02_entity.xml</name>
+					<scope>entity</scope>
+				</file>
+				<file>
+					<name>03_footer.xml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Frontend layout file</title>
+			<scope>global</scope>
+			<filetype>xml</filetype>
+			<from>app/design/frontend/base/default/layout/namespace_module/</from>
+			<to>app/design/frontend/{{package}}/{{theme_layout}}/layout/{{namespace}}_{{module}}.xml</to>
+			<content>
+				<file>
+					<name>01_top.xml</name>
+				</file>
+				<file>
+					<name>02_default_top.xml</name>
+					<depend>
+						<frontend_list />
+					</depend>
+				</file>
+				<file>
+					<name>03_default.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<frontend_list />
+					</depend>
+				</file>
+				<file>
+					<name>04_default_footer.xml</name>
+					<depend>
+						<frontend_list />
+					</depend>
+				</file>
+				<file>
+					<name>05_list.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<frontend_list />
+					</depend>
+				</file>
+				<file>
+					<name>06_view.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<frontend_view />
+					</depend>
+				</file>
+				<file>
+					<name>07_entity_rss.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>08_rss_top.xml</name>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>09_rss.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>10_rss_footer.xml</name>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>11_footer.xml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Frontend rss list</title>
+			<scope>global</scope>
+			<filetype>php</filetype>
+			<depend>
+				<rss />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/rss/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/rss.phtml</to>
+			<content>
+				<file>
+					<name>01_content.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Frontend list template</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<frontend_list />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/entity/list/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/list.phtml</to>
+			<content>
+				<file>
+					<name>01_top.phtml</name>
+				</file>
+				<file>
+					<name>02_rss_link.phtml</name>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Frontend view template</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<frontend_view />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/entity/view/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/view.phtml</to>
+			<content>
+				<file>
+					<name>01_content.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Module declaration xml</title>
+			<scope>global</scope>
+			<filetype>xml</filetype>
+			<from>app/etc/modules/Namespace_Module/</from>
+			<to>app/etc/modules/{{Namespace}}_{{Module}}.xml</to>
+			<content>
+				<file>
+					<name>01_content.xml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Module translation file</title>
+			<scope>global</scope>
+			<filetype>csv</filetype>
+			<from>app/locale/en_US/Namespace_Module/</from>
+			<to>app/locale/en_US/{{Namespace}}_{{Module}}.csv</to>
+			<after_build>_sortTranslationFile</after_build>
+			<content>
+				<file>
+					<name>01_global.csv</name>
+				</file>
+				<file>
+					<name>02_entity.csv</name>
+					<scope>entity</scope>
+				</file>
+				<file>
+					<name>03_attribute.csv</name>
+					<scope>attribute</scope>
+				</file>
+				<file>
+					<name>04_global_status.csv</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>05_global_rss.csv</name>
+					<depend>
+						<rss />
+					</depend>
+				</file>
+				<file>
+					<name>06_global_seo.csv</name>
+					<depend>
+						<frontend_add_seo />
+					</depend>
+				</file>
+				<file>
+					<name>07_attribute_yesno.csv</name>
+					<scope>attribute</scope>
+					<depend_type>
+						<yesno />
+					</depend_type>
+				</file>
+				<file>
+					<name>08_global_file.csv</name>
+					<depend>
+						<has_file />
+					</depend>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Default image</title>
+			<scope>entity</scope>
+			<filetype>jpg</filetype>
+			<depend>
+				<has_image />
+			</depend>
+			<from>skin/frontend/base/default/images/placeholder/</from>
+			<to>skin/frontend/base/default/images/placeholder/{{entity}}.jpg</to>
+			<content>
+				<file>
+					<name>entity.jpg</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Link widget</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<widget />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/entity/widget/link/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/widget/link.phtml</to>
+			<content>
+				<file>
+					<name>01_content.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>View widget</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<widget />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/entity/widget/view/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/widget/view.phtml</to>
+			<content>
+				<file>
+					<name>01_content.phtml</name>
+				</file>
+			</content>
+		</file>
+	</files>
+</config>

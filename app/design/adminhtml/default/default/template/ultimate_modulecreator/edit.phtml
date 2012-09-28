@@ -1,0 +1,213 @@
+<?php
+/**
+ * Ultimate_ModuleCreator extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @copyright  	Copyright (c) 2012
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */ 
+/**
+ * @category	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @author 		Marius Strajeru <marius.strajeru@gmail.com>
+ */  
+?>
+<div class="content-header">
+	<h3 class="icon-head"><?php echo $this->getHeaderText() ?></h3>
+	<p class="content-buttons form-buttons"><?php echo $this->getBackButtonHtml() ?>
+		<?php echo $this->getCancelButtonHtml() ?>
+		<?php if (!$this->isReadonly()) :?>
+			<?php echo $this->getSaveButtonHtml() ?>
+			<?php echo $this->getSaveAndEditButtonHtml() ?>
+		<?php endif;?>
+	</p>
+</div>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" id="edit_form" enctype="multipart/form-data">
+	<?php echo $this->getBlockHtml('formkey')?>
+	<div style="display:none"></div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+	var moduleForm = new varienForm('edit_form', '<?php echo $this->getValidationUrl() ?>');
+	var eavTemplateSyntax = /(^|.|\r|\n)({{(\w+)}})/;
+	moduleForm._processValidationResult = function(transport) {
+		var response = transport.responseText.evalJSON();
+		if (response.error){
+			var errors = response.errors;
+			var globalErrors = '';
+			for (var i = 0;i<errors.length;i++){
+				if (errors[i].field && $(errors[i].field)){
+					$(errors[i].field).setHasError(true, moduleForm);
+					Validation.ajaxError($(errors[i].field), errors[i].message);
+					if (!Prototype.Browser.IE){
+						$(errors[i].field).focus();
+					}
+				}
+				else{
+					globalErrors += '<li>' + errors[i].message + '</li>';
+				}
+			} 
+			if (globalErrors != '' && $('messages')){
+				$('messages').innerHTML = '<ul class="messages"><li class="error-msg"><ul>' + globalErrors + '</ul></li></ul>';
+				$('messages').show();
+			}
+		}
+		else{
+			if (response.modified){
+				var content = '<b><?php echo Mage::helper('modulecreator')->__('The following files have been modified outside the Magento context. If you choose to continue all modifications will be overwritten.')?></b>';
+				content += '<ul style="padding:10px 30px;list-style-type:disc">';
+				for (var i = 0; i< response.modified_files.length;i++){
+					content += '<li>' + response.modified_files[i] + '</li>';
+				}
+				content += '</ul>';
+				Dialog.confirm(content, {
+						className:'magento', 
+						width:500, 
+						okLabel: "<?php echo Mage::helper('modulecreator')->__('Continue')?>", 
+						buttonClass: "scalable", 
+						id: "modified-files", 
+						cancel:function(win) {
+						
+					}, 
+					ok:function(win) {
+						moduleForm._submit();
+					} 
+				});
+			}
+			else{
+				moduleForm._submit();
+			}
+		}
+	};
+	function saveAndContinueEdit(urlTemplate) {
+		var template = new Template(urlTemplate, eavTemplateSyntax);
+		var url = template.evaluate({tab_id:modulecreator_info_tabsJsTabs.activeTab.id});
+		var advices = $$('div.validation-advice');
+		for (var i = 0; i<advices.length;i++){
+			advices[i].remove();
+		}
+		if ($('messages')){
+			$('messages').hide();
+		}
+		moduleForm.submit(url);
+	}
+	function showMenuOrder(includeSelect){
+		new Ajax.Request('<?php echo Mage::helper('adminhtml')->getUrl('*/*/menuOrder')?>', 
+		{ 
+			method:'get',
+			onSuccess: function(transport){
+			var menuTemplate = '<tr><td>#{label}</td><td>#{sort_order}</td></tr>';
+		  	var text = '<table style="margin: 0 auto;"><tr><th style="width:300px"><?php echo Mage::helper('modulecreator')->__('Menu item'); ?></th><th style="width:100px"><?php echo Mage::helper('modulecreator')->__('Sort order'); ?></th></tr>';
+		  	var template = '';
+		  	var mean = 'a';
+		  	var response = transport.responseText.evalJSON();
+		  	for (var i = 0; i< response.length; i++){
+			  	if (includeSelect){
+				  	if (i >0){
+					  	if (response[i].sort_order != response[i-1].sort_order){
+						  	mean = Math.ceil((response[i].sort_order + response[i-1].sort_order)/2);
+					  		text += '<tr><td colspan="2" style="text-align:center;font-size:10px"><a href="#" onclick="$(\'settings_sort_order\').value = \'' + mean +'\';Dialog.okCallback();return false"><?php echo Mage::helper('modulecreator')->__('Insert here')?></a></td></tr>';
+					  	}
+				  	}
+				  	else{
+				  		mean = Math.ceil((response[i].sort_order)/2);
+				  		text += '<tr><td colspan="2" style="text-align:center;font-size:10px"><a href="#" onclick="$(\'settings_sort_order\').value = \'' + mean +'\';Dialog.okCallback();return false"><?php echo Mage::helper('modulecreator')->__('Insert here')?></a></td></tr>';
+				  	}
+			  	}
+				template = new Template('<tr><td>#{label}</td><td>#{sort_order}</td></tr>');
+			  	text += template.evaluate(response[i]);
+		  	}
+		  	if (includeSelect == 1){
+			  	mean = (response[response.length - 1].sort_order) + 20;
+		  		text += '<tr><td colspan="2" style="text-align:center;font-size:10px"><a href="#" onclick="$(\'settings_sort_order\').value = \'' + mean +'\';Dialog.okCallback();return false"><?php echo Mage::helper('modulecreator')->__('Insert here')?></a></td></tr>';
+		  	}
+		  	text += '</table>';
+		  	Dialog.alert(text, {
+				className:'magento', 
+				width:500, 
+				height: 500,
+				okLabel: "<?php echo Mage::helper('modulecreator')->__('Close')?>", 
+				buttonClass: "scalable", 
+				id: "currentmenu", 
+				title: "<?php echo Mage::helper('modulecreator')->__('Current menu order');?>"
+			});
+			}
+		});
+	}
+	function reloadEntity(entityId){
+		var useFrontend = $('entity_' + entityId + '_use_frontend').value;
+		var useWidget = $('entity_' + entityId + '_widget').value;
+		var useRss = $('entity_' + entityId + '_rss').value;
+		if (useFrontend == 0){
+			$$('#entity_' + entityId + '_settings tr.use-frontend').each(function(item){
+				$(item).hide();
+			});
+		}
+		else{
+			$$('#entity_' + entityId + '_settings tr.use-frontend').each(function(item){
+				$(item).show();
+			});
+		}
+		if (!useWidget){
+			$$('#entity_' + entityId + ' tr.use-widget').each(function(item){
+				$(item).hide();
+			});
+		}
+		if (!useRss){
+			$$('#entity_' + entityId + ' tr.use-rss').each(function(item){
+				$(item).hide();
+			});
+		}
+		var attributes = $$('#entity_' + entityId + '_attributes .modulecreator-attribute');
+		for (var i = 0; i < attributes.length; i++){
+			var attributeDivId = $(attributes[i]).id;
+			var parts = attributeDivId.split('_');
+			var key = parts[1] + '_' + parts[2];
+			var attributeType = $(attributeDivId + '_type').value;
+			if (attributeType == ''){
+				$('additional_data_' + key).hide();
+			}
+			else{
+				$('additional_data_' + key).show();
+				$$('#additional_data_' + key + ' tr').each(function(item){
+					var shouldHide = false;
+					if ($(item).hasClassName('type-' + attributeType) || $(item).hasClassName('type-all')){
+						if ($(item).hasClassName('use-frontend')){
+							if (useFrontend == 0){
+								shouldHide = true;
+							}
+						}
+						if ($(item).hasClassName('use-widget')){
+							if (useWidget == 0){
+								shouldHide = true;
+							}
+						}
+						if ($(item).hasClassName('use-rss')){
+							if (useRss == 0){
+								shouldHide = true;
+							}
+						}
+					}
+					else{
+						shouldHide = true;
+					}
+					if (shouldHide){
+						$(item).hide();
+					}
+					else{
+						$(item).show();
+					}
+				});
+			}
+		}
+	}
+//]]>
+</script>

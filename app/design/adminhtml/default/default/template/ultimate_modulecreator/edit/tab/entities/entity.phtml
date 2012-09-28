@@ -1,0 +1,281 @@
+<?php 
+/**
+ * Ultimate_ModuleCreator extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @copyright  	Copyright (c) 2012
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */ 
+/**
+ * @category	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @author 		Marius Strajeru <marius.strajeru@gmail.com>
+ */ 
+?>
+<?php $_entity = $this->getEntity();?>
+<div class="entry-edit modulecreator-entity">
+	<div class="entry-edit-head">
+		<h4 id="entity_<?php echo $this->getIncrement()?>_title">
+			<?php if ($_entity->getLabelSingular()) : ?>
+				<?php echo $_entity->getLabelSingular();?>
+			<?php else : ?>
+				<?php echo Mage::helper('modulecreator')->__('Entity %s', $this->getIncrement());?>
+			<?php endif;?>
+		</h4>
+		<div class="right"><button type="button" onclick="if (confirm('<?php echo Mage::helper('modulecreator')->__('Are you sure?')?>')) $(this).up(2).remove()"><?php echo Mage::helper('modulecreator')->__('Remove entity');?></button></div>
+	</div>
+	<div class="option-box box" id="entity_<?php echo $this->getIncrement();?>">
+		<div>
+			<input type="hidden" id="entity_<?php echo $this->getIncrement();?>_id" name="entity[<?php echo $this->getIncrement();?>][id]" value="<?php echo $this->getIncrement();?>" />
+		</div>
+		<div id="entity_<?php echo $this->getIncrement();?>_settings">
+			<div class="box-left">
+				<div class="entry-edit-head">
+					<h4><?php echo Mage::helper('modulecreator')->__('Name settings');?></h4>
+				</div>
+				<div class="box">
+					<table class="form-list" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_label_singular">
+										<?php echo Mage::helper('modulecreator')->__('Entity label - singular') ?> <span class="required">*</span>
+									</label>
+								</td>
+								<td class="value">
+									<input type="text" class="required-entry input-text" id="entity_<?php echo $this->getIncrement();?>_label_singular" name="entity[<?php echo $this->getIncrement();?>][label_singular]" value="<?php echo $_entity->getLabelSingular();?>" onchange="$('entity_<?php echo $this->getIncrement()?>_title').innerHTML = this.value" />
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity label - singular'), Mage::helper('modulecreator')->__('This is the label (singular) that will appear through the website for your entity.'))?>
+								</td>
+							</tr>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_label_plural">
+										<?php echo Mage::helper('modulecreator')->__('Entity label - plural') ?> <span class="required">*</span>
+									</label>
+								</td>
+								<td class="value">
+									<input type="text" class="required-entry input-text" id="entity_<?php echo $this->getIncrement();?>_label_plural" name="entity[<?php echo $this->getIncrement();?>][label_plural]" value="<?php echo $_entity->getLabelPlural();?>" />
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity label - plural'), Mage::helper('modulecreator')->__('This is the label (plural) that will appear through the website for your entity.'))?>
+								</td>
+							</tr>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_name_singular">
+										<?php echo Mage::helper('modulecreator')->__('Entity code - singular') ?> <span class="required">*</span>
+									</label>
+								</td>
+								<td class="value">
+									<input type="text" class="required-entry input-text name-singular validate-code" id="entity_<?php echo $this->getIncrement();?>_name_singular" name="entity[<?php echo $this->getIncrement();?>][name_singular]" value="<?php echo $_entity->getNameSingular();?>" />
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity name - singular'), Mage::helper('modulecreator')->__('This is the code (singular) of your entity. This is how the variables relating to your entity will be named.'))?>
+								</td>
+							</tr>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_name_plural">
+										<?php echo Mage::helper('modulecreator')->__('Entity code - plural') ?> <span class="required">*</span>
+									</label>
+								</td>
+								<td class="value">
+									<input type="text" class="required-entry input-text validate-code" id="entity_<?php echo $this->getIncrement();?>_name_plural" name="entity[<?php echo $this->getIncrement();?>][name_plural]" value="<?php echo $_entity->getNamePlural();?>" />
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity name - plural'), Mage::helper('modulecreator')->__('This is the code (singular) of your entity. This is how the variables relating to your entities will be named.'))?>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="box-right">
+				<div class="entry-edit-head">
+					<h4><?php echo Mage::helper('modulecreator')->__('Admin');?></h4>
+				</div>
+				<div class="box">
+					<table class="form-list" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_add_created_to_grid">
+										<?php echo Mage::helper('modulecreator')->__('Add "Created at" to admin grid') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_add_created_to_grid', 'entity'.'['.$this->getIncrement().'][created_to_grid]', $_entity->getCreatedToGrid());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Add "Created at" to admin grid'), Mage::helper('modulecreator')->__('This will add a colum with the creation date of the entity to the admin grid.'))?>
+								</td>
+							</tr>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_add_updated_to_grid">
+										<?php echo Mage::helper('modulecreator')->__('Add "Updated at" to admin grid') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_add_updated_to_grid', 'entity'.'['.$this->getIncrement().'][updated_to_grid]', $_entity->getUpdatedToGrid());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Add "Updated at" to admin grid'), Mage::helper('modulecreator')->__('This will add a colum with the last update date of the entity to the admin grid.'))?>
+								</td>
+							</tr>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_add_status">
+										<?php echo Mage::helper('modulecreator')->__('Add "Status" field') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_add_status', 'entity'.'['.$this->getIncrement().'][add_status]', $_entity->getAddStatus());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Add "Status" field'), Mage::helper('modulecreator')->__('This will add a field that behaves a status. With it you will be able to decide what entities to show on frontend.'))?>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="box-left">
+				<div class="entry-edit-head">
+					<h4><?php echo Mage::helper('modulecreator')->__('Frontend');?></h4>
+				</div>
+				<div class="box">
+					<table class="form-list" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_use_frontend">
+										<?php echo Mage::helper('modulecreator')->__('Create frontend files') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_use_frontend', 'entity'.'['.$this->getIncrement().'][use_frontend]', $_entity->getUseFrontend());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Create frontend files'), Mage::helper('modulecreator')->__('This allows you to create a frontend skeleton for your entity.'))?>
+								</td>
+							</tr>
+							<tr class="use-frontend">
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_frontend_list">
+										<?php echo Mage::helper('modulecreator')->__('Create entity list page') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_frontend_list', 'entity'.'['.$this->getIncrement().'][frontend_list]', $_entity->getFrontendList());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Create entity list page'), Mage::helper('modulecreator')->__('This allows you to create a frontend list page for your entity.'))?>
+								</td>
+							</tr>
+							<tr class="use-frontend">
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_frontend_list_template">
+										<?php echo Mage::helper('modulecreator')->__('Entity list page template') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getTemplateSelect('entity'.'_'.$this->getIncrement().'_frontend_list_template', 'entity'.'['.$this->getIncrement().'][frontend_list_template]', $_entity->getFrontendListTemplate());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity list page template'), Mage::helper('modulecreator')->__('This allows you to select the layout of the list page.'))?>
+								</td>
+							</tr>
+							<tr class="use-frontend">
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_frontend_view">
+										<?php echo Mage::helper('modulecreator')->__('Create entity view page') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_frontend_view', 'entity'.'['.$this->getIncrement().'][frontend_view]', $_entity->getFrontendView());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Create entity view page'), Mage::helper('modulecreator')->__('This allows you to create a frontend view page for your entity.'))?>
+								</td>
+							</tr>
+							<tr class="use-frontend">
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_frontend_view_template">
+										<?php echo Mage::helper('modulecreator')->__('Entity view page template') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getTemplateSelect('entity'.'_'.$this->getIncrement().'_frontend_view_template', 'entity'.'['.$this->getIncrement().'][frontend_view_template]', $_entity->getFrontendViewTemplate());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity view page template'), Mage::helper('modulecreator')->__('This allows you to select the layout of the view page.'))?>
+								</td>
+							</tr>
+							<tr class="use-frontend">
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_frontend_add_seo">
+										<?php echo Mage::helper('modulecreator')->__('Add SEO attributes') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_frontend_add_seo', 'entity'.'['.$this->getIncrement().'][frontend_add_seo]', $_entity->getFrontendAddSeo());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Add SEO attributes'), Mage::helper('modulecreator')->__('This will add automatically the Meta title, Meta keywords and Meta description fields that will be used on frontend.'))?>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="box-right">
+				<div class="entry-edit-head">
+					<h4><?php echo Mage::helper('modulecreator')->__('Additional');?></h4>
+				</div>
+				<div class="box">
+					<table class="form-list" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr class="use-frontend">
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_rss">
+										<?php echo Mage::helper('modulecreator')->__('Create RSS feed') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_rss', 'entity'.'['.$this->getIncrement().'][rss]', $_entity->getRss());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Create RSS feed'), Mage::helper('modulecreator')->__('This will add an RSS feed with your entities to the list or Magento RSS feeds. You will be able to decide which entities appear in the RSS feed.'))?>
+								</td>
+							</tr>
+							<tr class="use-frontend">
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_widget">
+										<?php echo Mage::helper('modulecreator')->__('Create Link/View widget') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_widget', 'entity'.'['.$this->getIncrement().'][widget]', $_entity->getWidget());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Create Link/View widget'), Mage::helper('modulecreator')->__('This will add a view widget and a link widget that you will be able to use in CMS pages and blocks.'))?>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div id="entity_<?php echo $this->getIncrement();?>_attributes_container" class="entry-edit">
+			<div class="entry-edit-head">
+				<h4><?php echo Mage::helper('modulecreator')->__('Fields');?></h4>
+				<div class="right"><button type="button" onclick="addAttribute(<?php echo $this->getIncrement();?>)"><?php echo Mage::helper('modulecreator')->__('Add field');?></button></div>
+			</div>
+			<div class="box" id="entity_<?php echo $this->getIncrement();?>_attributes">
+				<?php foreach ($_entity->getAttributes() as $_index=>$_attribute) : ?>
+					<?php $attr = new Varien_Object($_attribute);?>
+					<?php echo $this->getLayout()->createBlock('modulecreator/adminhtml_modulecreator_edit_tab_entities_entity_attribute')->setTemplate('ultimate_modulecreator/edit/tab/entities/entity/attribute.phtml')->setAttributeInstance($attr)->setEntityId($this->getIncrement())->setIncrement($_index)->toHtml();?>
+				<?php endforeach;?>
+			</div>
+			<div id="entity_<?php echo $this->getIncrement();?>_attributes_bottom"></div>
+			<button type="button" onclick="addAttribute(<?php echo $this->getIncrement();?>)"><?php echo Mage::helper('modulecreator')->__('Add field');?></button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$('entity_<?php echo $this->getIncrement();?>_use_frontend').observe('change', function() {
+		reloadEntity(<?php echo $this->getIncrement();?>)
+	});
+	$('entity_<?php echo $this->getIncrement();?>_widget').observe('change', function() {
+		reloadEntity(<?php echo $this->getIncrement();?>)
+	});
+	$('entity_<?php echo $this->getIncrement();?>_rss').observe('change', function() {
+		reloadEntity(<?php echo $this->getIncrement();?>)
+	});
+	Event.observe(document,'dom:loaded', function(){ 
+		reloadEntity(<?php echo $this->getIncrement();?>)
+	});
+</script>

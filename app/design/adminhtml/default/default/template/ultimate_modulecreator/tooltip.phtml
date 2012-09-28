@@ -1,0 +1,27 @@
+<?php
+/**
+ * Ultimate_ModuleCreator extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @copyright  	Copyright (c) 2012
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */ 
+/**
+ * @category	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @author 		Marius Strajeru <marius.strajeru@gmail.com>
+ */
+?>
+<?php $additional = '<br /><br />'.Mage::helper('modulecreator')->__('For more information check the <a href="#" class="help-link" onclick="%s">Help Tab</a>', 'Dialog.okCallback();fireEvent($(\'modulecreator_info_tabs_help\'), \'click\');return false;');?>
+<div class="f-right">
+	<a class="link-store-scope" onclick="Dialog.alert('<?php echo $this->jsQuoteEscape($this->htmlEscape($this->getMessage().$additional))?>', {className:'magento',width:300,okLabel: '<?php echo Mage::helper('modulecreator')->__('Close')?>', buttonClass: 'scalable',id: '<?php echo md5($this->getMessage())?>', title: '<?php echo $this->jsQuoteEscape($this->htmlEscape($this->getTitle()))?>'});return false;">
+	</a>
+</div>

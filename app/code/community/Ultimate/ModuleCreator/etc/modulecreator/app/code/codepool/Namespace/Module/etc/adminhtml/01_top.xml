@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+{{License}}
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<{{module}} translate="title" module="{{module}}">
+										<title>{{Module}}</title>
+									</{{module}}>
+								</children>
+							</config>
+						</children>
+					</system>
+					<{{module}} translate="title" module="{{module}}">
+						<title>{{Module}}</title>
+						<children>

@@ -1,0 +1,70 @@
+<?php
+/**
+ * Ultimate_ModuleCreator extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @copyright  	Copyright (c) 2012
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */ 
+/**
+ * entities tab
+ * 
+ * @category	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @author 		Marius Strajeru <marius.strajeru@gmail.com>
+ */
+?>
+<?php $_entities = $this->getEntities();?>
+<h4><?php echo Mage::helper('modulecreator')->__('Entities') ?></h4>
+<div><?php echo $this->getAddButtonHtml() ?></div>
+<div id="entities_container" class="">
+	<div id="entities_container_top"></div>
+	<?php foreach ($_entities as $_increment=>$_entity) : ?>
+		<?php echo $this->getLayout()->createBlock('modulecreator/adminhtml_modulecreator_edit_tab_entities_entity')->setTemplate('ultimate_modulecreator/edit/tab/entities/entity.phtml')->setEntity($_entity)->setIncrement($_increment)->toHtml();?>
+	<?php endforeach;?>
+	<div id="entities_container_bottom"></div>
+</div>
+<div><?php echo $this->getAddButtonHtml('_bottom') ?></div>
+<button type="button" class="scalable" onclick="Effect.ScrollTo('anchor-content', { duration:'1'});">
+	<span><?php echo Mage::helper('modulecreator')->__('Top')?></span>
+</button>
+
+<script type="text/javascript">
+//<![CDATA[
+	var entityCount = <?php echo count($_entities);?>;
+	function addEntity(){
+		entityCount++;
+		attributeCount[entityCount] = 0;
+		new Ajax.Request('<?php echo $this->getAddEntityUrl();?>increment/'+entityCount, {
+			method: 'get',
+			onSuccess: function(transport) {
+				$('entities_container_bottom').insert({before:transport.responseText});
+				Effect.ScrollTo($('entity_' + entityCount), { duration:'1'});
+				reloadEntity(entityCount);
+			}
+		});
+	}
+	var attributeCount = new Array();
+	<?php foreach ($_entities as $key=>$_entity) : ?>
+		attributeCount[<?php echo $key;?>] = <?php echo count($_entity->getAttributes());?>;
+	<?php endforeach ;?>
+	function addAttribute(entityId){
+		attributeCount[entityId]++;
+		new Ajax.Request('<?php echo $this->getAddAttributeUrl();?>increment/'+ attributeCount[entityId] + '/entity/' + entityId, {
+			method: 'get',
+			onSuccess: function(transport) {
+				$('entity_' + entityId + '_attributes').insert({bottom:transport.responseText});
+				Effect.ScrollTo($('attribute_' + entityId + '_' + attributeCount[entityId]), { duration:'1'});
+			}
+		});
+	}
+//]]>
+</script>

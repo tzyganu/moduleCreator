@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Ultimate_ModuleCreator extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @copyright  	Copyright (c) 2012
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */ 
+/**
+ * @category	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @author 		Marius Strajeru <marius.strajeru@gmail.com>
+ */  
+ -->
+ <config>
+ 	<tabs>
+		<ultimate translate="label" module="modulecreator">
+			<label>Module creator</label>
+			<sort_order>1500</sort_order>
+		</ultimate>
+	</tabs>
+	<sections>
+		<modulecreator translate="label" module="modulecreator">
+			<class>separator-top</class>
+			<label>Module creator</label>
+			<tab>ultimate</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>10</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>0</show_in_website>
+			<show_in_store>0</show_in_store>
+			<groups>
+				<settings translate="label" module="modulecreator">
+					<label>Default settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<namespace translate="label" module="modulecreator">
+							<label>Default namespace</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</namespace>
+						<codepool translate="label" module="modulecreator">
+							<label>Default codepool</label>
+							<frontend_type>select</frontend_type>
+							<source_model>modulecreator/adminhtml_system_config_source_codepool</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</codepool>
+						<install translate="label" module="modulecreator">
+							<label>Default install setting</label>
+							<frontend_type>select</frontend_type>
+							<source_model>modulecreator/adminhtml_system_config_source_install</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</install>
+						<license translate="label comment" module="modulecreator">
+							<label>Default licence</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment>Use {{Namespace}} as a placeholder for namespace, {{Module}} as a placeholder for the module name and {{Y}} for current year</comment>
+						</license>
+					</fields>
+				</settings>
+				<entity_defaults translate="label" module="modulecreator">
+					<label>Entity default settings</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>20</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>0</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<use_frontend translate="label" module="modulecreator">
+							<label>Create frontend files</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</use_frontend>
+						<frontend_list translate="label" module="modulecreator">
+							<label>Create frontend list files</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</frontend_list>
+						<frontend_list_template translate="label" module="modulecreator">
+							<label>Default entity frontend list layout</label>
+							<frontend_type>select</frontend_type>
+							<source_model>modulecreator/adminhtml_system_config_source_layout</source_model>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</frontend_list_template>
+						<frontend_view translate="label" module="modulecreator">
+							<label>Create frontend view files</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</frontend_view>
+						<frontend_view_template translate="label" module="modulecreator">
+							<label>Default entity frontend view layout</label>
+							<frontend_type>select</frontend_type>
+							<source_model>modulecreator/adminhtml_system_config_source_layout</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</frontend_view_template>
+						<frontend_add_seo translate="label" module="modulecreator">
+							<label>Add SEO attributes</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</frontend_add_seo>
+						<created_to_grid translate="label" module="modulecreator">
+							<label>Add "Created at" to admin grid</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>70</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</created_to_grid>
+						<updated_to_grid translate="label" module="modulecreator">
+							<label>Add "Updated at" to admin grid</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>80</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</updated_to_grid>
+						<add_status translate="label" module="modulecreator">
+							<label>Add "Status" field</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>90</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</add_status>
+						<rss translate="label" module="modulecreator">
+							<label>Create RSS feed</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</rss>
+						<widget translate="label" module="modulecreator">
+							<label>Create Link/View widget</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>110</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</widget>
+					</fields>
+				</entity_defaults>
+			</groups>
+		</modulecreator>
+	</sections>
+ </config>

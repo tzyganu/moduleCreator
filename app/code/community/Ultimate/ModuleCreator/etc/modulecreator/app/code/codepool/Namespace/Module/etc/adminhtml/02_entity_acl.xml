@@ -1,0 +1,3 @@
+							<{{entity}} translate="title" module="{{module}}">
+								<title>{{EntitiesLabel}}</title>
+							</{{entity}}>

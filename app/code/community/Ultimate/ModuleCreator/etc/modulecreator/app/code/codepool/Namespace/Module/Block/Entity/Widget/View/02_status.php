@@ -1,0 +1,2 @@
+		if (${{entity}}->getStatus()) {
+	
