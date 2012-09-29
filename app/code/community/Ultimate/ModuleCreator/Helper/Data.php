@@ -87,6 +87,7 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 		$options['timestamp']	= Mage::helper('modulecreator')->__('Timestamp');
 		$options['file']		= Mage::helper('modulecreator')->__('File');
 		$options['image']		= Mage::helper('modulecreator')->__('Image');
+		$options['website']		= Mage::helper('modulecreator')->__('Website');
 		return $options;
 	}
 	/**

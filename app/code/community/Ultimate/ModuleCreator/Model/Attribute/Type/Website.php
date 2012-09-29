@@ -15,13 +15,13 @@
  * @license		http://opensource.org/licenses/mit-license.php MIT License
  */ 
 /**
- * attribute type yes/no
+ * attribute type website
  * 
  * @category	Ultimate
  * @package		Ultimate_ModuleCreator
  * @author 		Marius Strajeru <marius.strajeru@gmail.com>
  */ 
-class Ultimate_ModuleCreator_Model_Attribute_Type_Yesno extends Ultimate_ModuleCreator_Model_Attribute_Type_Abstract{
+class Ultimate_ModuleCreator_Model_Attribute_Type_Website extends Ultimate_ModuleCreator_Model_Attribute_Type_Abstract{
 	/**
 	 * get the type for the form
 	 * @access public
@@ -40,16 +40,7 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Yesno extends Ultimate_ModuleC
 	public function getFormOptions(){
 		$options = parent::getFormOptions();
 		$module = strtolower($this->getAttribute()->getEntity()->getModule()->getModuleName());
-		$options .= self::OPTION_SEPARATOR."'values'=> array(
-				array(
-					'value' => 1,
-					'label' => Mage::helper('".$module."')->__('Yes'),
-				),
-				array(
-					'value' => 0,
-					'label' => Mage::helper('".$module."')->__('No'),
-				),
-			),\n";
+		$options .= self::OPTION_SEPARATOR."'values'   => Mage::getSingleton('adminhtml/system_store')->getWebsiteValuesForForm(),\n";
 		return $options;
 	}
 	/**
@@ -59,7 +50,7 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Yesno extends Ultimate_ModuleC
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
 	 */
 	public function getSqlColumn(){
-		return '`'.$this->getAttribute()->getCode().'` tinyint(1) '.$this->getNullSql().' default \'1\',';
+		return '`'.$this->getAttribute()->getCode().'` INT(11) '.$this->getNullSql().' default \'0\',';
 	}
 	/**
 	 * get html for frontend
@@ -71,7 +62,7 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Yesno extends Ultimate_ModuleC
 		$entityName = strtolower($this->getAttribute()->getEntity()->getNameSingular());
 		$ucEntity = ucfirst($entityName);
 		$module = strtolower($this->getAttribute()->getEntity()->getModule()->getModuleName());
-		return '<?php echo Mage::helper(\''.$module.'\')->__("'.$this->getAttribute()->getLabel().'");?>:<?php echo ($_'.$entityName.'->get'.$this->getAttribute()->getMagicMethodCode().'() == 1)?Mage::helper(\''.$module.'\')->__(\'Yes\'):Mage::helper(\''.$module.'\')->__(\'No\') ?>'."\n";
+		return '<?php echo Mage::helper(\''.$module.'\')->__("'.$this->getAttribute()->getLabel().'");?>:<?php echo ($_'.$entityName.'->get'.$this->getAttribute()->getMagicMethodCode().'()) ? Mage::getModel(\'core/website\')->load($_'.$entityName.'->get'.$this->getAttribute()->getMagicMethodCode().'())->getName():Mage::helper(\''.$module.'\')->__(\'None\') ?>'."\n";
 	}
 	/**
 	 * get the grid column options
@@ -82,10 +73,7 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Yesno extends Ultimate_ModuleC
 	public function getColumnOptions(){
 		$text = '';
 		$text .= "'type'		=> 'options',\n";
-		$text .= self::OPTION_SEPARATOR."'options'	=> array(\n";
-		$text .= self::OPTION_SEPARATOR."\t'1' => Mage::helper('".strtolower($this->getAttribute()->getEntity()->getModule()->getModuleName())."')->__('Yes'),\n";
-		$text .= self::OPTION_SEPARATOR."\t'0' => Mage::helper('".strtolower($this->getAttribute()->getEntity()->getModule()->getModuleName())."')->__('No'),\n";
-		$text .= self::OPTION_SEPARATOR.")\n";
+		$text .= self::OPTION_SEPARATOR."'options'	=> Mage::getResourceSingleton('core/website_collection')->toOptionHash(),\n";
 		return $text;
 	}
 	/**
@@ -98,7 +86,7 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Yesno extends Ultimate_ModuleC
 		$entityName = strtolower($this->getAttribute()->getEntity()->getNameSingular());
 		$ucEntity = ucfirst($entityName);
 		$module = strtolower($this->getAttribute()->getEntity()->getModule()->getModuleName());
-		return '				$description .= Mage::helper(\''.$module.'\')->__("'.$this->getAttribute()->getLabel().'").\':\'.($item->get'.$this->getAttribute()->getMagicMethodCode().'() == 1) ? Mage::helper(\''.$module.'\')->__(\'Yes\') : Mage::helper(\''.$module.'\')->__(\'No\');';
+		return '				$description .= Mage::helper(\''.$module.'\')->__("'.$this->getAttribute()->getLabel().'").\':\'.($item->get'.$this->getAttribute()->getMagicMethodCode().'() == 1) ? Mage::getModel(\'core/website\')->load($$item->get'.$this->getAttribute()->getMagicMethodCode().'())->getName():Mage::helper(\''.$module.'\')->__(\'None\');';
 	}
 	
 	
