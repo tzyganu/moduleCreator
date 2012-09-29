@@ -186,7 +186,7 @@ class Ultimate_ModuleCreator_Model_Attribute extends Ultimate_ModuleCreator_Mode
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
 	 */
 	public function getRssText(){
-		return $this->getTypeInstance()->getRssText().'<br />';
+		return $this->getTypeInstance()->getRssText();
 	}
 	/**
 	 * gcheck if attribute is required
