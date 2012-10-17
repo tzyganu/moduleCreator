@@ -37,7 +37,7 @@
 <script type="text/javascript">
 //<![CDATA[
 	var moduleForm = new varienForm('edit_form', '<?php echo $this->getValidationUrl() ?>');
-	var eavTemplateSyntax = /(^|.|\r|\n)({{(\w+)}})/;
+	var templateSyntax = /(^|.|\r|\n)({{(\w+)}})/;
 	moduleForm._processValidationResult = function(transport) {
 		var response = transport.responseText.evalJSON();
 		if (response.error){
@@ -88,7 +88,7 @@
 		}
 	};
 	function saveAndContinueEdit(urlTemplate) {
-		var template = new Template(urlTemplate, eavTemplateSyntax);
+		var template = new Template(urlTemplate, templateSyntax);
 		var url = template.evaluate({tab_id:modulecreator_info_tabsJsTabs.activeTab.id});
 		var advices = $$('div.validation-advice');
 		for (var i = 0; i<advices.length;i++){
@@ -146,6 +146,7 @@
 		var useFrontend = $('entity_' + entityId + '_use_frontend').value;
 		var useWidget = $('entity_' + entityId + '_widget').value;
 		var useRss = $('entity_' + entityId + '_rss').value;
+		var linkProduct = $('entity_' + entityId + '_link_product').value;
 		if (useFrontend == 0){
 			$$('#entity_' + entityId + '_settings tr.use-frontend').each(function(item){
 				$(item).hide();
@@ -153,7 +154,12 @@
 		}
 		else{
 			$$('#entity_' + entityId + '_settings tr.use-frontend').each(function(item){
-				$(item).show();
+				if (($(item).hasClassName('link-product') && linkProduct == 1) || !$(item).hasClassName('link-product')){
+					$(item).show();
+				}
+				else{
+					$(item).hide();
+				}
 			});
 		}
 		if (!useWidget){
@@ -164,6 +170,21 @@
 		if (!useRss){
 			$$('#entity_' + entityId + ' tr.use-rss').each(function(item){
 				$(item).hide();
+			});
+		}
+		if (linkProduct == 0){
+			$$('#entity_' + entityId + ' tr.link-product').each(function(item){
+				$(item).hide();
+			});
+		}
+		else{
+			$$('#entity_' + entityId + ' tr.link-product').each(function(item){
+				if (($(item).hasClassName('use-frontend') && useFrontend == 1) || !$(item).hasClassName('use-frontend')){
+					$(item).show();
+				}
+				else{
+					$(item).hide();
+				}
 			});
 		}
 		var attributes = $$('#entity_' + entityId + '_attributes .modulecreator-attribute');

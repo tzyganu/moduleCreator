@@ -49,7 +49,7 @@
 		</div>
 		<div id="modulecreator_general_container" class="box custom-options">
 			<strong><?php echo Mage::helper('modulecreator')->__('Settings Tab');?></strong>
-			<p>
+			<div>
 				<strong><?php echo Mage::helper('modulecreator')->__('Fields');?></strong>
 				<ul style="list-style-type: disc;padding-left:30px;">
 					<li>
@@ -123,7 +123,7 @@
 						</p>
 					</li>
 				</ul>
-			</p>
+			</div>
 		</div>
 	</div>
 </div>
@@ -216,7 +216,7 @@
 			<li>
 				<strong><?php echo Mage::helper('modulecreator')->__('Create RSS feed')?></strong>
 				<br />
-				<p>
+				<div>
 					<?php echo Mage::helper('modulecreator')->__('This will create a new attribute for your entity called "Show in Feed" and will also create the logic for viewing your entities as RSS feeds.');?><br />
 					<?php echo Mage::helper('modulecreator')->__('If this is enabled in the entity list page in front-end where will be a link to the RSS feed.');?><br />
 					<?php echo Mage::helper('modulecreator')->__('A link to the entity RSS feed will also be added in the default Magento RSS list page.');?><br />
@@ -230,13 +230,34 @@
 							<?php echo Mage::helper('modulecreator')->__('There is no way of avoiding this without overwriting core behavior');?>
 						</li>
 					</ul>
-				</p>
+				</div>
 			</li>
 			<li>
 				<strong><?php echo Mage::helper('modulecreator')->__('Create Link/View widget')?></strong>
 				<br />
 				<p>
 					<?php echo Mage::helper('modulecreator')->__('This will create the code that will allow you to include widgets of your entities in the static pages and static blocks.');?>
+				</p>
+			</li>
+			<li>
+				<strong><?php echo Mage::helper('modulecreator')->__('Link "many to many" with prodcts')?></strong>
+				<br />
+				<p>
+					<?php echo Mage::helper('modulecreator')->__('This will allow you to link your entity to the products. It will add a new tab in the product edit form with your entities and a tab in the entity edit form with the product.');?>
+				</p>
+			</li>
+			<li>
+				<strong><?php echo Mage::helper('modulecreator')->__('Show associated entities on product page')?></strong>
+				<br />
+				<p>
+					<?php echo Mage::helper('modulecreator')->__('This will display the list of associated entities on the related product page. It may not be displayed if the design is not compatible but can be fixed from the layout xml of the entity.');?>
+				</p>
+			</li>
+			<li>
+				<strong><?php echo Mage::helper('modulecreator')->__('Show associated product on entity page')?></strong>
+				<br />
+				<p>
+					<?php echo Mage::helper('modulecreator')->__('This will display the list of associated products on the related entity page.');?>
 				</p>
 			</li>
 		</ul>

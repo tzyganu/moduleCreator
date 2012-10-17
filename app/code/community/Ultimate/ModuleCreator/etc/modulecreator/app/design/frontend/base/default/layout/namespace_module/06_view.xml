@@ -4,6 +4,6 @@
 			<action method="setTemplate"><template>{{viewLayout}}</template></action>
 		</reference>
 		<reference name="content">
-			<block type="{{module}}/{{entity}}_view" name="a_view" template="{{namespace}}_{{module}}/{{entity}}/view.phtml" />
-		</reference>
+			<block type="{{module}}/{{entity}}_view" name="{{entity}}_view" template="{{namespace}}_{{module}}/{{entity}}/view.phtml" />
+{{EntityViewRelationLayout}}</reference>
 	</{{module}}_{{entity}}_view>

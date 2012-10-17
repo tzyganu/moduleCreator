@@ -18,4 +18,3 @@ class {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Collection extends Mage
 		parent::_construct();
 		$this->_init('{{module}}/{{entity}}');
 	}
-}

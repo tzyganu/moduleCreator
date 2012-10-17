@@ -32,6 +32,3 @@ class {{Namespace}}_{{Module}}_Block_Adminhtml_{{Entity}}_Edit_Tabs extends Mage
 			'title'		=> Mage::helper('{{module}}')->__('{{EntityLabel}}'),
 			'content' 	=> $this->getLayout()->createBlock('{{module}}/adminhtml_{{entity}}_edit_tab_form')->toHtml(),
 		));
-		return parent::_beforeToHtml();
-	}
-}

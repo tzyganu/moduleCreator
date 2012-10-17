@@ -24,7 +24,7 @@
 <config>
 	<modules>
 		<Ultimate_ModuleCreator>
-			<version>0.1.0</version>
+			<version>0.2.0</version>
 			<beta>true</beta>
 		</Ultimate_ModuleCreator>
 	</modules>
@@ -51,7 +51,6 @@
 				<Ultimate_ModuleCreator>
 					<files>
 						<default>Ultimate_ModuleCreator.csv</default>
-						<alrenative>Ultimate_ModuleCreator_Help.csv</alrenative>
 					</files>
 				</Ultimate_ModuleCreator>
 			</modules>
@@ -110,6 +109,9 @@ http://opensource.org/licenses/mit-license.php
 				<add_status>1</add_status>
 				<rss>1</rss>
 				<widget>1</widget>
+				<link_product>1</link_product>
+				<show_on_product>1</show_on_product>
+				<show_products>1</show_products>
 			</entity_defaults>
 			<release>
 				<beta>1</beta>

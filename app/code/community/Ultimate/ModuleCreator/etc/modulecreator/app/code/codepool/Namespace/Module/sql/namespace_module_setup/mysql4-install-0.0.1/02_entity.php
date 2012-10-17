@@ -6,4 +6,4 @@ $this->run("
 		`updated_at` datetime NULL,
 	PRIMARY KEY (`entity_id`)) 
 	ENGINE=InnoDB DEFAULT CHARSET=utf8;
-"); 
+");

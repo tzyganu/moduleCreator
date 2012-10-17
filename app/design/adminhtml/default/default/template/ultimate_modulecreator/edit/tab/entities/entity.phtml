@@ -210,17 +210,6 @@
 									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Add SEO attributes'), Mage::helper('modulecreator')->__('This will add automatically the Meta title, Meta keywords and Meta description fields that will be used on frontend.'))?>
 								</td>
 							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="box-right">
-				<div class="entry-edit-head">
-					<h4><?php echo Mage::helper('modulecreator')->__('Additional');?></h4>
-				</div>
-				<div class="box">
-					<table class="form-list" cellpadding="0" cellspacing="0">
-						<tbody>
 							<tr class="use-frontend">
 								<td class="label">
 									<label for="entity_<?php echo $this->getIncrement();?>_rss">
@@ -241,6 +230,50 @@
 								<td class="value">
 									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_widget', 'entity'.'['.$this->getIncrement().'][widget]', $_entity->getWidget());?>
 									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Create Link/View widget'), Mage::helper('modulecreator')->__('This will add a view widget and a link widget that you will be able to use in CMS pages and blocks.'))?>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="box-right">
+				<div class="entry-edit-head">
+					<h4><?php echo Mage::helper('modulecreator')->__('Catalog');?></h4>
+				</div>
+				<div class="box">
+					<table class="form-list" cellpadding="0" cellspacing="0">
+						<tbody>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_link_product">
+										<?php echo Mage::helper('modulecreator')->__('Link "many to many" with prodcts') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_link_product', 'entity'.'['.$this->getIncrement().'][link_product]', $_entity->getLinkProduct());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Link "many to many" with prodcts'), Mage::helper('modulecreator')->__('This will allow you to link your entity to the products. It will add a new tab in the product edit form with your entities and a tab in the entity edit form with the product.'))?>
+								</td>
+							</tr>
+							<tr class="link-product">
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_show_on_product">
+										<?php echo Mage::helper('modulecreator')->__('Show associated entities on product page') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_show_on_product', 'entity'.'['.$this->getIncrement().'][show_on_product]', $_entity->getShowOnProduct());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Show associated entities on product page'), Mage::helper('modulecreator')->__('This will display the list of associated entities on the related product page. It may not be displayed if the design is not compatible but can be fixed from the layout xml of the entity.'))?>
+								</td>
+							</tr>
+							<tr class="link-product use-frontend">
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_show_products">
+										<?php echo Mage::helper('modulecreator')->__('Show associated product on entity page') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_show_products', 'entity'.'['.$this->getIncrement().'][show_products]', $_entity->getShowProducts());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Show associated product on entity page'), Mage::helper('modulecreator')->__('This will display the list of associated products on the related entity page.'))?>
 								</td>
 							</tr>
 						</tbody>
@@ -273,6 +306,9 @@
 		reloadEntity(<?php echo $this->getIncrement();?>)
 	});
 	$('entity_<?php echo $this->getIncrement();?>_rss').observe('change', function() {
+		reloadEntity(<?php echo $this->getIncrement();?>)
+	});
+	$('entity_<?php echo $this->getIncrement();?>_link_product').observe('change', function() {
 		reloadEntity(<?php echo $this->getIncrement();?>)
 	});
 	Event.observe(document,'dom:loaded', function(){ 

@@ -135,7 +135,16 @@
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tabs.php</to>
 			<content>
 				<file>
-					<name>01_content.php</name>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_product_relation.php</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -168,20 +177,35 @@
 					<name>01_top.php</name>
 				</file>
 				<file>
-					<name>02_url.php</name>
+					<name>02_var_product_relation.php</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>03_construct.php</name>
+				</file>
+				<file>
+					<name>04_url.php</name>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>03_editors.php</name>
+					<name>05_editors.php</name>
 					<scope>attribute</scope>
 					<depend>
 						<editor />
 					</depend>
 				</file>
 				<file>
-					<name>04_footer.php</name>
+					<name>06_product_relation.php</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>07_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -211,7 +235,16 @@
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/Collection.php</to>
 			<content>
 				<file>
-					<name>01_content.php</name>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_product_relation.php</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -417,57 +450,69 @@
 					</depend_type>
 				</file>
 				<file>
-					<name>04_save.php</name>
+					<name>04_save_product_relation.php</name>
+					<depend>
+						<link_product />
+					</depend>
 				</file>
 				<file>
-					<name>05_exception_upload.php</name>
+					<name>05_save.php</name>
+				</file>
+				<file>
+					<name>06_exception_upload.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<image />
 					</depend_type>
 				</file>
 				<file>
-					<name>05_exception_upload.php</name>
+					<name>06_exception_upload.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<file />
 					</depend_type>
 				</file>
 				<file>
-					<name>06_exception.php</name>
+					<name>07_exception.php</name>
 				</file>
 				<file>
-					<name>05_exception_upload.php</name>
+					<name>06_exception_upload.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<image />
 					</depend_type>
 				</file>
 				<file>
-					<name>05_exception_upload.php</name>
+					<name>06_exception_upload.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<file />
 					</depend_type>
 				</file>
 				<file>
-					<name>07_center.php</name>
+					<name>08_center.php</name>
 				</file>
 				<file>
-					<name>08_mass_status.php</name>
+					<name>09_mass_status.php</name>
 					<depend>
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>09_mass_update.php</name>
+					<name>10_mass_update.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<yesno />
 					</depend_type>
 				</file>
 				<file>
-					<name>10_footer.php</name>
+					<name>11_product_relation_actions.php</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>12_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -773,7 +818,14 @@
 					<scope>entity</scope>
 				</file>
 				<file>
-					<name>03_footer.php</name>
+					<name>03_product_relation.php</name>
+					<scope>entity</scope>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>04_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -843,26 +895,43 @@
 					<scope>entity</scope>
 				</file>
 				<file>
-					<name>03_global.xml</name>
+					<name>03_relation_table.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<link_product />
+					</depend>
 				</file>
 				<file>
-					<name>04_frontend.xml</name>
+					<name>04_global.xml</name>
+				</file>
+				<file>
+					<name>05_relation_product.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>06_admin.xml</name>
+				</file>
+				<file>
+					<name>07_frontend.xml</name>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>05_default_top.xml</name>
+					<name>08_default_top.xml</name>
 				</file>
 				<file>
-					<name>06_default.xml</name>
+					<name>09_default.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>07_default_footer.xml</name>
+					<name>10_default_footer.xml</name>
 				</file>
 			</content>
 		</file>
@@ -903,7 +972,14 @@
 					<scope>entity</scope>
 				</file>
 				<file>
-					<name>03_footer.xml</name>
+					<name>03_relation_product.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>04_footer.xml</name>
 				</file>
 			</content>
 		</file>
@@ -977,7 +1053,14 @@
 					</depend>
 				</file>
 				<file>
-					<name>11_footer.xml</name>
+					<name>11_relation_product.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<show_on_product />
+					</depend>
+				</file>
+				<file>
+					<name>12_footer.xml</name>
 				</file>
 			</content>
 		</file>
@@ -1097,6 +1180,12 @@
 						<has_file />
 					</depend>
 				</file>
+				<file>
+					<name>09_product_relation.csv</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
 			</content>
 		</file>
 		<file translate="title" module="modulecreator">
@@ -1141,6 +1230,233 @@
 			<content>
 				<file>
 					<name>01_content.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Adminhtml observer</title>
+			<scope>global</scope>
+			<filetype>php</filetype>
+			<depend>
+				<has_observer />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Model/Adminhtml/Observer/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Adminhtml/Observer.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_entity.php</name>
+					<scope>entity</scope>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity tab on product form</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<link_product />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Catalog/Product/Edit/Tab/Entity/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/Catalog/Product/Edit/Tab/{{Entity}}.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Product helper</title>
+			<scope>global</scope>
+			<filetype>php</filetype>
+			<depend>
+				<link_product />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Helper/Product/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Helper/Product.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_content.php</name>
+					<scope>entity</scope>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity - product relation model</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<link_product />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Product/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/Product.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity - admin product tab</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<link_product />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tab/Product/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/Product.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>entity - product relation resource model collection</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<link_product />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Product/Collection/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/Product/Collection.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>entity - product model</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<link_product />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Model/Entity/Product/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/{{Entity}}/Product.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity list on product page</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<show_on_product />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Catalog/Product/List/Entity/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Catalog/Product/List/{{Entity}}.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_status.php</name>
+					<depend>
+						<add_status />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity list on product page template</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<show_on_product />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/catalog/product/list/entity/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/catalog/product/list/{{entity}}.phtml</to>
+			<content>
+				<file>
+					<name>01_top.phtml</name>
+				</file>
+				<file>
+					<name>02_link_top.phtml</name>
+					<depend>
+						<frontend_view />
+					</depend>
+				</file>
+				<file>
+					<name>03_name.phtml</name>
+				</file>
+				<file>
+					<name>04_link_footer.phtml</name>
+					<depend>
+						<frontend_view />
+					</depend>
+				</file>
+				<file>
+					<name>05_footer.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Product list on entity page</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<show_products />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Entity/Catalog/Product/List/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Catalog/Product/List.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity list on product page template</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<show_on_product />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/entity/catalog/product/list/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/catalog/product/list.phtml</to>
+			<content>
+				<file>
+					<name>01_content.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity product admin controller</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<link_product />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/controllers/Adminhtml/Entity/Catalog/ProductController/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/Adminhtml/{{Entity}}/Catalog/ProductController.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
 				</file>
 			</content>
 		</file>

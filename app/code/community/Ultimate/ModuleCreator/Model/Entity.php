@@ -166,7 +166,7 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		return array('label_singular', 'label_plural', 'name_singular', 'name_plural', 'created_to_grid', 
 					'updated_to_grid', 'add_status', 'use_frontend', 'frontend_list', 
 					'frontend_list_template', 'frontend_view', 'frontend_view_template', 'frontend_add_seo',
-					'rss', 'widget' 
+					'rss', 'widget', 'link_product', 'show_on_product', 'show_products'
 		);
 	}
 	/**
@@ -200,6 +200,7 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		$placeholders['{{EntityListItem}}']		= $this->getListItemHtml();
 		$placeholders['{{EntityViewAttributes}}']= $this->getViewAttributesHtml();
 		$placeholders['{{EntityViewWidgetAttributes}}'] = $this->getViewWidgetAttributesHtml();
+		$placeholders['{{EntityViewRelationLayout}}'] = $this->getRelationLayoutXml();
 		return $placeholders;
 		
 	}
@@ -513,5 +514,37 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 	 */
 	public function getRss(){
 		return $this->getUseFrontend() && $this->getData('rss');
+	}
+	/**
+	 * check if products are listed in the entity view page
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getShowProducts(){
+		return $this->getLinkProduct() && $this->getData('show_products');
+	}
+	/**
+	 * get layout xml for relation to product
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getRelationLayoutXml(){
+		if ($this->getShowProducts()){
+			return "\t\t\t".'<block type="'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'_catalog_product_list" name="'.strtolower($this->getNameSingular()).'.info.products" as="'.strtolower($this->getNameSingular()).'_products" template="'.strtolower($this->getModule()->getNamespace()).'_'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'/catalog/product/list.phtml" />'."\n\t\t";
+		}
+		else{
+			return "\t\t";
+		}
+	}
+	/**
+	 * check if entity list is shown on product page
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getShowOnProduct(){
+		return $this->getLinkProduct() && $this->getData('show_on_product');
 	}
 }

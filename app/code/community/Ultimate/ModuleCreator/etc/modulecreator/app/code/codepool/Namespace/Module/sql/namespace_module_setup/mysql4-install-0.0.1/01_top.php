@@ -1,4 +1,4 @@
-<?php
+<?php 
 {{License}}
 /**
  * {{Module}} module install script

@@ -8,6 +8,20 @@
  * {{qwertyuiop}}
  */
 class {{Namespace}}_{{Module}}_Adminhtml_{{Entity}}Controller extends {{Namespace}}_{{Module}}_Controller_Adminhtml_{{Module}}{
+	/**
+	 * init the {{entity}}
+	 * @access protected
+	 * @return {{Namespace}}_{{Module}}_Model_{{Entity}}
+	 */
+	protected function _init{{Entity}}(){
+		${{entity}}Id  = (int) $this->getRequest()->getParam('id');
+		${{entity}}	= Mage::getModel('{{module}}/{{entity}}');
+		if (${{entity}}Id) {
+			${{entity}}->load(${{entity}}Id);
+		}
+		Mage::register('current_{{entity}}', ${{entity}});
+		return ${{entity}};
+	}
  	/**
 	 * default action
 	 * @access public
@@ -34,7 +48,7 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Entity}}Controller extends {{Namespac
 	 */
 	public function editAction() {
 		${{entity}}Id	= $this->getRequest()->getParam('id');
-		${{entity}}  	= Mage::getModel('{{module}}/{{entity}}')->load(${{entity}}Id);
+		${{entity}}  	= $this->_init{{Entity}}();
 		if (${{entity}}Id && !${{entity}}->getId()) {
 			$this->_getSession()->addError(Mage::helper('{{module}}')->__('This {{entityLabel}} no longer exists.'));
 			$this->_redirect('*/*/');
@@ -69,5 +83,5 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Entity}}Controller extends {{Namespac
 	public function saveAction() {
 		if ($data = $this->getRequest()->getPost()) {
 			try {
-				${{entity}} = Mage::getModel('{{module}}/{{entity}}');		
-				${{entity}}->setData($data)->setId($this->getRequest()->getParam('id'));
+				${{entity}} = $this->_init{{Entity}}();
+				${{entity}}->addData($data);

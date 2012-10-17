@@ -80,6 +80,10 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 		if ($entity->getFrontendList()){
 			$this->setFrontendList(true);
 		}
+		if ($entity->getLinkProduct()){
+			$this->setHasObserver(true);
+			$this->setLinkProduct(true);
+		}
 		return $this;
 	}
 	/**
