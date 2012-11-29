@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -167,7 +167,7 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit extends Mage_Adm
 		if ($module = Mage::registry('current_module')){
 			$installedModules = array_keys((array)Mage::getConfig()->getNode('modules')->children());
 			foreach ($installedModules as $installed){
-				if ($installed == $module->config->module){
+				if ($installed == $module->extension){
 					Mage::register('module_read_only', true);
 					return true;
 				}

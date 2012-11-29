@@ -35,7 +35,7 @@ class {{Namespace}}_{{Module}}_Block_Adminhtml_{{Entity}}_Edit extends Mage_Admi
 	 * get the edit form header
 	 * @access public
 	 * @return string
-	 * @author{{qwertyuiop}}
+	 * {{qwertyuiop}}
 	 */
 	public function getHeaderText(){
 		if( Mage::registry('{{entity}}_data') && Mage::registry('{{entity}}_data')->getId() ) {

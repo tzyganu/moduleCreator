@@ -1,18 +1,8 @@
 	/**
-	 * save {{entity}}-product relation
-	 * @access public
-	 * @return {{Namespace_Module}}_Model_{{Entity}}
-	 * {{qwertyuiop}}
-	 */
-	protected function _afterSave() {
-		$this->getProductInstance()->save{{Entity}}Relation($this);
-		return parent::_afterSave();
-	}
-	/**
 	 * get product relation model
 	 * @access public
-	 * @return {{Namespace_Module}}_Model_{{Entity}}_Product
-	 * @author {{qwertyuiop}}
+	 * @return {{Namespace}}_{{Module}}_Model_{{Entity}}_Product
+	 * {{qwertyuiop}}
 	 */
 	public function getProductInstance(){
 		if (!$this->_productInstance) {

@@ -48,7 +48,7 @@ class {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Product extends Mage_Co
 	 * @param Mage_Catalog_Model_Product $prooduct
 	 * @param array $data
 	 * @return {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Product
-	 * @author {{qwertyuiop}}
+	 * @{{qwertyuiop}}
 	 */
 	public function saveProductRelation($product, $data){
 		if (!is_array($data)) {

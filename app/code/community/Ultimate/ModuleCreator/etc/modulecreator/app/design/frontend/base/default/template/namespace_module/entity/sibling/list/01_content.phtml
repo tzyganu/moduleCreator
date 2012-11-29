@@ -1,0 +1,23 @@
+<?php 
+{{License}}
+/**
+ * {{Entity}} {{SiblingLabel}} list template
+ *
+ * @category	{{Namespace}}
+ * @package		{{Namespace}}_{{Module}}
+ * {{qwertyuiop}}
+ */
+?>
+<?php $_{{siblings}} = $this->get{{Siblings}}(); ?>
+<?php if ($_{{siblings}}->getSize() > 0) :?>
+<div class="page-title {{sibling}}-title">
+	<h2><?php echo Mage::helper('{{module}}')->__('{{SiblingsLabel}}') ?>:<?php echo $this->get{{Entity}}()->get{{EntityNameMagicCode}}();?></h2>
+</div>
+<div class="{{siblings}}-list-container">
+	<?php foreach ($_{{siblings}} as $_{{sibling}}) : ?>
+		<div class="{{sibling}}-list-item">
+{{SiblingListItem}}
+		</div>
+	<?php endforeach;?>
+</div>
+<?php endif;?> 

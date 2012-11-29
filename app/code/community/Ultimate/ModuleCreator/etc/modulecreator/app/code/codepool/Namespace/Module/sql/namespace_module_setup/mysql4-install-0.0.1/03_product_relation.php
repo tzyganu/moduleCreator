@@ -1,3 +1,4 @@
+
 $this->run("
 	CREATE TABLE {$this->getTable('{{module}}/{{entity}}_product')} (
 		`rel_id` int(11) unsigned NOT NULL auto_increment,

@@ -9,14 +9,14 @@
 		if ($product instanceof Mage_Catalog_Model_Product){
 			$product = $product->getId();
 		}
-		if (!$this->_joinedFields){
+		if (!isset($this->_joinedFields['product'])){
 			$this->getSelect()->join(
-				array('related' => $this->getTable('{{module}}/{{entity}}_product')),
-				'related.{{entity}}_id = main_table.entity_id',
+				array('related_product' => $this->getTable('{{module}}/{{entity}}_product')),
+				'related_product.{{entity}}_id = main_table.entity_id',
 				array('position')
 			);
-			$this->getSelect()->where('related.product_id = ?', $product);
-			$this->_joinedFields = true;
+			$this->getSelect()->where('related_product.product_id = ?', $product);
+			$this->_joinedFields['product'] = true;
 		}
 		return $this;
 	}

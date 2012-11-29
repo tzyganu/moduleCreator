@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -117,7 +117,7 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit_Tab_Settings ext
 			'required'  		=> true,
 			'value'				=> $values->getInstall(),
 			'style'				=> 'width:'.$fieldWidth.'px',
-			'after_element_html'=> Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Action'), Mage::helper('modulecreator')->__('This allows you to create an archive with your extension located in var/modulecreator folder of your current instance so you can edit it later or install it later manually by copying the "app" folder in the archive over the "app" folder of your instance and the "skin" folder in the archive over the "skin" folder of your instance. If you choose to install it directly please backup first. If you choose to install it you won\'t be able to edit it later. In BETA mode you cannot install an extension directly. It\'s for your own protection.' ))
+			'after_element_html'=> Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Action'), Mage::helper('modulecreator')->__('This allows you to create an archive with your extension located in var/modulecreator folder of your current instance so you can edit it later or install it later manually by copying the "app" folder in the archive over the "app" folder of your instance and the "skin" folder in the archive over the "skin" folder of your instance. If you choose to install it directly please backup first. If you choose to install it you won\'t be able to edit it later.' ))
 		);
 		if (!Mage::helper('modulecreator')->canInstall()){
 			$installOptions['disabled'] = 'disabled';

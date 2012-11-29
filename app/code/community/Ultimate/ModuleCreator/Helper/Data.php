@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -20,6 +20,10 @@
  * @author 		Marius Strajeru <marius.strajeru@gmail.com>
  */ 
 class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
+	const RELATION_TYPE_NONE 	= 0;
+	const RELATION_TYPE_PARENT 	= 1;
+	const RELATION_TYPE_CHILD 	= 2;
+	const RELATION_TYPE_SIBLING = 3;
 	/**
 	 * restricted module names
 	 * @var array()
@@ -40,8 +44,8 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 	 */
 	public function getSpecialAttributeNames(){
 		$names 						= array();
-		$names['created_at'] 		= $this->__('An attribute names "created_at" will be added by default to your entity');
-		$names['updated_at'] 		= $this->__('An attribute names "updated_at" will be added by default to your entity');
+		$names['created_at'] 		= $this->__('An attribute named "created_at" will be added by default to your entity');
+		$names['updated_at'] 		= $this->__('An attribute named "updated_at" will be added by default to your entity');
 		$names['status'] 			= $this->__('"status" is a reserved attribute name. If you want to add it set "Add Status field" to "Yes"');
 		$names['in_rss']			= $this->__('"in_rss" is a reserved attribute name. If you want to add it set "Create RSS feed" to "Yes"');
 		$names['meta_title']		= $this->__('"meta_title" is a reserved attribute name. If you want to add it set "Add SEO Attributes" to "Yes"');
@@ -278,5 +282,50 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 			}
 		}
 		return true;
+	}
+	/**
+	 * get available relation types
+	 * @access public
+	 * @return array
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getAvailableRelations(){
+		return array(
+			self::RELATION_TYPE_NONE 	=> $this->__('--None--'),
+			self::RELATION_TYPE_PARENT	=> $this->__('Is parent for'),
+			self::RELATION_TYPE_CHILD	=> $this->__('Is child of'),
+			self::RELATION_TYPE_SIBLING	=> $this->__('Is siblig with')
+		);
+	}
+	/**
+	 * parse xml to get entities
+	 * @access public
+	 * @param string $data
+	 * @return array
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getXmlEntities($data){
+		$entities = array();
+		if ($data){
+			$xmlEntities = $data->descend('entities/entity');
+			if ($xmlEntities){
+				foreach ($xmlEntities as $xmlEntity){
+					$entity = new Varien_Object();
+					foreach ($xmlEntity as $tag=>$value){
+						if ($tag != 'attributes'){
+							$entity->setData($tag, (string)$value);
+						}
+						$attributes = array();
+						foreach ($xmlEntity->descend('attributes/attribute') as $xmlAttribute){
+							$attribute = $xmlAttribute->asArray();
+							$attributes[] = $attribute;
+						}
+						$entity->setAttributes($attributes);
+					}
+					$entities[] = $entity;
+				}
+			}
+		}
+		return $entities;
 	}
 }

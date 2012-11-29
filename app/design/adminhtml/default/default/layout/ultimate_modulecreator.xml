@@ -6,7 +6,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -52,6 +52,7 @@
 			<block type="modulecreator/adminhtml_modulecreator_edit_tabs" name="modulecreator_edit_tabs">
 				<action method="addTab"><name>settings</name><block>modulecreator/adminhtml_modulecreator_edit_tab_settings</block></action>
 				<action method="addTab"><name>entities</name><block>modulecreator/adminhtml_modulecreator_edit_tab_entities</block></action>
+				<action method="addTab"><name>relations</name><block>modulecreator/adminhtml_modulecreator_edit_tab_relation</block></action>
 				<action method="addTab"><name>help</name><block>modulecreator/adminhtml_modulecreator_edit_tab_help</block></action>
 			</block>
 		</reference>

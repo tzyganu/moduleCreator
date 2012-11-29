@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -18,7 +18,7 @@
 <?php $_id = $this->getEntityId().'_'.$this->getIncrement();?>
 <?php $_attribute = $this->getAttributeInstance();?>
 <div class="entry-edit modulecreator-attribute" id="attribute_<?php echo $_id?>">
-	<div class="entry-edit-head">
+	<div class="entry-edit-head collapseable">
 		<h4 id="attribute_<?php echo $_id?>_title">
 			<?php if ($_attribute->getLabel()) : ?>
 				<?php echo $_attribute->getLabel();?>
@@ -26,9 +26,10 @@
 				<?php echo Mage::helper('modulecreator')->__('Attribute %s', $this->getIncrement());?>
 			<?php endif;?>
 		</h4>
+		<a href="#" class="left modulecreator-toggle open" onclick="return toggleArea('attribute_<?php echo $_id?>_settings', this)">&nbsp;</a>
 		<div class="right"><button type="button" onclick="if (confirm('<?php echo Mage::helper('modulecreator')->__('Are you sure?')?>')) $(this).up(2).remove()"><?php echo Mage::helper('modulecreator')->__('Remove field');?></button></div>
 	</div>
-	<div class="box">
+	<div class="box" id="attribute_<?php echo $_id?>_settings">
 		<div class="box-left">
 			<div class="entry-edit-head">
 				<h4><?php echo Mage::helper('modulecreator')->__('Settings');?></h4>

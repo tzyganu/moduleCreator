@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -32,6 +32,11 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 	 * @var mixed (null|Varien_Simplexml_Element)
 	 */
 	protected $_config		= null;
+	/**
+	 * entity relations
+	 * @var array
+	 */
+	protected $_relations	= array();
 	/**
 	 * no comment
 	 */
@@ -87,7 +92,20 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 		return $this;
 	}
 	/**
-	 * it does something
+	 * get a module entity
+	 * @access public
+	 * @param string $code
+	 * @return mixed(Ultimate_ModuleCreator_Model_Entity|null)
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getEntity($code){
+		if (isset($this->_entities[$code])){
+			return $this->_entities[$code];
+		}
+		return null;
+	}
+	/**
+	 * it does something I don't want to tell you what
 	 * @access public
 	 * @return string
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
@@ -127,13 +145,18 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 			$xml .= $entity->toXml(array(), 'entity', false, $addCdata);
 		}
 		$xml .= '</entities>';
+		$xml .= '<relations>';
+		foreach ($this->getRelations() as $relation){
+			$xml .= $relation->toXml(array(), 'relation', false, $addCdata);
+		}
+		$xml .= '</relations>';
 		if (!empty($rootName)) {
 			$xml.= '</'.$rootName.'>'."\n";
 		}
 		return $xml;
 	}
 	/**
-	 * get the attributes saved in the xml
+	 * get the data attributes saved in the xml
 	 * @access public
 	 * @return array();
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
@@ -160,7 +183,7 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 	 */
 	protected function _prepareEntities(){
 		foreach ($this->_entities as $entity){
-			$entity->setFlat(true);
+			$entity->setFlat(true);//just flat entities for now - EAV will follow
 		}
 		return $this;
 	}
@@ -221,31 +244,53 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 	}
 	/**
 	 * write module on disc
-	 * 
-	 * TODO: check this again when installing directly
-	 * 
 	 * @access public
-	 * @return Ultimate_ModuleCreator_Model_Module
+	 * @return array()
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
 	 */
 	public function buildModule(){
+		$messages = array();
 		$config = $this->getConfig();
 		$files = $config->descend('files/file');
 		foreach ($files as $file){
 			$this->_createFile($file);
 		}
-		$this->_writeFiles();
-		$contents = array();
-		foreach ($this->_files as $filename=>$file){
-			$contents[] = $this->getRelativeBasePath().$filename;
+		if ($this->getInstall()){
+			$existingFiles = $this->_checkExistingFiles();
+			if (count($existingFiles) > 0){
+				$this->setInstall(false);
+				$messages[] = Mage::helper('modulecreator')->__('The following files already exist. They were NOT overwritten. The extension was not installed. You can download it from the list of extensions and install it manually: %s', implode('<br />', $existingFiles));
+			}
 		}
-		$_writer = Mage::getModel('modulecreator/writer',$contents);
-		$_writer->setNamePackage(Mage::getBaseDir('var').DS.'modulecreator'.DS.$this->getNamespace().'_'.$this->getModuleName());
-		$_writer->composePackage()->archivePackage();
-		if (!$this->_install){
+		$this->_writeFiles();
+		if (!$this->getInstall()){
+			$contents = array();
+			foreach ($this->_files as $filename=>$file){
+				$contents[] = $this->getRelativeBasePath().$filename;
+			}
+			$_writer = Mage::getModel('modulecreator/writer',$contents);
+			$_writer->setNamePackage(Mage::getBaseDir('var').DS.'modulecreator'.DS.$this->getNamespace().'_'.$this->getModuleName());
+			$_writer->composePackage()->archivePackage();
 			$this->_io->rmdir($this->getBasePath(), true);
 		}
-		return $this;
+		return $messages;
+	}
+	/**
+	 * check if some files already exist so it won't be overwritten
+	 * @access protected
+	 * @return array()
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	protected function _checkExistingFiles(){
+		$existingFiles = array();
+		$io = $this->getIo();
+		$basePath = $this->getBasePath();
+		foreach ($this->_files as $name=>$content){
+			if ($io->fileExists($basePath.$name)){
+				$existingFiles[] = $basePath.$name;
+			}
+		}
+		return $existingFiles;
 	}
 	/**
 	 * get module base path
@@ -324,6 +369,12 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 		switch ($config->scope){
 			case 'entity' :
 				$this->_buildEntityFile($config);
+				break;
+			case 'siblings' : 
+				$this->_buildSiblingFile($config);
+				break;
+			case 'children' : 
+				$this->_buildChildrenFile($config);
 				break;
 			case 'global':
 			default:
@@ -418,6 +469,45 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 						}
 					}
 				}
+				elseif($scope == 'siblings'){
+					foreach ($this->getRelations(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_SIBLING) as $relation){
+						$entities 		= $relation->getEntities();
+						$replaceEntity 	= $entities[0]->getPlaceholders();
+						$replaceSibling = $entities[1]->getPlaceholdersAsSibling();
+						$replace 		= array_merge($replaceEntity, $replaceSibling);
+						$content .= $this->_filterString($sourceContent, $filetype, $replace, true);
+					}
+				}
+				elseif($scope == 'siblings-both'){
+					foreach ($this->getRelations(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_SIBLING) as $relation){
+						$entities 		= $relation->getEntities();
+						$replaceEntity 	= $entities[0]->getPlaceholders();
+						$replaceSibling = $entities[1]->getPlaceholdersAsSibling();
+						$replace 		= array_merge($replaceEntity, $replaceSibling);
+						$content .= $this->_filterString($sourceContent, $filetype, $replace, true);
+						
+						$replaceEntity 	= $entities[1]->getPlaceholders();
+						$replaceSibling = $entities[0]->getPlaceholdersAsSibling();
+						$replace 		= array_merge($replaceEntity, $replaceSibling);
+						$content .= $this->_filterString($sourceContent, $filetype, $replace, true);
+					}
+				}
+				elseif ($scope == 'children'){
+					foreach ($this->getRelations(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_CHILD) as $relation){
+						$entities 		= $relation->getEntities();
+						$replaceEntity 	= $entities[0]->getPlaceholders();
+						$replaceSibling = $entities[1]->getPlaceholdersAsSibling();
+						$replace 		= array_merge($replaceEntity, $replaceSibling);
+						$content .= $this->_filterString($sourceContent, $filetype, $replace, true);
+					}
+					foreach ($this->getRelations(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_PARENT) as $relation){
+						$entities 		= $relation->getEntities();
+						$replaceEntity 	= $entities[1]->getPlaceholders();
+						$replaceSibling = $entities[0]->getPlaceholdersAsSibling();
+						$replace 		= array_merge($replaceEntity, $replaceSibling);
+						$content .= $this->_filterString($sourceContent, $filetype, $replace, true);
+					}
+				}
 				else{
 					$valid = true;
 					$depend = $file->depend;
@@ -502,6 +592,22 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 				 		}
 					}
 				}
+				elseif($scope == 'siblings'){
+					foreach ($entity->getRelatedEntities(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_SIBLING) as $related){
+						$placeholders 	= $entity->getPlaceholders();
+						$replaceSibling = $related->getPlaceholdersAsSibling();
+						$replace 		= array_merge($placeholders, $replaceSibling);
+						$content 		.= $this->_filterString($sourceContent, $filetype, $replace, true);
+					}
+				}
+				elseif($scope == 'parents'){
+					foreach ($entity->getRelatedEntities(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_CHILD) as $related){
+						$placeholders 	= $entity->getPlaceholders();
+						$replaceSibling = $related->getPlaceholdersAsSibling();
+						$replace 		= array_merge($placeholders, $replaceSibling);
+						$content 		.= $this->_filterString($sourceContent, $filetype, $replace, true);
+					}
+				}
 				elseif ($depend){
 					$valid = true;
 			 		foreach ($depend->asArray() as $condition=>$value){
@@ -522,6 +628,96 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 		}
 		return $this;
 	}
+	/**
+	 * create files for sibling relations
+	 * @access protected
+	 * @param Varien_Simplexml_Element
+	 * @return Ultimate_ModuleCreator_Model_Module
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	protected function _buildSiblingFile($config){
+		foreach ($this->getRelations(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_SIBLING) as $relation){
+			$entities = $relation->getEntities();
+			foreach ($entities as $index=>$entity){
+				$depend = $config->depend;
+				$build = true;
+				if ($depend){
+					foreach ($depend->asArray() as $condition=>$value){
+						if (!$relation->getDataUsingMethod($condition, $index)){
+							$build = false;
+							break;
+						}
+					}
+				}
+				if (!$build){
+					continue;
+				}
+				$placeholders = array_merge($entities[$index]->getPlaceholders(), $entities[1 - $index]->getPlaceholdersAsSibling());
+				$filetype = $config->filetype;
+				$sourceFolder = $this->getSourceFolder().$this->_filterString((string)$config->from, $filetype);
+				$destinationFile = $this->_filterString((string)$config->to, $filetype, $placeholders, true);
+				$content = '';
+				foreach ($config->descend('content/file') as $file){
+					$sourceContent = $this->getFileContents($sourceFolder.(string)$file->name);
+					$content .= $this->_filterString($sourceContent, $filetype, $placeholders, true);
+				}
+				$this->_addFile($destinationFile, $content);
+			}
+		}
+		return $this;
+	}
+
+	/**
+	 * create files for children relations
+	 * @access protected
+	 * @param Varien_Simplexml_Element
+	 * @return Ultimate_ModuleCreator_Model_Module
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	protected function _buildChildrenFile($config){
+		foreach ($this->getRelations() as $relation){
+			$type = $relation->getType();
+			$entities = $relation->getEntities();
+			$parent = false;
+			$child = false;
+			if ($type == Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_PARENT){
+				$parent = $entities[0];
+				$child = $entities[1];
+			}
+			elseif ($type == Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_CHILD){
+				$parent = $entities[1];
+				$child = $entities[0];
+			}
+			if ($parent && $child){
+				
+				$depend = $config->depend;
+				$build = true;
+				if ($depend){
+					foreach ($depend->asArray() as $condition=>$value){
+						if (!$relation->getDataUsingMethod($condition)){
+							$build = false;
+							break;
+						}
+					}
+				}
+				if (!$build){
+					continue;
+				}
+				$placeholders = array_merge($parent->getPlaceholders(), $child->getPlaceholdersAsSibling());
+				$filetype = $config->filetype;
+				$sourceFolder = $this->getSourceFolder().$this->_filterString((string)$config->from, $filetype);
+				$destinationFile = $this->_filterString((string)$config->to, $filetype, $placeholders, true);
+				$content = '';
+				foreach ($config->descend('content/file') as $file){
+					$sourceContent = $this->getFileContents($sourceFolder.(string)$file->name);
+					$content .= $this->_filterString($sourceContent, $filetype, $placeholders, true);
+				}
+				$this->_addFile($destinationFile, $content);
+			}
+		}
+		return $this;
+	}
+
 	/**
 	 * add file
 	 * @access protected
@@ -670,5 +866,35 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 	 */
 	public function getExtension(){
 		return $this->getNamespace().'_'.$this->getModuleName();
+	}
+	/**
+	 * add relation to module
+	 * @access public
+	 * @param Ultimate_ModuleCreator_Model_Relation $relation
+	 * @return Ultimate_ModuleCreator_Model_Module
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function addRelation(Ultimate_ModuleCreator_Model_Relation $relation){
+		$this->_relations[] = $relation;
+		return $this;
+	}
+	/**
+	 * get module relations
+	 * @access public
+	 * @param mixed $type
+	 * @return array()
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getRelations($type = null){
+		if (is_null($type)){
+			return $this->_relations;
+		}
+		$relations = array();
+		foreach ($this->_relations as $relation){
+			if ($relation->getType() == $type){
+				$relations[] = $relation;
+			}
+		}
+		return $relations;
 	}
 }

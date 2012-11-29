@@ -4,6 +4,6 @@ $this->run("
 {{attributeSql}}
 		`created_at` datetime NULL,
 		`updated_at` datetime NULL,
-	PRIMARY KEY (`entity_id`)) 
+	PRIMARY KEY (`entity_id`){{fks}})
 	ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ");

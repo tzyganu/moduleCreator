@@ -17,7 +17,7 @@ class {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Product_Collection exte
 	 * join the link table
 	 * @access public
 	 * @return {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Product_Collection
-	 * @author {{qwertyuiop}}
+	 * {{qwertyuiop}}
 	 */
 	public function joinFields(){
 		if (!$this->_joinedFields){
@@ -35,7 +35,7 @@ class {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Product_Collection exte
 	 * @access public
 	 * @param {{Namespace}}_{{Module}}_Model_{{Entity}} | int ${{entity}}
 	 * @return {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Product_Collection
-	 * @author {{qwertyuiop}}
+	 * {{qwertyuiop}}
 	 */
 	public function add{{Entity}}Filter(${{entity}}){
 		if (${{entity}} instanceof {{Namespace}}_{{Module}}_Model_{{Entity}}){

@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -64,5 +64,14 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Timestamp extends Ultimate_Mod
 		$options .= '		\'image\'	 => $this->getSkinUrl(\'images/grid-cal.gif\'),'."\n";
 		$options .= '		\'format\'	=> $dateFormatIso,'."\n";
 		return $options;
+	}
+	/**
+	 * get the grid column options
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getColumnOptions(){
+		return "'type'	 	=> 'date',"."\n";
 	}
 }

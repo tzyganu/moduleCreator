@@ -81,7 +81,7 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Entity}}Controller extends {{Namespac
 	 * {{qwertyuiop}}
 	 */
 	public function saveAction() {
-		if ($data = $this->getRequest()->getPost()) {
+		if ($data = $this->getRequest()->getPost('{{entity}}')) {
 			try {
 				${{entity}} = $this->_init{{Entity}}();
 				${{entity}}->addData($data);

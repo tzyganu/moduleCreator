@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -113,47 +113,6 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit_Tab_Entities ext
 	 */
 	public function getEntities(){
 		$data = Mage::registry('current_module');
-		$entities = array();
-		if ($data){
-			$xmlEntities = $data->descend('entities/entity');
-			if ($xmlEntities){
-				foreach ($xmlEntities as $xmlEntity){
-					$entity = new Varien_Object();
-					foreach ($xmlEntity as $tag=>$value){
-						if ($tag != 'attributes'){
-							$entity->setData($tag, (string)$value);
-						}
-						$attributes = array();
-						foreach ($xmlEntity->descend('attributes/attribute') as $xmlAttribute){
-							$attribute = $xmlAttribute->asArray();
-							$attributes[] = $attribute;
-						}
-						$entity->setAttributes($attributes);
-					}
-					$entities[] = $entity;
-				}
-			}
-		}
-		return $entities;
-	}
-	/**
-	 * get the list of relations
-	 * not used yet
-	 * @access public
-	 * @return array()
-	 * @author Marius Strajeru <marius.strajeru@gmail.com>
-	 */
-	public function getRelations(){
-		$data = Mage::registry('current_module');
-		$relations = array();
-		if ($data){
-			$xmlRelations = $data->descend('config/relations/relation');
-			foreach ($xmlRelations as $key =>$xmlRelation){
-				foreach ($xmlRelation->asArray() as $key=>$value){
-					$relations[$key] = (string)$value;
-				}
-			}
-		}
-		return $relations;
+		return Mage::helper('modulecreator')->getXmlEntities($data);
 	}
 }

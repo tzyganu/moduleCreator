@@ -6,7 +6,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -24,8 +24,7 @@
 <config>
 	<modules>
 		<Ultimate_ModuleCreator>
-			<version>0.2.0</version>
-			<beta>true</beta>
+			<version>1.0.0</version>
 		</Ultimate_ModuleCreator>
 	</modules>
 	<global>
@@ -86,7 +85,7 @@
 NOTICE OF LICENSE
 
 This source file is subject to the MIT License
-that is bundled with this package in the file LICENSE.txt.
+that is bundled with this package in the file LICENSE_UMC.txt.
 It is also available through the world-wide-web at this URL:
 http://opensource.org/licenses/mit-license.php
 
@@ -114,7 +113,7 @@ http://opensource.org/licenses/mit-license.php
 				<show_products>1</show_products>
 			</entity_defaults>
 			<release>
-				<beta>1</beta>
+				<beta>0</beta>
 			</release>
 		</modulecreator>
 	</default>

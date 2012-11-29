@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -87,7 +87,7 @@ class Ultimate_ModuleCreator_Adminhtml_ModulecreatorController extends Mage_Admi
 			}
 			catch (Exception $e) {
 				$this->_getSession()->addError($e->getMessage());
-				$this->_redirect('*/*');
+				$this->_redirect('*/*/index');
 			}
 		}
 		return false;
@@ -249,6 +249,7 @@ class Ultimate_ModuleCreator_Adminhtml_ModulecreatorController extends Mage_Admi
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
 	 */
 	protected function _initModuleFromData($data){
+		$entitiesByIndex = array();
 		$module = Mage::getModel('modulecreator/module');
 		if (isset($data['settings'])){
 			$module->addData($data['settings']);
@@ -256,7 +257,7 @@ class Ultimate_ModuleCreator_Adminhtml_ModulecreatorController extends Mage_Admi
 		if (isset($data['entity'])){
 			$entities = $data['entity'];
 			if (is_array($entities)){
-				foreach ($entities as $entityData){
+				foreach ($entities as $key=>$entityData){
 					$entity = Mage::getModel('modulecreator/entity');
 					$entity->addData($entityData);
 					if (isset($entityData['attributes']) && is_array($entityData['attributes'])){
@@ -274,6 +275,18 @@ class Ultimate_ModuleCreator_Adminhtml_ModulecreatorController extends Mage_Admi
 						}
 					}
 					$module->addEntity($entity);
+					$entitiesByIndex[$key] = $entity;
+				}
+			}
+			if (isset($data['relation'])){
+				foreach($data['relation'] as $index=>$values){
+					foreach ($values as $jndex=>$type){
+						if (isset($entitiesByIndex[$index]) && isset($entitiesByIndex[$jndex])){
+							$relation = Mage::getModel('modulecreator/relation');
+							$relation->setEntities($entitiesByIndex[$index], $entitiesByIndex[$jndex], $type);
+							$module->addRelation($relation);
+						}
+					}
 				}
 			}
 		}
@@ -289,8 +302,11 @@ class Ultimate_ModuleCreator_Adminhtml_ModulecreatorController extends Mage_Admi
 		$redirectBack = $this->getRequest()->getParam('back', false);
 		try{
 			$module = $this->_initModuleFromData($this->getRequest()->getPost());
-			$module->buildModule();
+			$messages = $module->buildModule();
 			$module->save();
+			foreach ($messages as $message){
+				$this->_getSession()->addNotice($message);
+			}
 			$this->_getSession()->addSuccess(Mage::helper('modulecreator')->__('Your extension has been created!'));
 		}
 		catch (Exception $e){

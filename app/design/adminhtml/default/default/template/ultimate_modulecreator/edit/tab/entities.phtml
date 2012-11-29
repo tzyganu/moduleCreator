@@ -5,7 +5,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -49,8 +49,10 @@
 				$('entities_container_bottom').insert({before:transport.responseText});
 				Effect.ScrollTo($('entity_' + entityCount), { duration:'1'});
 				reloadEntity(entityCount);
+				checkRelations();
 			}
 		});
+		
 	}
 	var attributeCount = new Array();
 	<?php foreach ($_entities as $key=>$_entity) : ?>
@@ -65,6 +67,26 @@
 				Effect.ScrollTo($('attribute_' + entityId + '_' + attributeCount[entityId]), { duration:'1'});
 			}
 		});
+	}
+	function removeEntity(element){
+		if (confirm('<?php echo Mage::helper('modulecreator')->__('Are you sure?')?>')){ 
+			var removedId = $(element).up(1).nextSiblings()[0].id;
+			removedId = removedId.replace('entity_', '');
+			$(element).up(2).remove();  
+			$$('div[id^="relations_container_"]').each(function(item){
+				var parts = $(item).id.split('_');
+				if (parts[1] == removedId || parts[2] == removedId){
+					$(item).remove();
+				}
+			});
+			checkRelations();
+		}
+	}
+	function toggleArea(id, element){
+		$(id).toggle();
+		$(element).toggleClassName('open');
+		$(element).toggleClassName('closed');
+		return false;
 	}
 //]]>
 </script>

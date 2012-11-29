@@ -1,0 +1,108 @@
+<?php
+/**
+ * Ultimate_ModuleCreator extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE_UMC.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @copyright  	Copyright (c) 2012
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */ 
+/**
+ * entities relations tab
+ * 
+ * @category	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @author 		Marius Strajeru <marius.strajeru@gmail.com>
+ */
+?>
+<?php $_relations = $this->getRelations();?>
+<div class="entry-edit modulecreator-entities">
+	<div class="entry-edit-head">
+		<h4><?php echo Mage::helper('modulecreator')->__('Entity Relations') ?></h4>
+	</div>
+	<div class="box">
+		<?php echo Mage::helper('modulecreator')->__('In this tab you can set the relations between your entities');?>
+		<ul>
+			<li>
+				<strong><?php echo Mage::helper('modulecreator')->__('--None--')?> : </strong>
+				<?php echo Mage::helper('modulecreator')->__('This means that there is no relation between your entities');?>
+			</li>
+			<li>
+				<strong><?php echo Mage::helper('modulecreator')->__('Is sibling with')?> : </strong>
+				<?php echo Mage::helper('modulecreator')->__('This means that there is a many to many relation between your entities.');?>
+			</li>
+			<li>
+				<strong><?php echo Mage::helper('modulecreator')->__('Is parent for')?> : </strong>
+				<?php echo Mage::helper('modulecreator')->__('This means that there is a one to many relation between your entities.');?>
+			</li>
+			<li>
+				<strong><?php echo Mage::helper('modulecreator')->__('Is child of')?> : </strong>
+				<?php echo Mage::helper('modulecreator')->__('This means that there is a one to many relation between your entities but the other way around.');?>
+			</li>
+		</ul>
+	</div>
+	<div id="modulecreator_relations_container" class="box custom-options">
+		<div id="modulecreator_relations_container_top"></div>
+		<?php foreach ($_relations as $k=>$values) : ?>
+			<?php foreach ($values as $k1=>$v) : ?>
+				<div id="relations_container_<?php echo $k?>_<?php echo $k1?>" class="relation-holder" style="margin-bottom:5px;">
+					<div class="relation-title-<?php echo $k?>" style="width:100px;text-align:right;float:left">
+						&nbsp;<?php echo $v->getT0();?>&nbsp;
+					</div>
+					<div style="float:left">
+						<?php echo $this->getRelationSelect('relation_'.$k.'_'.$k1, 'relation['.$k.']['.$k1.']', $v->getVal())?>
+					</div>
+					<div class="relation-title-<?php echo $k1?>" style="width:100px;text-align:left;float:left">
+						&nbsp;<?php echo $v->getT1();?>&nbsp;
+					</div>
+					<div style="clear:both"></div>
+				</div>
+			<?php endforeach;?>
+		<?php endforeach;?>
+		<div id="modulecreator_relations_container_bottom"></div>
+	</div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+	var relationTemplate = '<div id="relations_container_#{entity1}_#{entity2}" class="relation-holder" style="margin-bottom:5px;"><div class="relation-title-#{entity1}" style="width:100px;text-align:right;float:left">#{Entity1}</div><div style="float:left"><?php echo $this->getRelationSelect('relation_#{entity1}_#{entity2}', 'relation[#{entity1}][#{entity2}]', '')?></div><div class="relation-title-#{entity2}" style="width:100px;text-align:left;float:left">#{Entity2}</div><div style="clear:both"></div></div>';
+	var relTemplate = new Template(relationTemplate);
+	function checkRelations(){
+		var _entities = $$('.modulecreator-entity');
+		if (_entities.length > 1){
+			$('modulecreator_info_tabs_relations').up().show();
+			for (var i = 0;i<_entities.length - 1;i++){
+				var fId = $(_entities[i]).down('.option-box').id;
+				var parts = fId.split('_');
+				fId = parts[1]; 
+				for (var j = i+1;j<_entities.length;j++){
+					var sId = $(_entities[j]).down('.option-box').id;
+					var parts = sId.split('_');
+					sId = parts[1];
+					if (!$('relation_' + fId + '_' + sId)){
+						var data = {};
+                        data.entity1 = fId;
+                        data.entity2 = sId;
+                        data.Entity1 = '&nbsp;' + $('entity_' + fId +'_title').innerHTML + '&nbsp;';
+                        data.Entity2 = '&nbsp;' + $('entity_' + sId +'_title').innerHTML + '&nbsp;';
+                   		var content = relTemplate.evaluate(data);
+						Element.insert('modulecreator_relations_container_bottom', {'before':content});
+					}
+				}
+			}
+		}
+		else{
+			$('modulecreator_info_tabs_relations').up().hide();
+		}
+	}
+	document.observe("dom:loaded", function() {
+		checkRelations();
+	});
+//]]>
+</script>

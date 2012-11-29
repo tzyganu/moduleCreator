@@ -6,7 +6,7 @@
  * NOTICE OF LICENSE
  *
  * This source file is subject to the MIT License
- * that is bundled with this package in the file LICENSE.txt.
+ * that is bundled with this package in the file LICENSE_UMC.txt.
  * It is also available through the world-wide-web at this URL:
  * http://opensource.org/licenses/mit-license.php
  *
@@ -40,57 +40,65 @@
 					<name>02_columns_top.php</name>
 				</file>
 				<file>
-					<name>03_grid_attributes.php</name>
+					<name>03_parents.php</name>
+					<scope>parents</scope>
+				</file>
+				<file>
+					<name>04_grid_attributes.php</name>
 					<scope>attribute</scope>
 					<depend>
 						<admin_grid />
 					</depend>
 				</file>
 				<file>
-					<name>04_grid_status.php</name>
+					<name>05_grid_status.php</name>
 					<depend>
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>05_created_at.php</name>
+					<name>06_created_at.php</name>
 					<depend>
 						<created_to_grid />
 					</depend>
 				</file>
 				<file>
-					<name>06_updated_at.php</name>
+					<name>07_updated_at.php</name>
 					<depend>
 						<updated_to_grid />
 					</depend>
 				</file>
 				<file>
-					<name>07_grid_actions.php</name>
+					<name>08_grid_actions.php</name>
 				</file>
 				<file>
-					<name>08_grid_export.php</name>
+					<name>09_grid_export.php</name>
 				</file>
 				<file>
-					<name>09_columns_footer.php</name>
+					<name>10_columns_footer.php</name>
 				</file>
 				<file>
-					<name>10_mass_action_top.php</name>
+					<name>11_mass_action_top.php</name>
 				</file>
 				<file>
-					<name>11_mass_action_status.php</name>
+					<name>12_mass_action_status.php</name>
 					<depend>
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>12_mass_action_flags.php</name>
+					<name>13_mass_action_flags.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<yesno />
 					</depend_type>
 				</file>
 				<file>
-					<name>13_footer.php</name>
+					<name>14_mass_action_parents.php</name>
+					<scope>parents</scope>
+				</file>
+				<file>
+					<name>15_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -138,13 +146,17 @@
 					<name>01_top.php</name>
 				</file>
 				<file>
-					<name>02_product_relation.php</name>
+					<name>02_relations_tabs.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>03_product_relation.php</name>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>03_footer.php</name>
+					<name>04_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -177,35 +189,59 @@
 					<name>01_top.php</name>
 				</file>
 				<file>
-					<name>02_var_product_relation.php</name>
+					<name>02_var_sibling.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>03_var_product_relation.php</name>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>03_construct.php</name>
+					<name>04_construct.php</name>
 				</file>
 				<file>
-					<name>04_url.php</name>
+					<name>05_url.php</name>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>05_editors.php</name>
+					<name>06_editors.php</name>
 					<scope>attribute</scope>
 					<depend>
 						<editor />
 					</depend>
 				</file>
 				<file>
-					<name>06_product_relation.php</name>
+					<name>07_after_save_top.php</name>
+				</file>
+				<file>
+					<name>08_after_save_product.php</name>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>07_footer.php</name>
+					<name>09_after_save_sibling.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>10_after_save_footer.php</name>
+				</file>
+				<file>
+					<name>11_product_relation.php</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>12_sibling_relation.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>13_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -244,7 +280,11 @@
 					</depend>
 				</file>
 				<file>
-					<name>03_footer.php</name>
+					<name>03_sibling_relation.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>04_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -316,7 +356,7 @@
 			<filetype>php</filetype>
 			<depend>
 				<flat />
-				<use_frontend />
+				<can_create_list_block />
 			</depend>
 			<from>app/code/codepool/Namespace/Module/Block/Entity/List/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/List.php</to>
@@ -456,63 +496,75 @@
 					</depend>
 				</file>
 				<file>
-					<name>05_save.php</name>
+					<name>05_save_sibling_relation.php</name>
+					<scope>siblings</scope>
 				</file>
 				<file>
-					<name>06_exception_upload.php</name>
+					<name>06_save.php</name>
+				</file>
+				<file>
+					<name>07_exception_upload.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<image />
 					</depend_type>
 				</file>
 				<file>
-					<name>06_exception_upload.php</name>
+					<name>07_exception_upload.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<file />
 					</depend_type>
 				</file>
 				<file>
-					<name>07_exception.php</name>
+					<name>08_exception.php</name>
 				</file>
 				<file>
-					<name>06_exception_upload.php</name>
+					<name>07_exception_upload.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<image />
 					</depend_type>
 				</file>
 				<file>
-					<name>06_exception_upload.php</name>
+					<name>07_exception_upload.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<file />
 					</depend_type>
 				</file>
 				<file>
-					<name>08_center.php</name>
+					<name>09_center.php</name>
 				</file>
 				<file>
-					<name>09_mass_status.php</name>
+					<name>10_mass_status.php</name>
 					<depend>
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>10_mass_update.php</name>
+					<name>11_mass_update.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<yesno />
 					</depend_type>
 				</file>
 				<file>
-					<name>11_product_relation_actions.php</name>
+					<name>12_mass_parents.php</name>
+					<scope>parents</scope>
+				</file>
+				<file>
+					<name>13_product_relation_actions.php</name>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>12_footer.php</name>
+					<name>14_sibling_actions.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>15_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -716,29 +768,33 @@
 					<name>04_wysiwyg.php</name>
 				</file>
 				<file>
-					<name>05_attributes.php</name>
+					<name>05_parents.php</name>
+					<scope>parents</scope>
+				</file>
+				<file>
+					<name>06_attributes.php</name>
 					<scope>attribute</scope>
 				</file>
 				<file>
-					<name>06_status.php</name>
+					<name>07_status.php</name>
 					<depend>
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>07_rss.php</name>
+					<name>08_rss.php</name>
 					<depend>
 						<rss />
 					</depend>
 				</file>
 				<file>
-					<name>08_seo.php</name>
+					<name>09_seo.php</name>
 					<depend>
 						<frontend_add_seo />
 					</depend>
 				</file>
 				<file>
-					<name>09_footer.php</name>
+					<name>10_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -825,7 +881,11 @@
 					</depend>
 				</file>
 				<file>
-					<name>04_footer.php</name>
+					<name>04_sibling_relation.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>05_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -895,43 +955,47 @@
 					<scope>entity</scope>
 				</file>
 				<file>
-					<name>03_relation_table.xml</name>
+					<name>03_siblings_table.xml</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>04_relation_table.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>04_global.xml</name>
+					<name>05_global.xml</name>
 				</file>
 				<file>
-					<name>05_relation_product.xml</name>
+					<name>06_relation_product.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>06_admin.xml</name>
+					<name>07_admin.xml</name>
 				</file>
 				<file>
-					<name>07_frontend.xml</name>
+					<name>08_frontend.xml</name>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>08_default_top.xml</name>
+					<name>09_default_top.xml</name>
 				</file>
 				<file>
-					<name>09_default.xml</name>
+					<name>10_default.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>10_default_footer.xml</name>
+					<name>11_default_footer.xml</name>
 				</file>
 			</content>
 		</file>
@@ -979,7 +1043,11 @@
 					</depend>
 				</file>
 				<file>
-					<name>04_footer.xml</name>
+					<name>04_relation_sibling.xml</name>
+					<scope>siblings-both</scope>
+				</file>
+				<file>
+					<name>05_footer.xml</name>
 				</file>
 			</content>
 		</file>
@@ -1185,6 +1253,10 @@
 					<depend>
 						<link_product />
 					</depend>
+				</file>
+				<file>
+					<name>10_relations.csv</name>
+					<scope>children</scope>
 				</file>
 			</content>
 		</file>
@@ -1457,6 +1529,114 @@
 			<content>
 				<file>
 					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity sibling admin relation tab</title>
+			<scope>siblings</scope>
+			<filetype>php</filetype>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tab/Sibling/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/{{Sibling}}.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity sibling relation resource model</title>
+			<scope>siblings</scope>
+			<filetype>php</filetype>
+			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Sibling/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/{{Sibling}}.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity sibling relation resource collection model</title>
+			<scope>siblings</scope>
+			<filetype>php</filetype>
+			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Sibling/Collection/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/{{Sibling}}/Collection.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity sibling model</title>
+			<scope>siblings</scope>
+			<filetype>php</filetype>
+			<from>app/code/codepool/Namespace/Module/Model/Entity/Sibling/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/{{Entity}}/{{Sibling}}.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity sibling list block</title>
+			<scope>siblings</scope>
+			<filetype>php</filetype>
+			<depend>
+				<show_frontend_relation_siblings />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Entity/Sibling/List/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/{{Sibling}}/List.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity siblings list template</title>
+			<scope>siblings</scope>
+			<filetype>php</filetype>
+			<depend>
+				<show_frontend_relation_siblings />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/entity/sibling/list/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/{{sibling}}/list.phtml</to>
+			<content>
+				<file>
+					<name>01_content.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity children list block</title>
+			<scope>children</scope>
+			<filetype>php</filetype>
+			<depend>
+				<show_frontend_relation_children />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Entity/Child/List/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/{{Sibling}}/List.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Entity siblings list template</title>
+			<scope>children</scope>
+			<filetype>php</filetype>
+			<depend>
+				<show_frontend_relation_children />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/entity/sibling/list/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/{{sibling}}/list.phtml</to>
+			<content>
+				<file>
+					<name>01_content.phtml</name>
 				</file>
 			</content>
 		</file>
