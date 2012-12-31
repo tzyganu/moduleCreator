@@ -1,5 +1,5 @@
 				<{{entity}} translate="title" module="{{module}}">
 					<title>{{EntitiesLabel}}</title>
-					<action>adminhtml/{{entity}}</action>
+					<action>adminhtml/{{module}}_{{entity}}</action>
 					<sort_order>{{menu_sort}}</sort_order>
 				</{{entity}}>

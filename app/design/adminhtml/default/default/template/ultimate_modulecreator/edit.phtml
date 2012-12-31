@@ -61,30 +61,7 @@
 			}
 		}
 		else{
-			if (response.modified){
-				var content = '<b><?php echo Mage::helper('modulecreator')->__('The following files have been modified outside the Magento context. If you choose to continue all modifications will be overwritten.')?></b>';
-				content += '<ul style="padding:10px 30px;list-style-type:disc">';
-				for (var i = 0; i< response.modified_files.length;i++){
-					content += '<li>' + response.modified_files[i] + '</li>';
-				}
-				content += '</ul>';
-				Dialog.confirm(content, {
-						className:'magento', 
-						width:500, 
-						okLabel: "<?php echo Mage::helper('modulecreator')->__('Continue')?>", 
-						buttonClass: "scalable", 
-						id: "modified-files", 
-						cancel:function(win) {
-						
-					}, 
-					ok:function(win) {
-						moduleForm._submit();
-					} 
-				});
-			}
-			else{
-				moduleForm._submit();
-			}
+			moduleForm._submit();
 		}
 	};
 	function saveAndContinueEdit(urlTemplate) {

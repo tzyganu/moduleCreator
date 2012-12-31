@@ -89,6 +89,12 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 			$this->setHasObserver(true);
 			$this->setLinkProduct(true);
 		}
+		if ($entity->getIsTree()){
+			$this->setHasTree(true);
+		}
+		if ($entity->getEditor()){
+			$this->setEditor(true);
+		}
 		return $this;
 	}
 	/**
@@ -478,9 +484,31 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 						$content .= $this->_filterString($sourceContent, $filetype, $replace, true);
 					}
 				}
-				elseif($scope == 'siblings-both'){
+				elseif($scope == 'siblings_both_tree'){
 					foreach ($this->getRelations(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_SIBLING) as $relation){
 						$entities 		= $relation->getEntities();
+						if ($entities[0]->getIsTree() || $entities[1]->getIsTree()){
+							if ($entities[0]->getIsTree()){
+								$tree = $entities[0];
+								$sibling = $entities[1];
+							}
+							else{
+								$tree = $entities[1];
+								$sibling = $entities[0];
+							}
+							$replaceEntity 	= $tree->getPlaceholders();
+							$replaceSibling = $sibling->getPlaceholdersAsSibling();
+							$replace 		= array_merge($replaceEntity, $replaceSibling);
+							$content .= $this->_filterString($sourceContent, $filetype, $replace, true);
+						}
+					}
+				}
+				elseif($scope == 'siblings_both_not_tree'){
+					foreach ($this->getRelations(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_SIBLING) as $relation){
+						$entities 		= $relation->getEntities();
+						if ($entities[0]->getIsTree() || $entities[1]->getIsTree()){
+							continue;
+						}
 						$replaceEntity 	= $entities[0]->getPlaceholders();
 						$replaceSibling = $entities[1]->getPlaceholdersAsSibling();
 						$replace 		= array_merge($replaceEntity, $replaceSibling);
@@ -598,6 +626,26 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 						$replaceSibling = $related->getPlaceholdersAsSibling();
 						$replace 		= array_merge($placeholders, $replaceSibling);
 						$content 		.= $this->_filterString($sourceContent, $filetype, $replace, true);
+					}
+				}
+				elseif($scope == 'siblings_not_tree'){
+					foreach ($entity->getRelatedEntities(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_SIBLING) as $related){
+						if ($related->getNotIsTree()){
+							$placeholders 	= $entity->getPlaceholders();
+							$replaceSibling = $related->getPlaceholdersAsSibling();
+							$replace 		= array_merge($placeholders, $replaceSibling);
+							$content 		.= $this->_filterString($sourceContent, $filetype, $replace, true);
+						}
+					}
+				}
+				elseif($scope == 'siblings_tree'){
+					foreach ($entity->getRelatedEntities(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_SIBLING) as $related){
+						if ($related->getIsTree()){
+							$placeholders 	= $entity->getPlaceholders();
+							$replaceSibling = $related->getPlaceholdersAsSibling();
+							$replace 		= array_merge($placeholders, $replaceSibling);
+							$content 		.= $this->_filterString($sourceContent, $filetype, $replace, true);
+						}
 					}
 				}
 				elseif($scope == 'parents'){

@@ -60,4 +60,9 @@
 			<block type="modulecreator/adminhtml_modulecreator_edit"></block>
 		</reference>
 	</adminhtml_modulecreator_edit>
+	<adminhtml_system_config_edit>
+		<reference name="head">
+			<action method="addCss"><name>ultimate_modulecreator.css</name></action>
+		</reference>
+	</adminhtml_system_config_edit>
 </layout>

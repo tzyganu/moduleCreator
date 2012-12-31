@@ -36,6 +36,7 @@
 				<?php echo Mage::helper('modulecreator')->__('You can configure it to create back-end and frontend files.');?><br />
 				<?php echo Mage::helper('modulecreator')->__('You can create one or more entities under the same extension.');?><br />
 				<?php echo Mage::helper('modulecreator')->__('For each entity you can add one or more attributes/fields of different types.');?><br />
+				<?php echo Mage::helper('modulecreator')->__('You can create tree-behaving entities.');?><br />
 				<?php echo Mage::helper('modulecreator')->__('You can make relations between entities - many to many or one to many');?><br />
 			</p>
 		</div>
@@ -163,7 +164,13 @@
 				<p>
 					<?php echo Mage::helper('modulecreator')->__('Same as above. This is used for a list of entities. For example if you put here "articles" all your variables related to article lists will be names $articles or $_articles');?>
 				</p>
-			</li>	
+			</li>
+			<li>
+				<strong><?php echo Mage::helper('modulecreator')->__('Behaves as tree')?></strong>
+				<p>
+					<?php echo Mage::helper('modulecreator')->__('If set to "Yes" then the entity will behave as a tree. Just like the product categories to. All the required columns will be added in the table (path, level, childred_count, parent_id).');?>
+				</p>
+			</li>
 			<li>
 				<strong><?php echo Mage::helper('modulecreator')->__('Add "Created at" to admin grid')?></strong><br />
 				<strong><?php echo Mage::helper('modulecreator')->__('Add "Updated at" to admin grid')?></strong><br />
@@ -383,6 +390,7 @@
 				<strong><?php echo Mage::helper('modulecreator')->__('Is sibling with')?> : </strong>
 				<?php echo Mage::helper('modulecreator')->__('This means that there is a many to many relation between your entities.');?><br />
 				<?php echo Mage::helper('modulecreator')->__('If 2 entities are siblings then a new table will be created to hold the ids of the related entities');?>
+				<strong style="color:red"><?php echo Mage::helper('modulecreator')->__('This type of relation cannot be set between 2 tree-bahaving entities.')?></strong>
 			</li>
 			<li>
 				<strong><?php echo Mage::helper('modulecreator')->__('Is parent for')?> : </strong>

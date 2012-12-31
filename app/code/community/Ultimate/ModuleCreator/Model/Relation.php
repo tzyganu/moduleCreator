@@ -130,4 +130,53 @@ class Ultimate_ModuleCreator_Model_Relation extends Ultimate_ModuleCreator_Model
 		$e = $entities[$index];
 		return $e->getFrontendView();
 	}
+	/**
+	 * check if a relations has tree entities
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getHasTree(){
+		return $this->_entity1->getIsTree() || $this->_entity2->getIsTree();
+	}
+	/**
+	 * check if a relations doesn not have tree entities
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getNotHasTree(){
+		return !$this->getHasTree();
+	}
+	/**
+	 * check if one of the entities behaves as tree
+	 * @access public
+	 * @param int $index
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getEntityIsTree($index){
+		$entities = $this->getEntities();
+		return $entities[$index]->getIsTree();
+	}
+	/**
+	 * check if one of the entities behaves as tree
+	 * @access public
+	 * @param int $index
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getSiblingIsTree($index){
+		return $this->getEntityIsTree(1 - $index);
+	}
+	/**
+	 * check if one of the entities does not behave as tree
+	 * @access public
+	 * @param int $index
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getSiblingIsNotTree($index){
+		return !$this->getSiblingIsTree($index);
+	}
 }

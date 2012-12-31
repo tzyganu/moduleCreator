@@ -34,7 +34,7 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 	 * @var array()
 	 */
 	public static $_restrictedEntityNames = array(
-		'resource', 'setup', 'attribute', 'system', 'flat', 'data', 'collection', 'adminhtml', 'widget', 'observer'
+		'resource', 'setup', 'attribute', 'system', 'flat', 'data', 'collection', 'adminhtml', 'widget', 'observer', 'tree'
 	);
 	/**
 	 * get a list with "special attribute" names and error messages
@@ -51,6 +51,10 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 		$names['meta_title']		= $this->__('"meta_title" is a reserved attribute name. If you want to add it set "Add SEO Attributes" to "Yes"');
 		$names['meta_description']	= $this->__('"meta_description" is a reserved attribute name. If you want to add it set "Add SEO Attributes" to "Yes"');
 		$names['meta_keywords']		= $this->__('"meta_keywords" is a reserved attribute name. If you want to add it set "Add SEO Attributes" to "Yes"');
+		$names['parent_id']			= $this->__('"parent_id" is a reserved attribute name.');
+		$names['level']				= $this->__('"level" is a reserved attribute name.');
+		$names['children_count']	= $this->__('"children_count" is a reserved attribute name.');
+		$names['path']				= $this->__('"path" is a reserved attribute name.');
 		return $names;
 	}
 	/**

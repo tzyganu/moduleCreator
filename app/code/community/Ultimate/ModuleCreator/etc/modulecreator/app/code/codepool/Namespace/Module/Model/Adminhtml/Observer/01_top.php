@@ -8,3 +8,25 @@
  * {{qwertyuiop}}
  */
 class {{Namespace}}_{{Module}}_Model_Adminhtml_Observer{
+	/**
+	 * check if tab can be added
+	 * @access protected
+	 * @param Mage_Catalog_Model_Product $product
+	 * @return bool
+	 * {{qwertyuiop}}
+	 */
+	protected function _canAddTab($product){
+		if ($product->getId()){
+			return true;
+		}
+		if (!$product->getAttributeSetId()){
+			return false;
+		}
+		$request = Mage::app()->getRequest();
+		if ($request->getParam('type') == 'configurable'){
+			if ($request->getParam('attribtues')){
+				return true;
+			}
+		}
+		return false;
+	}

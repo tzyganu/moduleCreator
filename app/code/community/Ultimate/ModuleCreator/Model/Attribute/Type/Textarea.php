@@ -61,7 +61,7 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Textarea extends Ultimate_Modu
 	 */
 	public function getFormOptions(){
 		$options = '';
-		if ($this->getEditor()){
+		if ($this->getEditor() && !$this->getAttribute()->getEntity()->getIsTree()){
 			$options = self::OPTION_SEPARATOR."'config'	=> "."$"."wysiwygConfig,\n";
 		}
 		$options .= parent::getFormOptions();

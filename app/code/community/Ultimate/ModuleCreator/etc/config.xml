@@ -111,6 +111,7 @@ http://opensource.org/licenses/mit-license.php
 				<link_product>1</link_product>
 				<show_on_product>1</show_on_product>
 				<show_products>1</show_products>
+				<is_tree>0</is_tree>
 			</entity_defaults>
 			<release>
 				<beta>0</beta>

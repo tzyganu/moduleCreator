@@ -8,7 +8,7 @@
 	 */
 	public function prepareElementHtml(Varien_Data_Form_Element_Abstract $element){
 		$uniqId = Mage::helper('core')->uniqHash($element->getId());
-		$sourceUrl = $this->getUrl('{{module}}/adminhtml_{{entity}}_widget/chooser', array('uniq_id' => $uniqId));
+		$sourceUrl = $this->getUrl('{{module}}/adminhtml_{{module}}_{{entity}}_widget/chooser', array('uniq_id' => $uniqId));
 		$chooser = $this->getLayout()->createBlock('widget/adminhtml_widget_chooser')
 				->setElement($element)
 				->setTranslationHelper($this->getTranslationHelper())

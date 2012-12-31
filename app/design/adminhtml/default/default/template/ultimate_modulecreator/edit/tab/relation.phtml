@@ -37,6 +37,7 @@
 			<li>
 				<strong><?php echo Mage::helper('modulecreator')->__('Is sibling with')?> : </strong>
 				<?php echo Mage::helper('modulecreator')->__('This means that there is a many to many relation between your entities.');?>
+				<strong style="color:red"><?php echo Mage::helper('modulecreator')->__('This type of relation cannot be set between 2 tree-bahaving entities.')?></strong>
 			</li>
 			<li>
 				<strong><?php echo Mage::helper('modulecreator')->__('Is parent for')?> : </strong>
@@ -44,7 +45,7 @@
 			</li>
 			<li>
 				<strong><?php echo Mage::helper('modulecreator')->__('Is child of')?> : </strong>
-				<?php echo Mage::helper('modulecreator')->__('This means that there is a one to many relation between your entities but the other way around.');?>
+				<?php echo Mage::helper('modulecreator')->__('This means that there is a one to many relation between your entities but the other way around.');?><br />
 			</li>
 		</ul>
 	</div>

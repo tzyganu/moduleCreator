@@ -104,6 +104,17 @@
 						<tbody>
 							<tr>
 								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_is_tree">
+										<?php echo Mage::helper('modulecreator')->__('Behaves as tree') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_is_tree', 'entity'.'['.$this->getIncrement().'][is_tree]', $_entity->getIsTree());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Behaves as tree'), Mage::helper('modulecreator')->__('If this is set to "yes" then you wil manage the entities like categories. In the form of a tree. The columns "parent_id", "path" and "level" will be added to the table automatically.'))?>
+								</td>
+							</tr>
+							<tr>
+								<td class="label">
 									<label for="entity_<?php echo $this->getIncrement();?>_add_created_to_grid">
 										<?php echo Mage::helper('modulecreator')->__('Add "Created at" to admin grid') ?>
 									</label>

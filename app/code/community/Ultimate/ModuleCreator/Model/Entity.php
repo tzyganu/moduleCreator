@@ -87,6 +87,9 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 			}
 			$this->_nameAttribute = $attribute;
 		}
+		if ($attribute->getEditor()){
+			$this->setEditor(true);
+		}
 		return $this;
 	}
 	/**
@@ -171,7 +174,7 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		return array('label_singular', 'label_plural', 'name_singular', 'name_plural', 'created_to_grid', 
 					'updated_to_grid', 'add_status', 'use_frontend', 'frontend_list', 
 					'frontend_list_template', 'frontend_view', 'frontend_view_template', 'frontend_add_seo',
-					'rss', 'widget', 'link_product', 'show_on_product', 'show_products'
+					'rss', 'widget', 'link_product', 'show_on_product', 'show_products','is_tree'
 		);
 	}
 	/**
@@ -182,31 +185,32 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 	 */
 	public function getPlaceholders(){
 		$placeholders = array();
-		$placeholders['{{EntityLabel}}'] 		= ucfirst($this->getLabelSingular());
-		$placeholders['{{entityLabel}}'] 		= strtolower($this->getLabelSingular());
-		$placeholders['{{EntitiesLabel}}'] 		= ucfirst($this->getLabelPlural());
-		$placeholders['{{entitiesLabel}}'] 		= strtolower($this->getLabelPlural());
-		$placeholders['{{entity}}'] 			= strtolower($this->getNameSingular());
-		$placeholders['{{Entity}}'] 			= ucfirst($this->getNameSingular());
-		$placeholders['{{ENTITY}}'] 			= strtoupper($this->getNameSingular());
-		$placeholders['{{Entities}}'] 			= ucfirst($this->getNamePlural());
-		$placeholders['{{entities}}'] 			= $this->getNamePlural();
-		$placeholders['{{listLayout}}'] 		= $this->getFrontendListTemplate();
-		$placeholders['{{viewLayout}}'] 		= $this->getFrontendViewTemplate();
-		$nameAttribute 							= $this->getNameAttribute();
-		$placeholders['{{EntityNameMagicCode}}']= $this->getNameAttributeMagicCode();
-		$placeholders['{{nameAttribute}}'] 		= $nameAttribute->getCode();
-		$placeholders['{{nameAttributeLabel}}'] = $nameAttribute->getLabel();
-		$placeholders['{{firstImageField}}']	= $this->getFirstImageField();
-		$placeholders['{{attributeSql}}']		= $this->getAttributesSql();
-		$placeholders['{{menu_sort}}']			= $this->getPosition();
-		$placeholders['{{defaults}}']			= $this->getConfigDefaults();
-		$placeholders['{{systemAttributes}}']	= $this->getSystemAttributes();
-		$placeholders['{{EntityListItem}}']		= $this->getListItemHtml();
-		$placeholders['{{EntityViewAttributes}}']= $this->getViewAttributesHtml();
+		$placeholders['{{EntityLabel}}'] 				= ucfirst($this->getLabelSingular());
+		$placeholders['{{entityLabel}}'] 				= strtolower($this->getLabelSingular());
+		$placeholders['{{EntitiesLabel}}'] 				= ucfirst($this->getLabelPlural());
+		$placeholders['{{entitiesLabel}}'] 				= strtolower($this->getLabelPlural());
+		$placeholders['{{entity}}'] 					= strtolower($this->getNameSingular());
+		$placeholders['{{Entity}}'] 					= ucfirst($this->getNameSingular());
+		$placeholders['{{ENTITY}}'] 					= strtoupper($this->getNameSingular());
+		$placeholders['{{Entities}}'] 					= ucfirst($this->getNamePlural());
+		$placeholders['{{entities}}'] 					= $this->getNamePlural();
+		$placeholders['{{listLayout}}'] 				= $this->getFrontendListTemplate();
+		$placeholders['{{viewLayout}}'] 				= $this->getFrontendViewTemplate();
+		$nameAttribute 									= $this->getNameAttribute();
+		$placeholders['{{EntityNameMagicCode}}']		= $this->getNameAttributeMagicCode();
+		$placeholders['{{nameAttribute}}'] 				= $nameAttribute->getCode();
+		$placeholders['{{nameAttributeLabel}}'] 		= $nameAttribute->getLabel();
+		$placeholders['{{firstImageField}}']			= $this->getFirstImageField();
+		$placeholders['{{attributeSql}}']				= $this->getAttributesSql();
+		$placeholders['{{menu_sort}}']					= $this->getPosition();
+		$placeholders['{{defaults}}']					= $this->getConfigDefaults();
+		$placeholders['{{systemAttributes}}']			= $this->getSystemAttributes();
+		$placeholders['{{EntityListItem}}']				= $this->getListItemHtml();
+		$placeholders['{{EntityViewAttributes}}']		= $this->getViewAttributesHtml();
 		$placeholders['{{EntityViewWidgetAttributes}}'] = $this->getViewWidgetAttributesHtml();
-		$placeholders['{{EntityViewRelationLayout}}'] = $this->getRelationLayoutXml();
-		$placeholders['{{fks}}']				= $this->getParentEntitiesFks("\t\t");
+		$placeholders['{{EntityViewRelationLayout}}'] 	= $this->getRelationLayoutXml();
+		$placeholders['{{fks}}']						= $this->getParentEntitiesFks("\t\t");
+		$placeholders['{{referenceHead}}']				= $this->getReferenceHeadLayout();
 		return $placeholders;
 	}
 	/**
@@ -217,31 +221,31 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 	 */
 	public function getPlaceholdersAsSibling(){
 		$placeholders = array();
-		$placeholders['{{SiblingLabel}}'] 		= ucfirst($this->getLabelSingular());
-		$placeholders['{{siblingLabel}}'] 		= strtolower($this->getLabelSingular());
-		$placeholders['{{SiblingsLabel}}'] 		= ucfirst($this->getLabelPlural());
-		$placeholders['{{siblingsLabel}}'] 		= strtolower($this->getLabelPlural());
-		$placeholders['{{sibling}}'] 			= strtolower($this->getNameSingular());
-		$placeholders['{{Sibling}}'] 			= ucfirst($this->getNameSingular());
-		$placeholders['{{SIBLING}}'] 			= strtoupper($this->getNameSingular());
-		$placeholders['{{Siblings}}'] 			= ucfirst($this->getNamePlural());
-		$placeholders['{{siblings}}'] 			= $this->getNamePlural();
-		$placeholders['{{siblingListLayout}}'] 		= $this->getFrontendListTemplate();
-		$placeholders['{{siblingViewLayout}}'] 		= $this->getFrontendViewTemplate();
-		$nameAttribute 							= $this->getNameAttribute();
-		$placeholders['{{SiblingNameMagicCode}}']= $this->getNameAttributeMagicCode();
-		$placeholders['{{siblingNameAttribute}}'] 		= $nameAttribute->getCode();
-		$placeholders['{{siblingNameAttributeLabel}}'] = $nameAttribute->getLabel();
-		$placeholders['{{siblingFirstImageField}}']	= $this->getFirstImageField();
-		$placeholders['{{siblingAttributeSql}}']		= $this->getAttributesSql();
-		$placeholders['{{sibling_menu_sort}}']			= $this->getPosition();
-		$placeholders['{{sibling_defaults}}']			= $this->getConfigDefaults();
-		$placeholders['{{siblingSystemAttributes}}']	= $this->getSystemAttributes();
-		$placeholders['{{SiblingListItem}}']		= $this->getListItemHtml();
-		$placeholders['{{SiblingViewAttributes}}']= $this->getViewAttributesHtml();
-		$placeholders['{{SiblingViewWidgetAttributes}}'] = $this->getViewWidgetAttributesHtml();
-		$placeholders['{{SiblingViewRelationLayout}}'] = $this->getRelationLayoutXml();
-		$placeholders['{{siblingFks}}']				= $this->getParentEntitiesFks("\t\t");
+		$placeholders['{{SiblingLabel}}'] 					= ucfirst($this->getLabelSingular());
+		$placeholders['{{siblingLabel}}'] 					= strtolower($this->getLabelSingular());
+		$placeholders['{{SiblingsLabel}}'] 					= ucfirst($this->getLabelPlural());
+		$placeholders['{{siblingsLabel}}'] 					= strtolower($this->getLabelPlural());
+		$placeholders['{{sibling}}'] 						= strtolower($this->getNameSingular());
+		$placeholders['{{Sibling}}'] 						= ucfirst($this->getNameSingular());
+		$placeholders['{{SIBLING}}'] 						= strtoupper($this->getNameSingular());
+		$placeholders['{{Siblings}}'] 						= ucfirst($this->getNamePlural());
+		$placeholders['{{siblings}}'] 						= $this->getNamePlural();
+		$placeholders['{{siblingListLayout}}'] 				= $this->getFrontendListTemplate();
+		$placeholders['{{siblingViewLayout}}'] 				= $this->getFrontendViewTemplate();
+		$nameAttribute 										= $this->getNameAttribute();
+		$placeholders['{{SiblingNameMagicCode}}']			= $this->getNameAttributeMagicCode();
+		$placeholders['{{siblingNameAttribute}}'] 			= $nameAttribute->getCode();
+		$placeholders['{{siblingNameAttributeLabel}}'] 		= $nameAttribute->getLabel();
+		$placeholders['{{siblingFirstImageField}}']			= $this->getFirstImageField();
+		$placeholders['{{siblingAttributeSql}}']			= $this->getAttributesSql();
+		$placeholders['{{sibling_menu_sort}}']				= $this->getPosition();
+		$placeholders['{{sibling_defaults}}']				= $this->getConfigDefaults();
+		$placeholders['{{siblingSystemAttributes}}']		= $this->getSystemAttributes();
+		$placeholders['{{SiblingListItem}}']				= $this->getListItemHtml();
+		$placeholders['{{SiblingViewAttributes}}']			= $this->getViewAttributesHtml();
+		$placeholders['{{SiblingViewWidgetAttributes}}'] 	= $this->getViewWidgetAttributesHtml();
+		$placeholders['{{SiblingViewRelationLayout}}'] 		= $this->getRelationLayoutXml();
+		$placeholders['{{siblingFks}}']						= $this->getParentEntitiesFks("\t\t");
 		return $placeholders;
 	}
 	/**
@@ -340,6 +344,37 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 			$attr->setType('yesno');
 			$content .= $padding.$attr->getSqlColumn()."\n";
 		}
+		if ($this->getIsTree()){
+			$attr = Mage::getModel('modulecreator/attribute');
+			$attr->setCode('parent_id');
+			$attr->setLabel('Parent id');
+			$attr->setType('int');
+			$content .= $padding.$attr->getSqlColumn()."\n";
+			
+			$attr = Mage::getModel('modulecreator/attribute');
+			$attr->setCode('path');
+			$attr->setLabel('Path');
+			$attr->setType('text');
+			$content .= $padding.$attr->getSqlColumn()."\n";
+			
+			$attr = Mage::getModel('modulecreator/attribute');
+			$attr->setCode('position');
+			$attr->setLabel('Position');
+			$attr->setType('int');
+			$content .= $padding.$attr->getSqlColumn()."\n";
+			
+			$attr = Mage::getModel('modulecreator/attribute');
+			$attr->setCode('level');
+			$attr->setLabel('Level');
+			$attr->setType('int');
+			$content .= $padding.$attr->getSqlColumn()."\n";
+			
+			$attr = Mage::getModel('modulecreator/attribute');
+			$attr->setCode('children_count');
+			$attr->setLabel('Children count');
+			$attr->setType('int');
+			$content .= $padding.$attr->getSqlColumn()."\n";
+		}
 		if($this->getRss()){
 			$attr = Mage::getModel('modulecreator/attribute');
 			$attr->setCode('in_rss');
@@ -383,6 +418,9 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		if ($this->getFrontendAddSeo() && $this->getFrontendList()){
 			$content .= $padding.'<meta_title>'.ucfirst($this->getLabelPlural()).'</meta_title>'."\n";
 		}
+		if ($this->getIsTree()){
+			$content .= $padding.'<tree>1</tree>'."\n";
+		}
 		return substr($content,0, strlen($content) - strlen("\n"));
 	}
 	/**
@@ -406,6 +444,18 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 			$content .= $padding.$tab.'<show_in_website>1</show_in_website>'."\n";
 			$content .= $padding.$tab.'<show_in_store>1</show_in_store>'."\n";
 			$content .= $padding.'</rss>'."\n";
+			$position += 10;
+		}
+		if ($this->getIsTree() && $this->getFrontendList()){
+			$content .= $padding.'<tree translate="label" module="'.strtolower($this->getModule()->getModuleName()).'">'."\n";
+			$content .= $padding.$tab.'<label>Display as tree</label>'."\n";
+			$content .= $padding.$tab.'<frontend_type>select</frontend_type>'."\n";
+			$content .= $padding.$tab.'<source_model>adminhtml/system_config_source_yesno</source_model>'."\n";
+			$content .= $padding.$tab.'<sort_order>'.$position.'</sort_order>'."\n";
+			$content .= $padding.$tab.'<show_in_default>1</show_in_default>'."\n";
+			$content .= $padding.$tab.'<show_in_website>1</show_in_website>'."\n";
+			$content .= $padding.$tab.'<show_in_store>1</show_in_store>'."\n";
+			$content .= $padding.'</tree>'."\n";
 			$position += 10;
 		}
 		if ($this->getFrontendAddSeo() && $this->getFrontendList()){
@@ -472,9 +522,9 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		$padding = "\t";
 		foreach ($this->getAttributes() as $attribute){
 			if ($attribute->getFrontend()){
-				$content .= $padding.'<div class="'.$this->getNameSingular().'-'.$attribute->getCode().'">';
+				$content .= $padding.'<div class="'.$this->getNameSingular().'-'.$attribute->getCode().'">'."\n";
 				$content .= "\t".$padding.$attribute->getFrontendHtml();
-				$content .= $padding.'</div>';
+				$content .= $padding.'</div>'."\n";
 			}
 		}
 		return $content;
@@ -603,10 +653,30 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		if ($this->getShowProducts()){
 			$content .= "\t".'<block type="'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'_catalog_product_list" name="'.strtolower($this->getNameSingular()).'.info.products" as="'.strtolower($this->getNameSingular()).'_products" template="'.strtolower($this->getModule()->getNamespace()).'_'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'/catalog/product/list.phtml" />'."\n\t\t";
 		}
+		if ($this->getIsTree()){
+			$content .= "\t".'<block type="'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'_children" name="'.strtolower($this->getNameSingular()).'_children" template="'.strtolower($this->getModule()->getNamespace()).'_'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'/children.phtml" />'."\n\t\t";
+		}
 		$childred = $this->getRelatedEntities(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_PARENT);
 		$siblings = $this->getRelatedEntities(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_SIBLING);
 		foreach (array_merge($childred, $siblings) as $entity){
 			$content .= "\t".'<block type="'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'_'.strtolower($entity->getNameSingular()).'_list" name="'.strtolower($this->getNameSingular()).'.'.strtolower($entity->getNameSingular()).'_list" as="'.strtolower($this->getNameSingular()).'_'.strtolower($this->getNamePlural()).'" template="'.strtolower($this->getModule()->getNamespace()).'_'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'/'.strtolower($entity->getNameSingular()).'/list.phtml" />'."\n\t\t";
+		}
+		return $content;
+	}
+	/**
+	 * get layout xml head reference
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getReferenceHeadLayout(){
+		$content = "\t\t";
+		if ($this->getIsTree()){
+			$content .= '<reference name="head">'."\n";
+			$content .= "\t\t\t".'<action method="addItem" ifconfig="'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'/tree"><type>skin_js</type><js>js/'.strtolower($this->getModule()->getNamespace()).'_'.strtolower($this->getModule()->getModuleName()).'/tree.js</js></action>'."\n";
+			$content .= "\t\t\t".'<action method="addCss" ifconfig="'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'/tree"><js>css/'.strtolower($this->getModule()->getNamespace()).'_'.strtolower($this->getModule()->getModuleName()).'/tree.css</js></action>'."\n";
+			$content .= "\t\t".'</reference>'."\n";
+			$content .= "\t\t";
 		}
 		return $content;
 	}
@@ -680,5 +750,23 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 			$content .= ', '."\n".$padding."KEY `FK_".strtoupper($this->getModule()->getModuleName())."_".strtoupper($this->getNameSingular())."_".strtoupper($parent->getNameSingular())."` (`".$parent->getNameSingular()."_id`)\n";
 		}
 		return $content;
+	}
+	/**
+	 * check if entity does not behave as tree
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getNotIsTree(){
+		return !$this->getIsTree();
+	}
+	/**
+	 * check if there is no status attribute
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getNotAddStatus(){
+		return !$this->getAddStatus();
 	}
 }

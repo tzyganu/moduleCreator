@@ -41,3 +41,11 @@
 	width:19px;
 	height:18px;
 }
+ul.tabs a.modulecreator-system span{
+	font-weight: bold!important;
+	/*background:url("") no-repeat scroll 20px 2px transparent;*/
+	background-image: url(images/ultimate_modulecreator/logo.png)!important;
+	background-repeat: no-repeat!important;
+	background-position: 20px 2px!important;
+	padding-left:45px!important;
+}

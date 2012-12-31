@@ -1,0 +1,31 @@
+	<!-- {{EntitiesLabel}} grid action -->
+	<adminhtml_{{module}}_{{entity}}_index>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>{{module}}/{{entity}}</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="{{module}}/adminhtml_{{entity}}" name="{{entity}}" />
+		</reference>
+	</adminhtml_{{module}}_{{entity}}_index>
+	<adminhtml_{{module}}_{{entity}}_grid>
+		<block type="core/text_list" name="root" output="toHtml">
+			<block type="{{module}}/adminhtml_{{entity}}_grid" name="{{entity}}_grid"/>
+		</block>
+	</adminhtml_{{module}}_{{entity}}_grid>
+	<!-- {{Entity}} add/edit action -->
+	<adminhtml_{{module}}_{{entity}}_edit>
+		<update handle="editor"/>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>{{module}}/{{entity}}</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="{{module}}/adminhtml_{{entity}}_edit" name="{{entity}}_edit"></block>
+		</reference>
+		<reference name="left">
+			<block type="{{module}}/adminhtml_{{entity}}_edit_tabs" name="{{entity}}_tabs"></block>
+		</reference> 
+	</adminhtml_{{module}}_{{entity}}_edit>

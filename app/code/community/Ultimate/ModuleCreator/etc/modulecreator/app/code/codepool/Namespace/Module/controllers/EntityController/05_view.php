@@ -9,4 +9,4 @@
 		${{entity}} 	= Mage::getModel('{{module}}/{{entity}}')->load(${{entity}}Id);
 		if (!${{entity}}->getId()){
 			$this->_forward('no-route');
-		}		
+		}

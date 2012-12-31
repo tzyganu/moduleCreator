@@ -282,6 +282,11 @@ class Ultimate_ModuleCreator_Adminhtml_ModulecreatorController extends Mage_Admi
 				foreach($data['relation'] as $index=>$values){
 					foreach ($values as $jndex=>$type){
 						if (isset($entitiesByIndex[$index]) && isset($entitiesByIndex[$jndex])){
+							//Many to many relations between tree entities is not supported yet
+							//ignore these relations
+							if ($entitiesByIndex[$index]->getIsTree() && $entitiesByIndex[$jndex]->getIsTree()){
+								$type = Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_NONE;
+							}
 							$relation = Mage::getModel('modulecreator/relation');
 							$relation->setEntities($entitiesByIndex[$index], $entitiesByIndex[$jndex], $type);
 							$module->addRelation($relation);
