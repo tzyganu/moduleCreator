@@ -21,4 +21,3 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Module}}_{{Entity}}_WidgetController 
 		));
 		$this->getResponse()->setBody($grid->toHtml());
 	}
-}

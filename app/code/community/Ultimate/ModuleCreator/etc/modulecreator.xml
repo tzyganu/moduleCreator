@@ -962,6 +962,15 @@
 				<file>
 					<name>01_content.php</name>
 				</file>
+				<file>
+					<name>02_tree.php</name>
+					<depend>
+						<is_tree />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.php</name>
+				</file>
 			</content>
 		</file>
 		<file translate="title"	module="modulecreator">
@@ -1110,6 +1119,7 @@
 			<depend>
 				<flat />
 				<widget />
+				<not_is_tree />
 			</depend>
 			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Widget/Chooser/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Widget/Chooser.php</to>
@@ -1134,6 +1144,23 @@
 				</file>
 				<file>
 					<name>05_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin widget chooser.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<widget />
+				<is_tree />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Widget/Chooser/IsTree/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Widget/Chooser.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
 				</file>
 			</content>
 		</file>
@@ -2478,7 +2505,23 @@
 			</content>
 		</file>
 		<file translate="title" module="modulecreator">
-			<title>Tree edit template</title>
+			<title>Tree widget template</title>
+			<filetype>phtml</filetype>
+			<scope>entity</scope>
+			<depend>
+				<is_tree />
+				<widget />
+			</depend>
+			<from>app/design/adminhtml/default/default/template/namespace_module/entity/widget/tree/</from>
+			<to>app/design/adminhtml/default/default/template/{{namespace}}_{{module}}/{{entity}}/widget/tree.phtml</to>
+			<content>
+				<file>
+					<name>01_content.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Tree edit form</title>
 			<filetype>phtml</filetype>
 			<scope>entity</scope>
 			<depend>
