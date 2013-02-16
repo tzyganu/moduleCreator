@@ -88,6 +88,7 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit_Tab_Settings ext
 			'required'  		=> true,
 			'style'				=> 'width:'.$fieldWidth.'px',
 			'value'				=> $values->getNamespace(),
+			'class'				=> 'validate-alphanum',
 			'after_element_html'=> Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Namespace'), Mage::helper('modulecreator')->__('This is the folder name of your new extension. Your company name could go here. Use only letters and numbers. Start with a capital letter.'))
 		));
 		$fieldset->addField('module_name', 'text', array(
@@ -96,6 +97,7 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit_Tab_Settings ext
 			'title' 			=> Mage::helper('modulecreator')->__('Module name'),
 			'required'  		=> true,
 			'value'				=> $values->getModuleName(),
+			'class'				=> 'validate-alphanum',
 			'style'				=> 'width:'.$fieldWidth.'px',
 			'after_element_html'=> Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Module name'), Mage::helper('modulecreator')->__('This is your extension name. You cannot name your extension with an existing name, not even under a different namespace.'))
 		));
