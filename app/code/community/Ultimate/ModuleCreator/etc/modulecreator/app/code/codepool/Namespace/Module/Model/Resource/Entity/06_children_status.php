@@ -1,7 +1,7 @@
 	/**
 	 * Get count of active/not active children {{entitiesLabel}}
 	 *
-	 * @param {Namespace}}_{{Module}}_Model_{{Entity}} ${{entity}}
+	 * @param {{Namespace}}_{{Module}}_Model_{{Entity}} ${{entity}}
 	 * @param bool $isActiveFlag
 	 * @return int
 	 * {{qwertyuiop}}

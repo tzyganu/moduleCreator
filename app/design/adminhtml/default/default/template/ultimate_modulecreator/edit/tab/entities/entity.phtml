@@ -75,7 +75,7 @@
 									</label>
 								</td>
 								<td class="value">
-									<input type="text" class="required-entry input-text name-singular validate-code" id="entity_<?php echo $this->getIncrement();?>_name_singular" name="entity[<?php echo $this->getIncrement();?>][name_singular]" value="<?php echo $_entity->getNameSingular();?>" />
+									<input type="text" class="required-entry input-text name-singular validate-alphanum" id="entity_<?php echo $this->getIncrement();?>_name_singular" name="entity[<?php echo $this->getIncrement();?>][name_singular]" value="<?php echo $_entity->getNameSingular();?>" />
 									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity name - singular'), Mage::helper('modulecreator')->__('This is the code (singular) of your entity. This is how the variables relating to your entity will be named.'))?>
 								</td>
 							</tr>
@@ -86,7 +86,7 @@
 									</label>
 								</td>
 								<td class="value">
-									<input type="text" class="required-entry input-text validate-code" id="entity_<?php echo $this->getIncrement();?>_name_plural" name="entity[<?php echo $this->getIncrement();?>][name_plural]" value="<?php echo $_entity->getNamePlural();?>" />
+									<input type="text" class="required-entry input-text validate-alphanum" id="entity_<?php echo $this->getIncrement();?>_name_plural" name="entity[<?php echo $this->getIncrement();?>][name_plural]" value="<?php echo $_entity->getNamePlural();?>" />
 									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity name - plural'), Mage::helper('modulecreator')->__('This is the code (singular) of your entity. This is how the variables relating to your entities will be named.'))?>
 								</td>
 							</tr>

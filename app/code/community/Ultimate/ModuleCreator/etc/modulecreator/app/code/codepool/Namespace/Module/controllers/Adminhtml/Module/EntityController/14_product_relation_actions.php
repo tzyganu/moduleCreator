@@ -8,7 +8,7 @@
 		$this->_init{{Entity}}();
 		$this->loadLayout();
 		$this->getLayout()->getBlock('{{entity}}.edit.tab.product')
-			->set{{Entity}}Products($this->getRequest()->getPost('products', null));
+			->set{{Entity}}Products($this->getRequest()->getPost('{{entity}}_products', null));
 		$this->renderLayout();
 	}
 	/**
@@ -21,6 +21,6 @@
 		$this->_init{{Entity}}();
 		$this->loadLayout();
 		$this->getLayout()->getBlock('{{entity}}.edit.tab.product')
-			->set{{Entity}}Products($this->getRequest()->getPost('products', null));
+			->set{{Entity}}Products($this->getRequest()->getPost('{{entity}}_products', null));
 		$this->renderLayout();
 	}

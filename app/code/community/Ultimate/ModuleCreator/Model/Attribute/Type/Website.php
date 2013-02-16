@@ -86,7 +86,7 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Website extends Ultimate_Modul
 		$entityName = strtolower($this->getAttribute()->getEntity()->getNameSingular());
 		$ucEntity = ucfirst($entityName);
 		$module = strtolower($this->getAttribute()->getEntity()->getModule()->getModuleName());
-		return '				$description .= Mage::helper(\''.$module.'\')->__("'.$this->getAttribute()->getLabel().'").\':\'.($item->get'.$this->getAttribute()->getMagicMethodCode().'() == 1) ? Mage::getModel(\'core/website\')->load($$item->get'.$this->getAttribute()->getMagicMethodCode().'())->getName():Mage::helper(\''.$module.'\')->__(\'None\');';
+		return '				$description .= Mage::helper(\''.$module.'\')->__("'.$this->getAttribute()->getLabel().'").\':\'.($item->get'.$this->getAttribute()->getMagicMethodCode().'() == 1) ? Mage::getModel(\'core/website\')->load($item->get'.$this->getAttribute()->getMagicMethodCode().'())->getName():Mage::helper(\''.$module.'\')->__(\'None\');';
 	}
 	
 	

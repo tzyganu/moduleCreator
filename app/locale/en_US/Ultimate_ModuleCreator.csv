@@ -56,7 +56,7 @@
 "An attribute cannot be named %s.","An attribute cannot be named %s.","false"
 "An attribute named ""created_at"" will be added by default to your entity","An attribute named ""created_at"" will be added by default to your entity","false"
 "An attribute named ""updated_at"" will be added by default to your entity","An attribute named ""updated_at"" will be added by default to your entity","false"
-"An attribute that acts as name must have the type ""Text"".","An attribute that acts as name must have the type ""Text"".","false"
+"An attribute that acts as name must have the type %s.","An attribute that acts as name must have the type %s.","false"
 "An attribute with the code ""%s"" already exists for entity ""%s""","An attribute with the code ""%s"" already exists for entity ""%s""","false"
 "An entity cannot be named %s","An entity cannot be named %s","false"
 "An entity cannot be named %s inside the module %s","An entity cannot be named %s inside the module %s","false"

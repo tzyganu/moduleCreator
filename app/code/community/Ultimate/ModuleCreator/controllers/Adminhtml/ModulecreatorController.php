@@ -86,6 +86,7 @@ class Ultimate_ModuleCreator_Adminhtml_ModulecreatorController extends Mage_Admi
 				return $data;
 			}
 			catch (Exception $e) {
+				echo "<pre>"; print_r($e->getMessage());exit;
 				$this->_getSession()->addError($e->getMessage());
 				$this->_redirect('*/*/index');
 			}

@@ -29,7 +29,7 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Module}}_{{Entity}}_Catalog_ProductCo
 		$this->_initProduct();
 		$this->loadLayout();
 		$this->getLayout()->getBlock('product.edit.tab.{{entity}}')
-			->setProduct{{Entities}}($this->getRequest()->getPost('{{entities}}', null));
+			->setProduct{{Entities}}($this->getRequest()->getPost('product_{{entities}}', null));
 		$this->renderLayout();
 	}
 	/**
@@ -42,7 +42,7 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Module}}_{{Entity}}_Catalog_ProductCo
 		$this->_initProduct();
 		$this->loadLayout();
 		$this->getLayout()->getBlock('product.edit.tab.{{entity}}')
-			->setProduct{{Entities}}($this->getRequest()->getPost('{{entities}}', null));
+			->setProduct{{Entities}}($this->getRequest()->getPost('product_{{entities}}', null));
 		$this->renderLayout();
 	}
 }

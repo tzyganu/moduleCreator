@@ -81,9 +81,10 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		}
 		$this->_preparedAttributes = false;
 		$this->_attribtues[$attribute->getCode()] = $attribute;
+		$allowedTypes = array('text'=>'Text', 'int'=>'Integer', 'decimal'=>'Decimal');
 		if ($attribute->getIsName()){
-			if ($attribute->getType() != 'text'){
-				throw new Ultimate_ModuleCreator_Exception(Mage::helper('modulecreator')->__('An attribute that acts as name must have the type "Text".'));
+			if (!in_array($attribute->getType(), array_keys($allowedTypes))){
+				throw new Ultimate_ModuleCreator_Exception(Mage::helper('modulecreator')->__('An attribute that acts as name must have the type %s.', implode(', ', array_values($allowedTypes))));
 			}
 			$this->_nameAttribute = $attribute;
 		}
