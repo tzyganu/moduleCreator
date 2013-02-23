@@ -7,7 +7,7 @@
  * @package		{{Namespace}}_{{Module}}
  * {{qwertyuiop}}
  */
-class {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Collection extends Mage_Core_Model_Mysql4_Collection_Abstract{
+class {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Collection extends Mage_Core_Model_Resource_Db_Collection_Abstract{
 	protected $_joinedFields = array();
 	/**
 	 * constructor

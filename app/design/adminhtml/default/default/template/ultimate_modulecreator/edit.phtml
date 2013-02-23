@@ -24,10 +24,8 @@
 	<h3 class="icon-head"><?php echo $this->getHeaderText() ?></h3>
 	<p class="content-buttons form-buttons"><?php echo $this->getBackButtonHtml() ?>
 		<?php echo $this->getCancelButtonHtml() ?>
-		<?php if (!$this->isReadonly()) :?>
-			<?php echo $this->getSaveButtonHtml() ?>
-			<?php echo $this->getSaveAndEditButtonHtml() ?>
-		<?php endif;?>
+		<?php echo $this->getSaveButtonHtml() ?>
+		<?php echo $this->getSaveAndEditButtonHtml() ?>
 	</p>
 </div>
 <form action="<?php echo $this->getSaveUrl() ?>" method="post" id="edit_form" enctype="multipart/form-data">

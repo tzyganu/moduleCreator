@@ -76,9 +76,6 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit_Tab_Entities ext
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
 	 */
 	public function getAddButtonHtml($suffix = ""){
-		if (Mage::registry('module_read_only')){
-			return '';
-		}
 		$button = $this->getLayout()->createBlock('adminhtml/widget_button')->setData(array(
 			'label' 	=> Mage::helper('modulecreator')->__('Add entity'),
 			'onclick'   => 'addEntity();',

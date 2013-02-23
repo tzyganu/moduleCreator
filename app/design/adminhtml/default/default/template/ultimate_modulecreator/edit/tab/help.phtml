@@ -30,6 +30,7 @@
 			</a>
 		</div>
 		<div id="modulecreator_help_container" class="box custom-options">
+			<strong><?php echo Mage::helper('modulecreator')->__('Ultimate Module Creator v%s', Mage::app()->getConfig()->getNode('modules/Ultimate_ModuleCreator/version'))?></strong><br />
 			<strong><?php echo Mage::helper('modulecreator')->__('General description');?></strong>
 			<p>
 				<?php echo Mage::helper('modulecreator')->__('This extension generates the sourse code for a simple Magento extension.');?><br />
@@ -81,7 +82,7 @@
 					<li>
 						<strong><?php echo Mage::helper('modulecreator')->__('Action');?></strong><br />
 						<p>
-							<?php echo Mage::helper('modulecreator')->__('This allows you to create an archive with your extension located in /var/modulecreator folder of your current instance so you can edit it later or install it later manually by copying the "app" folder in the archive over the "app" folder of your instance and the "skin" folder in the archive over the "skin" folder of your instance.');?><br />
+							<?php echo Mage::helper('modulecreator')->__('This allows you to create an archive with your extension located in var/modulecreator folder of your current instance so you can edit it later or install it later manually by copying the "app" folder in the archive over the "app" folder of your instance and the "skin" folder in the archive over the "skin" folder of your instance.');?><br />
 							<?php echo Mage::helper('modulecreator')->__('You can change the default value from <a href="%s">System->Configuration->Module Creator</a>->Settings->Default Action.', $this->getUrl('adminhtml/system_config/edit', array('section'=>'modulecreator')));?><br />
 							<?php echo Mage::helper('modulecreator')->__('If you choose to install it directly, backup your Mangeto instance first, just in case.')?><br />
 							<?php if (Mage::helper('modulecreator')->isBetaRelease()) : ?>
@@ -248,7 +249,7 @@
 				</p>
 			</li>
 			<li>
-				<strong><?php echo Mage::helper('modulecreator')->__('Link "many to many" with prodcts')?></strong>
+				<strong><?php echo Mage::helper('modulecreator')->__('Link "many to many" with products')?></strong>
 				<br />
 				<p>
 					<?php echo Mage::helper('modulecreator')->__('This will allow you to link your entity to the products. It will add a new tab in the product edit form with your entities and a tab in the entity edit form with the product.');?>
@@ -344,7 +345,7 @@
 				<p>
 					<?php echo Mage::helper('modulecreator')->__('This allows you to display the attribute as a column in the admin grid of the entity. Is available for attributes with type Text, Int, Decimal, Yes/No and Timestamp.');?>
 					<br />
-					<?php echo Mage::helper('modulecreator')->__('The attribute set to behave as "Name" will be includer by default. Also the "Status" attribute if you choose to create one.');?>
+					<?php echo Mage::helper('modulecreator')->__('The attribute set to behave as "Name" will be included by default. Also the "Status" attribute if you choose to create one.');?>
 				</p>
 			</li>
 			<li>

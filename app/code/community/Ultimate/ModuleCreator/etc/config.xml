@@ -24,7 +24,7 @@
 <config>
 	<modules>
 		<Ultimate_ModuleCreator>
-			<version>1.2.0</version>
+			<version>1.3.0</version>
 		</Ultimate_ModuleCreator>
 	</modules>
 	<global>
@@ -112,6 +112,7 @@ http://opensource.org/licenses/mit-license.php
 				<show_on_product>1</show_on_product>
 				<show_products>1</show_products>
 				<is_tree>0</is_tree>
+				<url_rewrite>1</url_rewrite>
 			</entity_defaults>
 			<release>
 				<beta>0</beta>

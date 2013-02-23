@@ -73,26 +73,24 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit extends Mage_Adm
 					'onclick'   => 'setLocation(\''.$this->getUrl('*/*/*', array('_current'=>true)).'\')'
 				))
 		);
-		if (!$this->isReadonly()){
-			$this->setChild('save_button',
-				$this->getLayout()
-					->createBlock('adminhtml/widget_button')
-					->setData(array(
-						'label' => Mage::helper('modulecreator')->__('Save'),
-						'onclick'   => 'moduleForm.submit()',
-						'class' => 'save'
-				))
-			);
-			$this->setChild('save_and_edit_button',
-				$this->getLayout()
-					->createBlock('adminhtml/widget_button')
-					->setData(array(
-						'label' => Mage::helper('modulecreator')->__('Save and Continue Edit'),
-						'onclick'   => 'saveAndContinueEdit(\''.$this->getSaveAndContinueUrl().'\')',
-						'class' => 'save'
-	   			))
-			);
-		}
+		$this->setChild('save_button',
+			$this->getLayout()
+				->createBlock('adminhtml/widget_button')
+				->setData(array(
+					'label' => Mage::helper('modulecreator')->__('Save'),
+					'onclick'   => 'moduleForm.submit()',
+					'class' => 'save'
+			))
+		);
+		$this->setChild('save_and_edit_button',
+			$this->getLayout()
+				->createBlock('adminhtml/widget_button')
+				->setData(array(
+					'label' => Mage::helper('modulecreator')->__('Save and Continue Edit'),
+					'onclick'   => 'saveAndContinueEdit(\''.$this->getSaveAndContinueUrl().'\')',
+					'class' => 'save'
+   			))
+		);
 		return $this;
 	}
 	/**
@@ -156,23 +154,12 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit extends Mage_Adm
 	}
 	/**
 	 * check if edit mode is read only
+	 * @deprecated 1.3
 	 * @access public
 	 * @return bool
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
 	 */
 	public function isReadonly(){
-		if (Mage::registry('module_read_only')){
-			return true;
-		}
-		if ($module = Mage::registry('current_module')){
-			$installedModules = array_keys((array)Mage::getConfig()->getNode('modules')->children());
-			foreach ($installedModules as $installed){
-				if ($installed == $module->extension){
-					Mage::register('module_read_only', true);
-					return true;
-				}
-			}
-		}
 		return false;
 	}
 }

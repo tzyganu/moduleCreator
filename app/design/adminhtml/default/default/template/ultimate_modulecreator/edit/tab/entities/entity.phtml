@@ -205,6 +205,17 @@
 							</tr>
 							<tr class="use-frontend">
 								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_url_rewrite">
+										<?php echo Mage::helper('modulecreator')->__('Create URL rewrites for entity view page') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_url_rewrite', 'entity'.'['.$this->getIncrement().'][url_rewrite]', $_entity->getUrlRewrite());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Create entity view page'), Mage::helper('modulecreator')->__('This will allow you to fill in a SEF url key for your entities.'))?>
+								</td>
+							</tr>
+							<tr class="use-frontend">
+								<td class="label">
 									<label for="entity_<?php echo $this->getIncrement();?>_frontend_view_template">
 										<?php echo Mage::helper('modulecreator')->__('Entity view page template') ?>
 									</label>
@@ -262,12 +273,12 @@
 							<tr>
 								<td class="label">
 									<label for="entity_<?php echo $this->getIncrement();?>_link_product">
-										<?php echo Mage::helper('modulecreator')->__('Link "many to many" with prodcts') ?>
+										<?php echo Mage::helper('modulecreator')->__('Link "many to many" with products') ?>
 									</label>
 								</td>
 								<td class="value">
 									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_link_product', 'entity'.'['.$this->getIncrement().'][link_product]', $_entity->getLinkProduct());?>
-									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Link "many to many" with prodcts'), Mage::helper('modulecreator')->__('This will allow you to link your entity to the products. It will add a new tab in the product edit form with your entities and a tab in the entity edit form with the product.'))?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Link "many to many" with products'), Mage::helper('modulecreator')->__('This will allow you to link your entity to the products. It will add a new tab in the product edit form with your entities and a tab in the entity edit form with the product.'))?>
 								</td>
 							</tr>
 							<tr class="link-product">

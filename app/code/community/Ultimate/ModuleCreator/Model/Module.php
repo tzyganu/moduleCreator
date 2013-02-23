@@ -95,6 +95,9 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 		if ($entity->getEditor()){
 			$this->setEditor(true);
 		}
+		if ($entity->getUrlRewrite()){
+			$this->setUrlRewrite(true);
+		}
 		return $this;
 	}
 	/**

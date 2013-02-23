@@ -7,7 +7,7 @@
  * @package		{{Namespace}}_{{Module}}
  * {{qwertyuiop}}
  */
-class {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Product_Collection extends Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection{
+class {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Product_Collection extends Mage_Catalog_Model_Resource_Product_Collection{
 	/**
 	 * remember if fields have been joined
 	 * @var bool

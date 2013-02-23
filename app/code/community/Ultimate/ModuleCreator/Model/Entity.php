@@ -175,7 +175,7 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		return array('label_singular', 'label_plural', 'name_singular', 'name_plural', 'created_to_grid', 
 					'updated_to_grid', 'add_status', 'use_frontend', 'frontend_list', 
 					'frontend_list_template', 'frontend_view', 'frontend_view_template', 'frontend_add_seo',
-					'rss', 'widget', 'link_product', 'show_on_product', 'show_products','is_tree'
+					'rss', 'widget', 'link_product', 'show_on_product', 'show_products','is_tree', 'url_rewrite'
 		);
 	}
 	/**
@@ -337,6 +337,13 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		$content.= $this->getParentEntitiesFkAttributes($padding);
 		foreach ($this->getAttributes() as $attribute){
 			$content .= $padding.$attribute->getSqlColumn()."\n";
+		}
+		if ($this->getUrlRewrite()){
+			$attr = Mage::getModel('modulecreator/attribute');
+			$attr->setCode('url_key');
+			$attr->setLabel('URL key');
+			$attr->setType('text');
+			$content .= $padding.$attr->getSqlColumn()."\n";
 		}
 		if($this->getAddStatus()){
 			$attr = Mage::getModel('modulecreator/attribute');
@@ -642,6 +649,24 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 	 */
 	public function getShowProducts(){
 		return $this->getLinkProduct() && $this->getData('show_products');
+	}
+	/**
+	 * check if url rewrites are added
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getUrlRewrite(){
+		return $this->getFrontendView() && $this->getData('url_rewrite');
+	}
+	/**
+	 * check if url rewrites are not
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getNotUrlRewrite(){
+		return !$this->getUrlRewrite();
 	}
 	/**
 	 * get layout xml for relation to product

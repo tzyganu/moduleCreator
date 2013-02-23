@@ -119,9 +119,9 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit_Tab_Settings ext
 			'required'  		=> true,
 			'value'				=> $values->getInstall(),
 			'style'				=> 'width:'.$fieldWidth.'px',
-			'after_element_html'=> Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Action'), Mage::helper('modulecreator')->__('This allows you to create an archive with your extension located in var/modulecreator folder of your current instance so you can edit it later or install it later manually by copying the "app" folder in the archive over the "app" folder of your instance and the "skin" folder in the archive over the "skin" folder of your instance. If you choose to install it directly please backup first. If you choose to install it you won\'t be able to edit it later.' ))
+			'after_element_html'=> Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Action'), Mage::helper('modulecreator')->__('This allows you to create an archive with your extension located in var/modulecreator folder of your current instance so you can edit it later or install it later manually by copying the "app" folder in the archive over the "app" folder of your instance and the "skin" folder in the archive over the "skin" folder of your instance. If you choose to install it directly please backup first. If you choose to install it you will be able to edit later but you will have to install the modified version manually.' ))
 		);
-		if (!Mage::helper('modulecreator')->canInstall()){
+		if (!$this->_canInstall()){
 			$installOptions['disabled'] = 'disabled';
 			$installOptions['value'] 	= 0;
 		}
@@ -178,5 +178,29 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit_Tab_Settings ext
 		$this->setForm($form);
 		$form->addFieldNameSuffix('settings');
 		return parent::_prepareForm();
+	}
+	/**
+	 * check if module can be installer
+	 * @access protected
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	protected function _canInstall(){
+		if (!Mage::helper('modulecreator')->canInstall()){
+			return false;
+		}
+		if (Mage::registry('module_read_only')){
+			return false;
+		}
+		if ($module = Mage::registry('current_module')){
+			$installedModules = array_keys((array)Mage::getConfig()->getNode('modules')->children());
+			foreach ($installedModules as $installed){
+				if ($installed == $module->extension){
+					Mage::register('module_read_only', true);
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 }

@@ -55,6 +55,7 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 		$names['level']				= $this->__('"level" is a reserved attribute name.');
 		$names['children_count']	= $this->__('"children_count" is a reserved attribute name.');
 		$names['path']				= $this->__('"path" is a reserved attribute name.');
+		$names['url_key']			= $this->__('If you want to use URL keys set "Create URL rewrites for entity view page" to "Yes"');
 		return $names;
 	}
 	/**
@@ -298,7 +299,7 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 			self::RELATION_TYPE_NONE 	=> $this->__('--None--'),
 			self::RELATION_TYPE_PARENT	=> $this->__('Is parent for'),
 			self::RELATION_TYPE_CHILD	=> $this->__('Is child of'),
-			self::RELATION_TYPE_SIBLING	=> $this->__('Is siblig with')
+			self::RELATION_TYPE_SIBLING	=> $this->__('Is sibling with')
 		);
 	}
 	/**

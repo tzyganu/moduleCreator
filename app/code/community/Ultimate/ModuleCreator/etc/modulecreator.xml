@@ -52,54 +52,60 @@
 					</depend>
 				</file>
 				<file>
-					<name>05_grid_status.php</name>
+					<name>05_url_rewrite.php</name>
+					<depend>
+						<url_rewrite />
+					</depend>
+				</file>
+				<file>
+					<name>06_grid_status.php</name>
 					<depend>
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>06_created_at.php</name>
+					<name>07_created_at.php</name>
 					<depend>
 						<created_to_grid />
 					</depend>
 				</file>
 				<file>
-					<name>07_updated_at.php</name>
+					<name>08_updated_at.php</name>
 					<depend>
 						<updated_to_grid />
 					</depend>
 				</file>
 				<file>
-					<name>08_grid_actions.php</name>
+					<name>09_grid_actions.php</name>
 				</file>
 				<file>
-					<name>09_grid_export.php</name>
+					<name>10_grid_export.php</name>
 				</file>
 				<file>
-					<name>10_columns_footer.php</name>
+					<name>11_columns_footer.php</name>
 				</file>
 				<file>
-					<name>11_mass_action_top.php</name>
+					<name>12_mass_action_top.php</name>
 				</file>
 				<file>
-					<name>12_mass_action_status.php</name>
+					<name>13_mass_action_status.php</name>
 					<depend>
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>13_mass_action_flags.php</name>
+					<name>14_mass_action_flags.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<yesno />
 					</depend_type>
 				</file>
 				<file>
-					<name>14_mass_action_parents.php</name>
+					<name>15_mass_action_parents.php</name>
 					<scope>parents</scope>
 				</file>
 				<file>
-					<name>15_footer.php</name>
+					<name>16_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -324,56 +330,71 @@
 					<name>05_url.php</name>
 					<depend>
 						<use_frontend />
+						<not_url_rewrite />
 					</depend>
 				</file>
 				<file>
-					<name>06_editors.php</name>
+					<name>06_url_rewrite_not_status.php</name>
+					<depend>
+						<not_add_status />
+						<url_rewrite />
+					</depend>
+				</file>
+				<file>
+					<name>07_url_rewrite_status.php</name>
+					<depend>
+						<add_status />
+						<url_rewrite />
+					</depend>
+				</file>
+				<file>
+					<name>08_editors.php</name>
 					<scope>attribute</scope>
 					<depend>
 						<editor />
 					</depend>
 				</file>
 				<file>
-					<name>07_after_save_top.php</name>
+					<name>09_after_save_top.php</name>
 				</file>
 				<file>
-					<name>08_after_save_product.php</name>
+					<name>10_after_save_product.php</name>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>09_after_save_sibling.php</name>
+					<name>11_after_save_sibling.php</name>
 					<scope>siblings</scope>
 				</file>
 				<file>
-					<name>10_after_save_footer.php</name>
+					<name>12_after_save_footer.php</name>
 				</file>
 				<file>
-					<name>11_product_relation.php</name>
+					<name>13_product_relation.php</name>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>12_sibling_relation.php</name>
+					<name>14_sibling_relation.php</name>
 					<scope>siblings</scope>
 				</file>
 				<file>
-					<name>13_tree.php</name>
+					<name>15_tree.php</name>
 					<depend>
 						<is_tree />
 					</depend>
 				</file>
 				<file>
-					<name>14_tree_status.php</name>
+					<name>16_tree_status.php</name>
 					<depend>
 						<is_tree />
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>15_footer.php</name>
+					<name>17_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -406,27 +427,62 @@
 					</depend>
 				</file>
 				<file>
-					<name>05_children_no_status.php</name>
+					<name>05_tree_before_save_no_url_rewrite.php</name>
+					<depend>
+						<is_tree />
+						<not_url_rewrite />
+					</depend>
+				</file>
+				<file>
+					<name>06_tree_before_save_url_rewrite.php</name>
+					<depend>
+						<is_tree />
+						<url_rewrite />
+					</depend>
+				</file>
+				<file>
+					<name>07_children_no_status.php</name>
 					<depend>
 						<is_tree />
 						<not_add_status />
 					</depend>
 				</file>
 				<file>
-					<name>06_children_status.php</name>
+					<name>08_children_status.php</name>
 					<depend>
 						<is_tree />
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>07_content.php</name>
+					<name>09_content.php</name>
 					<depend>
 						<is_tree />
 					</depend>
 				</file>
 				<file>
-					<name>08_footer.php</name>
+					<name>10_url_rewrite_status.php</name>
+					<depend>
+						<add_status />
+						<url_rewrite />
+					</depend>
+				</file>
+				<file>
+					<name>11_url_rewrite_not_status.php</name>
+					<depend>
+						<not_add_status />
+						<url_rewrite />
+					</depend>
+				</file>
+				<file>
+					<name>12_url_rewrite_before_save_not_tree.php</name>
+					<depend>
+						<url_rewrite />
+						<not_is_tree />
+					</depend>
+				</file>
+				<file>
+					<name>13_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -1218,43 +1274,49 @@
 					<scope>attribute</scope>
 				</file>
 				<file>
-					<name>09_status.php</name>
+					<name>09_url_rewrite.php</name>
+					<depend>
+						<url_rewrite />
+					</depend>
+				</file>
+				<file>
+					<name>10_status.php</name>
 					<depend>
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>10_rss.php</name>
+					<name>11_rss.php</name>
 					<depend>
 						<rss />
 					</depend>
 				</file>
 				<file>
-					<name>11_seo.php</name>
+					<name>12_seo.php</name>
 					<depend>
 						<frontend_add_seo />
 					</depend>
 				</file>
 				<file>
-					<name>12_add_values_not_tree.php</name>
+					<name>13_add_values_not_tree.php</name>
 					<depend>
 						<not_is_tree />
 					</depend>
 				</file>
 				<file>
-					<name>13_add_values_tree.php</name>
+					<name>14_add_values_tree.php</name>
 					<depend>
 						<is_tree />
 					</depend>
 				</file>
 				<file>
-					<name>14_get_entity_tree.php</name>
+					<name>15_get_entity_tree.php</name>
 					<depend>
 						<is_tree />
 					</depend>
 				</file>
 				<file>
-					<name>15_footer.php</name>
+					<name>16_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -1340,8 +1402,8 @@
 			<title>Install script</title>
 			<scope>global</scope>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/sql/namespace_module_setup/mysql4-install-0.0.1/</from>
-			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/sql/{{namespace}}_{{module}}_setup/mysql4-install-0.0.1.php</to>
+			<from>app/code/codepool/Namespace/Module/sql/namespace_module_setup/install-0.0.1/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/sql/{{namespace}}_{{module}}_setup/install-0.0.1.php</to>
 			<content>
 				<file>
 					<name>01_top.php</name>
@@ -1446,33 +1508,42 @@
 					<name>05_global.xml</name>
 				</file>
 				<file>
-					<name>06_relation_product.xml</name>
+					<name>06_url_rewrite.xml</name>
+					<depend>
+						<url_rewrite />
+					</depend>
+				</file>
+				<file>
+					<name>07_adminhtml.xml</name>
+				</file>
+				<file>
+					<name>08_relation_product.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>07_admin.xml</name>
+					<name>09_admin.xml</name>
 				</file>
 				<file>
-					<name>08_frontend.xml</name>
+					<name>10_frontend.xml</name>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>09_default_top.xml</name>
+					<name>11_default_top.xml</name>
 				</file>
 				<file>
-					<name>10_default.xml</name>
+					<name>12_default.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>11_default_footer.xml</name>
+					<name>13_default_footer.xml</name>
 				</file>
 			</content>
 		</file>
@@ -1794,6 +1865,13 @@
 					<scope>entity</scope>
 					<depend>
 						<is_tree />
+					</depend>
+				</file>
+				<file>
+					<name>13_url_rewrite.csv</name>
+					<scope>entity</scope>
+					<depend>
+						<url_rewrite />
 					</depend>
 				</file>
 			</content>
@@ -2604,6 +2682,31 @@
 					<depend>
 						<is_tree />
 					</depend>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Router</title>
+			<filetype>php</filetype>
+			<scope>global</scope>
+			<depend>
+				<url_rewrite />
+			</depend>
+			<from>app/code/codepool/Namespace/Module/Controller/Router/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Controller/Router.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_entity.php</name>
+					<scope>entity</scope>
+					<depend>
+						<is_tree />
+					</depend>
+				</file>
+				<file>
+					<name>03_footer.php</name>
 				</file>
 			</content>
 		</file>

@@ -11,7 +11,7 @@ class {{Namespace}}_{{Module}}_Block_{{Entity}}_Catalog_Product_List extends Mag
 	/**
 	 * get the list of products
 	 * @access public
-	 * @return Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection
+	 * @return Mage_Catalog_Model_Resource_Product_Collection
 	 * {{qwertyuiop}}
 	 */
 	public function getProductCollection(){
