@@ -16,7 +16,7 @@
 			</block>
 		</block>
 	</adminhtml_{{module}}_{{entity}}_{{siblings}}>
-	<adminhtml_{{module}}_{{entity}}_{{sibling}}sgrid>
+	<adminhtml_{{module}}_{{entity}}_{{siblings}}grid>
 		<block type="core/text_list" name="root" output="toHtml">
 			<block type="{{module}}/adminhtml_{{entity}}_edit_tab_{{sibling}}" name="{{entity}}.edit.tab.{{sibling}}"/>
 		</block>

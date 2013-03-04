@@ -8,7 +8,7 @@
 		$this->_init{{Entity}}();
 		$this->loadLayout();
 		$this->getLayout()->getBlock('{{entity}}.edit.tab.{{sibling}}')
-			->set{{Entity}}{{Siblings}}($this->getRequest()->getPost('{{siblings}}', null));
+			->set{{Entity}}{{Siblings}}($this->getRequest()->getPost('{{entity}}_{{siblings}}', null));
 		$this->renderLayout();
 	}
 	/**
@@ -21,6 +21,6 @@
 		$this->_init{{Entity}}();
 		$this->loadLayout();
 		$this->getLayout()->getBlock('{{entity}}.edit.tab.{{sibling}}')
-			->set{{Entity}}{{Siblings}}($this->getRequest()->getPost('{{siblings}}', null));
+			->set{{Entity}}{{Siblings}}($this->getRequest()->getPost('{{entity}}_{{siblings}}', null));
 		$this->renderLayout();
 	}

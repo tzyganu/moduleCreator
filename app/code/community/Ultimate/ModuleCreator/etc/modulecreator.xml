@@ -31,7 +31,7 @@
 				<flat />
 				<not_is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Grid/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Grid/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Grid.php</to>
 			<content>
 				<file>
@@ -117,7 +117,7 @@
 				<flat />
 				<not_is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit.php</to>
 			<content>
 				<file>
@@ -133,7 +133,7 @@
 				<flat />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/IsTree/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit.php</to>
 			<content>
 				<file>
@@ -149,7 +149,7 @@
 				<flat />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Abstract/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Abstract/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Abstract.php</to>
 			<content>
 				<file>
@@ -164,7 +164,7 @@
 			<depend>
 				<flat />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}.php</to>
 			<content>
 				<file>
@@ -180,7 +180,7 @@
 				<flat />
 				<not_is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tabs/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tabs/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tabs.php</to>
 			<content>
 				<file>
@@ -209,7 +209,7 @@
 				<flat />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tabs/IsTree/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tabs/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tabs.php</to>
 			<content>
 				<file>
@@ -238,7 +238,7 @@
 				<flat />
 				<not_is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Form/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Form/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Form.php</to>
 			<content>
 				<file>
@@ -254,7 +254,7 @@
 				<flat />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Tree/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Tree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Tree.php</to>
 			<content>
 				<file>
@@ -279,7 +279,7 @@
 				<flat />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Form/IsTree/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Form/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Form.php</to>
 			<content>
 				<file>
@@ -307,7 +307,7 @@
 			<depend>
 				<flat />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Model/Entity/</from>
+			<from>app/code/cp/Ns/Md/Model/Entity/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/{{Entity}}.php</to>
 			<content>
 				<file>
@@ -405,7 +405,7 @@
 			<depend>
 				<flat />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Entity/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}.php</to>
 			<content>
 				<file>
@@ -493,7 +493,7 @@
 			<depend>
 				<flat />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Collection/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Entity/Collection/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/Collection.php</to>
 			<content>
 				<file>
@@ -536,7 +536,7 @@
 				<flat />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Tree/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Entity/Tree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/Tree.php</to>
 			<content>
 				<file>
@@ -578,7 +578,7 @@
 			<depend>
 				<flat />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Helper/Entity/</from>
+			<from>app/code/cp/Ns/Md/Helper/Entity/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Helper/{{Entity}}.php</to>
 			<content>
 				<file>
@@ -615,7 +615,7 @@
 				<flat />
 				<has_image />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Helper/Entity/Image/</from>
+			<from>app/code/cp/Ns/Md/Helper/Entity/Image/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Helper/{{Entity}}/Image.php</to>
 			<content>
 				<file>
@@ -631,7 +631,7 @@
 				<flat />
 				<use_frontend />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/View/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/View/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/View.php</to>
 			<content>
 				<file>
@@ -647,7 +647,7 @@
 				<flat />
 				<can_create_list_block />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/List/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/List/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/List.php</to>
 			<content>
 				<file>
@@ -674,7 +674,7 @@
 				<can_create_list_block />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/List/IsTree/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/List/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/List.php</to>
 			<content>
 				<file>
@@ -725,7 +725,7 @@
 				<frontend_view />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/Children/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/Children/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Children.php</to>
 			<content>
 				<file>
@@ -741,7 +741,7 @@
 				<flat />
 				<rss />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/Rss/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/Rss/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Rss.php</to>
 			<content>
 				<file>
@@ -777,7 +777,7 @@
 				<use_frontend />
 				<widget />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/Widget/View/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/Widget/View/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Widget/View.php</to>
 			<content>
 				<file>
@@ -812,7 +812,7 @@
 				<use_frontend />
 				<widget />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/Widget/Link/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/Widget/Link/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Widget/Link.php</to>
 			<content>
 				<file>
@@ -828,7 +828,7 @@
 				<flat />
 				<not_is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/controllers/Adminhtml/Module/EntityController/</from>
+			<from>app/code/cp/Ns/Md/controllers/Adminhtml/Module/EntityController/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/Adminhtml/{{Module}}/{{Entity}}Controller.php</to>
 			<content>
 				<file>
@@ -944,7 +944,7 @@
 				<flat />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/controllers/Adminhtml/Module/EntityController/IsTree/</from>
+			<from>app/code/cp/Ns/Md/controllers/Adminhtml/Module/EntityController/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/Adminhtml/{{Module}}/{{Entity}}Controller.php</to>
 			<content>
 				<file>
@@ -1012,7 +1012,7 @@
 				<flat />
 				<widget />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/controllers/Adminhtml/Module/Entity/WidgetController/</from>
+			<from>app/code/cp/Ns/Md/controllers/Adminhtml/Module/Entity/WidgetController/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/Adminhtml/{{Module}}/{{Entity}}/WidgetController.php</to>
 			<content>
 				<file>
@@ -1037,7 +1037,7 @@
 				<flat />
 				<use_frontend />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/controllers/EntityController/</from>
+			<from>app/code/cp/Ns/Md/controllers/EntityController/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/{{Entity}}Controller.php</to>
 			<content>
 				<file>
@@ -1144,7 +1144,7 @@
 				<flat />
 				<has_file />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Helper/File/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Helper/File/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Helper/File.php</to>
 			<content>
 				<file>
@@ -1160,7 +1160,7 @@
 				<flat />
 				<has_image />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Helper/Image/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Helper/Image/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Helper/Image.php</to>
 			<content>
 				<file>
@@ -1177,7 +1177,7 @@
 				<widget />
 				<not_is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Widget/Chooser/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Widget/Chooser/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Widget/Chooser.php</to>
 			<content>
 				<file>
@@ -1212,7 +1212,7 @@
 				<widget />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Widget/Chooser/IsTree/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Widget/Chooser/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Widget/Chooser.php</to>
 			<content>
 				<file>
@@ -1227,7 +1227,7 @@
 			<depend>
 				<flat />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tab/Form/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tab/Form/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/Form.php</to>
 			<content>
 				<file>
@@ -1329,7 +1329,7 @@
 				<editor />
 				<has_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Helper/Wysiwyg/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Helper/Wysiwyg/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/Helper/Wysiwyg.php</to>
 			<content>
 				<file>
@@ -1344,7 +1344,7 @@
 			<depend>
 				<rss />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Rss/</from>
+			<from>app/code/cp/Ns/Md/Block/Rss/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Rss.php</to>
 			<content>
 				<file>
@@ -1356,7 +1356,7 @@
 			<title>Module base admin controller.</title>
 			<scope>global</scope>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Controller/Adminhtml/Module/</from>
+			<from>app/code/cp/Ns/Md/Controller/Adminhtml/Module/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Controller/Adminhtml/{{Module}}.php</to>
 			<content>
 				<file>
@@ -1368,7 +1368,7 @@
 			<title>Module default helper.</title>
 			<scope>global</scope>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Helper/Data/</from>
+			<from>app/code/cp/Ns/Md/Helper/Data/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Helper/Data.php</to>
 			<content>
 				<file>
@@ -1390,7 +1390,7 @@
 			<title>Module setup model.</title>
 			<scope>global</scope>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Setup/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Setup/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/Setup.php</to>
 			<content>
 				<file>
@@ -1402,7 +1402,7 @@
 			<title>Install script</title>
 			<scope>global</scope>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/sql/namespace_module_setup/install-0.0.1/</from>
+			<from>app/code/cp/Ns/Md/sql/namespace_module_setup/install-0.0.1/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/sql/{{namespace}}_{{module}}_setup/install-0.0.1.php</to>
 			<content>
 				<file>
@@ -1432,7 +1432,7 @@
 			<title>Widget xml</title>
 			<scope>global</scope>
 			<filetype>xml</filetype>
-			<from>app/code/codepool/Namespace/Module/etc/widget/</from>
+			<from>app/code/cp/Ns/Md/etc/widget/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/widget.xml</to>
 			<depend>
 				<widget />
@@ -1457,7 +1457,7 @@
 			<title>Adminhtml xml</title>
 			<scope>global</scope>
 			<filetype>xml</filetype>
-			<from>app/code/codepool/Namespace/Module/etc/adminhtml/</from>
+			<from>app/code/cp/Ns/Md/etc/adminhtml/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/adminhtml.xml</to>
 			<content>
 				<file>
@@ -1483,7 +1483,7 @@
 			<title>Config xml</title>
 			<scope>global</scope>
 			<filetype>xml</filetype>
-			<from>app/code/codepool/Namespace/Module/etc/config/</from>
+			<from>app/code/cp/Ns/Md/etc/config/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/config.xml</to>
 			<content>
 				<file>
@@ -1524,26 +1524,45 @@
 					</depend>
 				</file>
 				<file>
-					<name>09_admin.xml</name>
+					<name>09_global_search_top.xml</name>
+					<depend>
+						<admin_search />
+					</depend>
 				</file>
 				<file>
-					<name>10_frontend.xml</name>
+					<name>10_global_search_entity.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<admin_search />
+					</depend>
+				</file>
+				<file>
+					<name>11_global_search_footer.xml</name>
+					<depend>
+						<admin_search />
+					</depend>
+				</file>
+				<file>
+					<name>12_admin.xml</name>
+				</file>
+				<file>
+					<name>13_frontend.xml</name>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>11_default_top.xml</name>
+					<name>14_default_top.xml</name>
 				</file>
 				<file>
-					<name>12_default.xml</name>
+					<name>15_default.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<use_frontend />
 					</depend>
 				</file>
 				<file>
-					<name>13_default_footer.xml</name>
+					<name>16_default_footer.xml</name>
 				</file>
 			</content>
 		</file>
@@ -1554,7 +1573,7 @@
 			<depend>
 				<use_frontend />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/etc/system/</from>
+			<from>app/code/cp/Ns/Md/etc/system/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/system.xml</to>
 			<content>
 				<file>
@@ -1928,7 +1947,7 @@
 			<depend>
 				<has_observer />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Model/Adminhtml/Observer/</from>
+			<from>app/code/cp/Ns/Md/Model/Adminhtml/Observer/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Adminhtml/Observer.php</to>
 			<content>
 				<file>
@@ -1970,7 +1989,7 @@
 				<link_product />
 				<not_is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Catalog/Product/Edit/Tab/Entity/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Catalog/Product/Edit/Tab/Entity/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/Catalog/Product/Edit/Tab/{{Entity}}.php</to>
 			<content>
 				<file>
@@ -1986,7 +2005,7 @@
 				<link_product />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Catalog/Product/Edit/Tab/Entity/IsTree/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Catalog/Product/Edit/Tab/Entity/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/Catalog/Product/Edit/Tab/{{Entity}}.php</to>
 			<content>
 				<file>
@@ -2001,7 +2020,7 @@
 			<depend>
 				<link_product />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Helper/Product/</from>
+			<from>app/code/cp/Ns/Md/Helper/Product/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Helper/Product.php</to>
 			<content>
 				<file>
@@ -2027,7 +2046,7 @@
 				<link_product />
 				<not_is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Product/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Entity/Product/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/Product.php</to>
 			<content>
 				<file>
@@ -2043,7 +2062,7 @@
 				<link_product />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Product/IsTree/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Entity/Product/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/Product.php</to>
 			<content>
 				<file>
@@ -2058,7 +2077,7 @@
 			<depend>
 				<link_product />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tab/Product/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tab/Product/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/Product.php</to>
 			<content>
 				<file>
@@ -2073,7 +2092,7 @@
 			<depend>
 				<link_product />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Product/Collection/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Entity/Product/Collection/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/Product/Collection.php</to>
 			<content>
 				<file>
@@ -2088,7 +2107,7 @@
 			<depend>
 				<link_product />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Model/Entity/Product/</from>
+			<from>app/code/cp/Ns/Md/Model/Entity/Product/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/{{Entity}}/Product.php</to>
 			<content>
 				<file>
@@ -2103,7 +2122,7 @@
 			<depend>
 				<show_on_product />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Catalog/Product/List/Entity/</from>
+			<from>app/code/cp/Ns/Md/Block/Catalog/Product/List/Entity/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Catalog/Product/List/{{Entity}}.php</to>
 			<content>
 				<file>
@@ -2160,7 +2179,7 @@
 			<depend>
 				<show_products />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/Catalog/Product/List/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/Catalog/Product/List/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Catalog/Product/List.php</to>
 			<content>
 				<file>
@@ -2191,7 +2210,7 @@
 				<link_product />
 				<not_is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/controllers/Adminhtml/Module/Entity/Catalog/ProductController/</from>
+			<from>app/code/cp/Ns/Md/controllers/Adminhtml/Module/Entity/Catalog/ProductController/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/Adminhtml/{{Module}}/{{Entity}}/Catalog/ProductController.php</to>
 			<content>
 				<file>
@@ -2207,7 +2226,7 @@
 				<link_product />
 				<is_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/controllers/Adminhtml/Module/Entity/Catalog/ProductController/IsTree/</from>
+			<from>app/code/cp/Ns/Md/controllers/Adminhtml/Module/Entity/Catalog/ProductController/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/controllers/Adminhtml/{{Module}}/{{Entity}}/Catalog/ProductController.php</to>
 			<content>
 				<file>
@@ -2222,7 +2241,7 @@
 				<not_has_tree />
 			</depend>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tab/Sibling/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tab/Sibling/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/{{Sibling}}.php</to>
 			<content>
 				<file>
@@ -2238,7 +2257,7 @@
 				<entity_is_tree />
 			</depend>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tab/Sibling/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tab/Sibling/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/{{Sibling}}.php</to>
 			<content>
 				<file>
@@ -2254,7 +2273,7 @@
 				<sibling_is_tree />
 			</depend>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Block/Adminhtml/Entity/Edit/Tab/Sibling/IsTree/</from>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tab/Sibling/IsTree/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/{{Sibling}}.php</to>
 			<content>
 				<file>
@@ -2269,7 +2288,7 @@
 				<sibling_is_not_tree />
 			</depend>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Sibling/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Entity/Sibling/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/{{Sibling}}.php</to>
 			<content>
 				<file>
@@ -2293,7 +2312,7 @@
 				<sibling_is_tree />
 			</depend>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Sibling/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Entity/Sibling/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/{{Sibling}}.php</to>
 			<content>
 				<file>
@@ -2314,7 +2333,7 @@
 			<title>Entity sibling relation resource collection model</title>
 			<scope>siblings</scope>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Model/Resource/Entity/Sibling/Collection/</from>
+			<from>app/code/cp/Ns/Md/Model/Resource/Entity/Sibling/Collection/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Resource/{{Entity}}/{{Sibling}}/Collection.php</to>
 			<content>
 				<file>
@@ -2326,7 +2345,7 @@
 			<title>Entity sibling model</title>
 			<scope>siblings</scope>
 			<filetype>php</filetype>
-			<from>app/code/codepool/Namespace/Module/Model/Entity/Sibling/</from>
+			<from>app/code/cp/Ns/Md/Model/Entity/Sibling/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/{{Entity}}/{{Sibling}}.php</to>
 			<content>
 				<file>
@@ -2341,7 +2360,7 @@
 			<depend>
 				<show_frontend_relation_siblings />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/Sibling/List/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/Sibling/List/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/{{Sibling}}/List.php</to>
 			<content>
 				<file>
@@ -2371,7 +2390,7 @@
 			<depend>
 				<show_frontend_relation_children />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Block/Entity/Child/List/</from>
+			<from>app/code/cp/Ns/Md/Block/Entity/Child/List/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/{{Sibling}}/List.php</to>
 			<content>
 				<file>
@@ -2670,7 +2689,7 @@
 			<depend>
 				<has_tree />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/data/namespace_module_setup/data-install-0.0.1.php/</from>
+			<from>app/code/cp/Ns/Md/data/namespace_module_setup/data-install-0.0.1.php/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/data/{{namespace}}_{{module}}_setup/data-install-0.0.1.php</to>
 			<content>
 				<file>
@@ -2692,7 +2711,7 @@
 			<depend>
 				<url_rewrite />
 			</depend>
-			<from>app/code/codepool/Namespace/Module/Controller/Router/</from>
+			<from>app/code/cp/Ns/Md/Controller/Router/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Controller/Router.php</to>
 			<content>
 				<file>
@@ -2702,11 +2721,26 @@
 					<name>02_entity.php</name>
 					<scope>entity</scope>
 					<depend>
-						<is_tree />
+						<url_rewrite />
 					</depend>
 				</file>
 				<file>
 					<name>03_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Admin search model</title>
+			<filetype>php</filetype>
+			<scope>entity</scope>
+			<depend>
+				<admin_search />
+			</depend>
+			<from>app/code/cp/Ns/Md/Model/Adminhtml/Search/Entity/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/Adminhtml/Search/{{Entity}}.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
 				</file>
 			</content>
 		</file>

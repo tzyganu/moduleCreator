@@ -175,7 +175,8 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		return array('label_singular', 'label_plural', 'name_singular', 'name_plural', 'created_to_grid', 
 					'updated_to_grid', 'add_status', 'use_frontend', 'frontend_list', 
 					'frontend_list_template', 'frontend_view', 'frontend_view_template', 'frontend_add_seo',
-					'rss', 'widget', 'link_product', 'show_on_product', 'show_products','is_tree', 'url_rewrite'
+					'rss', 'widget', 'link_product', 'show_on_product', 'show_products',
+					'is_tree', 'url_rewrite', 'admin_search'
 		);
 	}
 	/**
@@ -794,5 +795,14 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 	 */
 	public function getNotAddStatus(){
 		return !$this->getAddStatus();
+	}
+	/**
+	 * check if admin search is set
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getAdminSearch(){
+		return !$this->getIsTree() && $this->getData('admin_search');
 	}
 }

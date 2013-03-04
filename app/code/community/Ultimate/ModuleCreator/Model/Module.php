@@ -98,6 +98,9 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 		if ($entity->getUrlRewrite()){
 			$this->setUrlRewrite(true);
 		}
+		if ($entity->getAdminSearch()){
+			$this->setAdminSearch(true);
+		}
 		return $this;
 	}
 	/**
@@ -882,7 +885,7 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 	 */
 	public function getSourceFolder(){
 		if (!$this->_sourceFolder){
-			$this->_sourceFolder = Mage::getConfig()->getModuleDir('etc', 'Ultimate_ModuleCreator').DS.'modulecreator'.DS;
+			$this->_sourceFolder = Mage::getConfig()->getModuleDir('etc', 'Ultimate_ModuleCreator').DS.'m'.DS;
 		}
 		return $this->_sourceFolder;
 	}

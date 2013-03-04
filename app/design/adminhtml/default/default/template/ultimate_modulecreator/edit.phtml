@@ -119,9 +119,20 @@
 	}
 	function reloadEntity(entityId){
 		var useFrontend = $('entity_' + entityId + '_use_frontend').value;
+		var isTree = $('entity_' + entityId + '_is_tree').value;
 		var useWidget = $('entity_' + entityId + '_widget').value;
 		var useRss = $('entity_' + entityId + '_rss').value;
 		var linkProduct = $('entity_' + entityId + '_link_product').value;
+		//console.log(isTree);
+		$$('#entity_' + entityId + ' tr.not-tree').each(function(item){
+			if (isTree == 1){
+				$(item).hide();
+			}
+			else{
+				$(item).show();
+			}
+		});
+		
 		if (useFrontend == 0){
 			$$('#entity_' + entityId + '_settings tr.use-frontend').each(function(item){
 				$(item).hide();
