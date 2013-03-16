@@ -2744,5 +2744,19 @@
 				</file>
 			</content>
 		</file>
+		<file translate="title" module="modulecreator">
+			<title>Abstract helper</title>
+			<filetype>php</filetype>
+			<depend>
+				<has_image />
+			</depend>
+			<from>app/code/cp/Ns/Md/Helper/Image/Abstract/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Helper/Image/Abstract.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
 	</files>
 </config>

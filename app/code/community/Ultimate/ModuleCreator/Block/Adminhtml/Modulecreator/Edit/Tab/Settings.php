@@ -160,7 +160,7 @@ class Ultimate_ModuleCreator_Block_Adminhtml_Modulecreator_Edit_Tab_Settings ext
 			'name'  			=> 'license',
 			'label' 			=> Mage::helper('modulecreator')->__('License'),
 			'title' 			=> Mage::helper('modulecreator')->__('License'),
-			'required'  		=> true,
+			'required'  		=> false,
 			'value'				=> $values->getLicense(),
 			'style'				=> 'width:'.$fieldWidth.'px',
 			'after_element_html'=> Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('License'), Mage::helper('modulecreator')->__('Added at the top of every generated file.').'<br />'.Mage::helper('modulecreator')->__('Use {{Namespace}} as a placeholder for namespace, {{Module}} as a placeholder for the module name and {{Y}} for current year.'))

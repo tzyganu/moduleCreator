@@ -209,6 +209,15 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 		return Mage::helper('modulecreator')->getLocalPackagesPath().$this->getNamespace()."_".$this->getModuleName().'.xml';
 	}
 	/**
+	 * get the log file path
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getLogPath(){
+		return Mage::helper('modulecreator')->getLocalPackagesPath().$this->getNamespace()."_".$this->getModuleName().'.log';
+	}
+	/**
 	 * save the module as xml
 	 * @access public
 	 * @return Ultimate_ModuleCreator_Model_Module
@@ -352,6 +361,21 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 			$destinationFile = $basePath.$name;
 			$this->_writeFile($destinationFile, $file);
 		}
+		$this->_writeLog();
+		return $this;
+	}
+	/**
+	 * write a log with the files that were created
+	 * @access protected
+	 * @return Ultimate_ModuleCreator_Model_Module
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	protected function _writeLog(){
+		$filesToWrite = array_keys($this->_files);
+		asort($filesToWrite);
+		$filesToWrite = array_values($filesToWrite);
+		$text = implode("\n", $filesToWrite);
+		$this->_writeFile($this->getLogPath(), $text);
 		return $this;
 	}
 	/**

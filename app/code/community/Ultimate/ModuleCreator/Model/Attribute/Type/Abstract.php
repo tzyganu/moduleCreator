@@ -152,7 +152,7 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Abstract extends Varien_Object
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
 	 */
 	public function getFrontendHtml(){
-		return "\t".'<?php echo Mage::helper(\''.strtolower($this->getAttribute()->getEntity()->getModule()->getModuleName()).'\')->__(\''.$this->getAttribute()->getLabel().'\');?>:<?php echo $_'.strtolower($this->getAttribute()->getEntity()->getNameSingular()).'->get'.$this->getAttribute()->getMagicMethodCode().'();?>'."\n";
+		return '<?php echo Mage::helper(\''.strtolower($this->getAttribute()->getEntity()->getModule()->getModuleName()).'\')->__(\''.$this->getAttribute()->getLabel().'\');?>:<?php echo $_'.strtolower($this->getAttribute()->getEntity()->getNameSingular()).'->get'.$this->getAttribute()->getMagicMethodCode().'();?>'."\n";
 	}
 	/**
 	 * get the text for RSS

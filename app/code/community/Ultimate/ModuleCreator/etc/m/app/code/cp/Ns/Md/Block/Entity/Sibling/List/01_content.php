@@ -19,6 +19,7 @@ class {{Namespace}}_{{Module}}_Block_{{Entity}}_{{Sibling}}_List extends {{Names
 		${{entity}} = $this->get{{Entity}}();
  		if (${{entity}}){
  			$this->get{{Siblings}}()->add{{Entity}}Filter(${{entity}}->getId());
+ 			$this->get{{Siblings}}()->unshiftOrder('related_{{entity}}.position', 'ASC');
  		}
 	}
 	/**

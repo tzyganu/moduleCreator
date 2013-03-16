@@ -4,6 +4,7 @@
 			}
 			catch (Exception $e){
 				$this->_getSession()->addError($e->getMessage())->set{{Entity}}Data($data);
+				Mage::logException($e);
 				$refreshTree = 'false';
 			}
 		}

@@ -29,6 +29,7 @@
 			catch (Exception $e) {
 				Mage::getSingleton('adminhtml/session')->addError(Mage::helper('{{module}}')->__('There was an error deleteing {{entityLabel}}.'));
 				$this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+				Mage::logException($e);
 				return;
 			}
 		}
@@ -59,6 +60,7 @@
 			}
 			catch (Exception $e) {
 				Mage::getSingleton('adminhtml/session')->addError(Mage::helper('{{module}}')->__('There was an error deleteing {{entitiesLabel}}.'));
+				Mage::logException($e);
 			}
 		}
 		$this->_redirect('*/*/index');

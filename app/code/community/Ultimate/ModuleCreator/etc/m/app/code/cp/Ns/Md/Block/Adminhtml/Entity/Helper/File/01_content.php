@@ -27,7 +27,7 @@ class {{Namespace}}_{{Module}}_Block_Adminhtml_{{Entity}}_Helper_File extends Va
 	 */
 	public function getElementHtml(){
 		$html = '';
-		$this->setClass('input-file');
+		$this->addClass('input-file');
 		$html.= parent::getElementHtml();
 		if ($this->getValue()) {
 			$url = $this->_getUrl();

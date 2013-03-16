@@ -18,6 +18,7 @@ class {{Namespace}}_{{Module}}_Block_{{Entity}}_Catalog_Product_List extends Mag
 		$collection = $this->get{{Entity}}()->getSelectedProductsCollection();
 		$collection->addAttributeToSelect('name');
 		$collection->addUrlRewrite();
+		$collection->getSelect()->order('related.position');
 		Mage::getSingleton('catalog/product_status')->addVisibleFilterToCollection($collection);
 		Mage::getSingleton('catalog/product_visibility')->addVisibleInCatalogFilterToCollection($collection);
 		return $collection;

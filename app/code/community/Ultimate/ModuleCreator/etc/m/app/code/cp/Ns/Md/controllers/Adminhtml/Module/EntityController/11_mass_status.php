@@ -24,6 +24,7 @@
 			}
 			catch (Exception $e) {
 				Mage::getSingleton('adminhtml/session')->addError(Mage::helper('{{module}}')->__('There was an error updating {{entitiesLabel}}.'));
+				Mage::logException($e);
 			}
 		}
 		$this->_redirect('*/*/index');

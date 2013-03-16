@@ -34,7 +34,12 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 	 * @var array()
 	 */
 	public static $_restrictedEntityNames = array(
-		'resource', 'setup', 'attribute', 'system', 'flat', 'data', 'collection', 'adminhtml', 'widget', 'observer', 'tree'
+		'resource', 'setup', 
+		'attribute', 'system', 
+		'flat', 'data', 
+		'collection', 'adminhtml', 
+		'widget', 'observer', 
+		'tree', 'image'
 	);
 	/**
 	 * get a list with "special attribute" names and error messages
@@ -97,6 +102,7 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 		$options['file']		= Mage::helper('modulecreator')->__('File');
 		$options['image']		= Mage::helper('modulecreator')->__('Image');
 		$options['website']		= Mage::helper('modulecreator')->__('Website');
+		$options['country']		= Mage::helper('modulecreator')->__('Country');
 		return $options;
 	}
 	/**

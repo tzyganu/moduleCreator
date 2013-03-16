@@ -225,6 +225,7 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Module}}_{{Entity}}Controller extends
 			catch (Exception $e){
 				Mage::getSingleton('adminhtml/session')->addError(Mage::helper('{{module}}')->__('An error occurred while trying to delete the {{entityLabel}}.'));
 				$this->getResponse()->setRedirect($this->getUrl('*/*/edit', array('_current'=>true)));
+				Mage::logException($e);
 				return;
 			}
 		}
