@@ -101,6 +101,9 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 		if ($entity->getAdminSearch()){
 			$this->setAdminSearch(true);
 		}
+		if ($entity->getCreateApi()){
+			$this->setCreateApi(true);
+		}
 		return $this;
 	}
 	/**

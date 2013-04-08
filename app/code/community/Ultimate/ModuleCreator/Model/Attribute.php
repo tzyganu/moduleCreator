@@ -200,4 +200,17 @@ class Ultimate_ModuleCreator_Model_Attribute extends Ultimate_ModuleCreator_Mode
 		}
 		return $this->getTypeInstance()->getRequired();
 	}
+	/**
+	 * get wsdl format for attribute
+	 * @access public
+	 * @param bool $wsi
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getWsdlFormat($wsi = false){
+		if ($wsi){
+			return '<xsd:element name="'.$this->getCode().'" type="xsd:string" />';	
+		}
+		return '<element name="'.$this->getCode().'" type="xsd:string" minOccurs="'.(int)$this->getRequired().'" />';
+	}
 }

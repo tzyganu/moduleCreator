@@ -75,7 +75,7 @@
 									</label>
 								</td>
 								<td class="value">
-									<input type="text" class="required-entry input-text name-singular validate-alphanum" id="entity_<?php echo $this->getIncrement();?>_name_singular" name="entity[<?php echo $this->getIncrement();?>][name_singular]" value="<?php echo $_entity->getNameSingular();?>" />
+									<input type="text" class="required-entry input-text name-singular validate-alphanum validate-code" id="entity_<?php echo $this->getIncrement();?>_name_singular" name="entity[<?php echo $this->getIncrement();?>][name_singular]" value="<?php echo $_entity->getNameSingular();?>" />
 									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity name - singular'), Mage::helper('modulecreator')->__('This is the code (singular) of your entity. This is how the variables relating to your entity will be named.'))?>
 								</td>
 							</tr>
@@ -86,7 +86,7 @@
 									</label>
 								</td>
 								<td class="value">
-									<input type="text" class="required-entry input-text validate-alphanum" id="entity_<?php echo $this->getIncrement();?>_name_plural" name="entity[<?php echo $this->getIncrement();?>][name_plural]" value="<?php echo $_entity->getNamePlural();?>" />
+									<input type="text" class="required-entry input-text validate-alphanum validate-code" id="entity_<?php echo $this->getIncrement();?>_name_plural" name="entity[<?php echo $this->getIncrement();?>][name_plural]" value="<?php echo $_entity->getNamePlural();?>" />
 									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Entity name - plural'), Mage::helper('modulecreator')->__('This is the code (singular) of your entity. This is how the variables relating to your entities will be named.'))?>
 								</td>
 							</tr>
@@ -155,6 +155,17 @@
 								<td class="value">
 									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_admin_search', 'entity'.'['.$this->getIncrement().'][admin_search]', $_entity->getAdminSearch());?>
 									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Add to admin global search'), Mage::helper('modulecreator')->__('When using the global admin search Magento searches on products, customers and orders. This can make it search in your entities also.'))?>
+								</td>
+							</tr>
+							<tr>
+								<td class="label">
+									<label for="entity_<?php echo $this->getIncrement();?>_create_api">
+										<?php echo Mage::helper('modulecreator')->__('Create API') ?>
+									</label>
+								</td>
+								<td class="value">
+									<?php echo $this->getYesNoSelect('entity'.'_'.$this->getIncrement().'_create_api', 'entity'.'['.$this->getIncrement().'][create_api]', $_entity->getCreateApi());?>
+									<?php echo Mage::helper('modulecreator/adminhtml')->getTooltipHtml(Mage::helper('modulecreator')->__('Create API'), Mage::helper('modulecreator')->__('This will create the files needed for the SOAP API for the custom entity.'))?>
 								</td>
 							</tr>
 						</tbody>

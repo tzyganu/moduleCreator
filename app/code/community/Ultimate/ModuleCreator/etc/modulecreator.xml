@@ -1893,6 +1893,42 @@
 						<url_rewrite />
 					</depend>
 				</file>
+				<file>
+					<name>14_api.csv</name>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>15_api_entity.csv</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>16_api_product_related.csv</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>17_api_tree.csv</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+						<is_tree />
+					</depend>
+				</file>
+				<file>
+					<name>18_api_sibling.csv</name>
+					<scope>siblings</scope>
+					<depend>
+						<entity_has_api />
+					</depend>
+				</file>
 			</content>
 		</file>
 		<file translate="title" module="modulecreator">
@@ -2755,6 +2791,249 @@
 			<content>
 				<file>
 					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Api config file</title>
+			<filetype>xml</filetype>
+			<depend>
+				<create_api />
+			</depend>
+			<from>app/code/cp/Ns/Md/etc/api/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/api.xml</to>
+			<content>
+				<file>
+					<name>01_top.xml</name>
+				</file>
+				<file>
+					<name>02_entity_api.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>03_resource_alias.xml</name>
+				</file>
+				<file>
+					<name>04_entity_resource_alias.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>05_v2.xml</name>
+				</file>
+				<file>
+					<name>06_v2_entity.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>07_acl.xml</name>
+				</file>
+				<file>
+					<name>08_acl_entity.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>09_footer.xml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>API model</title>
+			<filetype>php</filetype>
+			<scope>entity</scope>
+			<depend>
+				<create_api />
+			</depend>
+			<from>app/code/cp/Ns/Md/Model/Entity/Api/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/{{Entity}}/Api.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_product_relation_info.php</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>03_sibling_info.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>04_info_footer.php</name>
+				</file>
+				<file>
+					<name>05_tree.php</name>
+					<depend>
+						<is_tree />
+					</depend>
+				</file>
+				<file>
+					<name>06_product_relation.php</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>07_sibling_relation.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>08_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>API model V2</title>
+			<filetype>php</filetype>
+			<scope>entity</scope>
+			<depend>
+				<create_api />
+			</depend>
+			<from>app/code/cp/Ns/Md/Model/Entity/Api/V2/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Model/{{Entity}}/Api/V2.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_product_relation.php</name>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>03_sibling_relation.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>04_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>WSDL file</title>
+			<filetype>xml</filetype>
+			<depend>
+				<create_api />
+			</depend>
+			<from>app/code/cp/Ns/Md/etc/wsdl/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/wsdl.xml</to>
+			<content>
+				<file>
+					<name>01_top.xml</name>
+				</file>
+				<file>
+					<name>02_entity_types.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>03_schema_footer.xml</name>
+				</file>
+				<file>
+					<name>04_entity_messages.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>05_porttype_top.xml</name>
+				</file>
+				<file>
+					<name>06_porttype_entity.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>07_porttype_footer.xml</name>
+				</file>
+				<file>
+					<name>08_binding_top.xml</name>
+				</file>
+				<file>
+					<name>09_entity_binding.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>10_footer.xml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>WSI file</title>
+			<filetype>xml</filetype>
+			<depend>
+				<create_api />
+			</depend>
+			<from>app/code/cp/Ns/Md/etc/wsi/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/etc/wsi.xml</to>
+			<content>
+				<file>
+					<name>01_top.xml</name>
+				</file>
+				<file>
+					<name>02_entity_types.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>03_schema_footer.xml</name>
+				</file>
+				<file>
+					<name>04_entity_messages.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>05_porttype_top.xml</name>
+				</file>
+				<file>
+					<name>06_porttype_entity.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>07_porttype_footer.xml</name>
+				</file>
+				<file>
+					<name>08_binding_top.xml</name>
+				</file>
+				<file>
+					<name>09_entity_binding.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<create_api />
+					</depend>
+				</file>
+				<file>
+					<name>10_footer.xml</name>
 				</file>
 			</content>
 		</file>

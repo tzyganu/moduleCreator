@@ -179,4 +179,15 @@ class Ultimate_ModuleCreator_Model_Relation extends Ultimate_ModuleCreator_Model
 	public function getSiblingIsNotTree($index){
 		return !$this->getSiblingIsTree($index);
 	}
+	/**
+	 * check if entity has API
+	 * @access public
+	 * @param int $index
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getEntityHasApi($index){
+		$entities = $this->getEntities();
+		return $entities[$index]->getCreateApi();
+	}
 }

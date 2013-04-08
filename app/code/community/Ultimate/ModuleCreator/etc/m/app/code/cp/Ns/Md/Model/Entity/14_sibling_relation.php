@@ -29,7 +29,7 @@
 	/**
 	 * Retrieve collection selected {{siblings}}
 	 * @access public
-	 * @return E{{Namespace}}_{{Module}}_Model_{{Entity}}_{{Sibling}}_Collection
+	 * @return {{Namespace}}_{{Module}}_Model_{{Entity}}_{{Sibling}}_Collection
 	 * {{qwertyuiop}}
 	 */
 	public function getSelected{{Siblings}}Collection(){
