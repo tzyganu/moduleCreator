@@ -1,5 +1,5 @@
 	/**
-	 * {{enititiesLabel}} json action
+	 * {{entitiesLabel}} json action
 	 * @access public
 	 * @return void
 	 * {{qwertyuiop}}

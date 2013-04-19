@@ -1,6 +1,6 @@
 		foreach ($check as $key=>$settings){
 			$model = Mage::getModel($settings->getModel());
-			$id = $model->checkUrlKey($urlKey);
+			$id = $model->checkUrlKey($urlKey, Mage::app()->getStore()->getId());
 			if ($id){
 				$request->setModuleName('{{module}}')
 					->setControllerName($settings->getController())

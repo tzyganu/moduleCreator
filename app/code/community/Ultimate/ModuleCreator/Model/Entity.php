@@ -211,6 +211,8 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 			$placeholders['{{nameAttributeLabel}}'] 		= $nameAttribute->getLabel();
 			$placeholders['{{firstImageField}}']			= $this->getFirstImageField();
 			$placeholders['{{attributeSql}}']				= $this->getAttributesSql();
+			$placeholders['{{attributeDdlSql}}']			= $this->getAttributesDdlSql();
+			
 			$placeholders['{{menu_sort}}']					= $this->getPosition();
 			$placeholders['{{defaults}}']					= $this->getConfigDefaults();
 			$placeholders['{{systemAttributes}}']			= $this->getSystemAttributes();
@@ -219,6 +221,7 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 			$placeholders['{{EntityViewWidgetAttributes}}'] = $this->getViewWidgetAttributesHtml();
 			$placeholders['{{EntityViewRelationLayout}}'] 	= $this->getRelationLayoutXml();
 			$placeholders['{{fks}}']						= $this->getParentEntitiesFks("\t\t");
+			$placeholders['{{fksDdl}}']						= $this->getParentEntitiesFksDdl("\t");
 			$placeholders['{{referenceHead}}']				= $this->getReferenceHeadLayout();
 			//$placeholders['{{entityApiRelations}}']			= $this->getApiRelations();
 			$placeholders['{{entityApiAdditional}}']		= $this->getApiAdditional();
@@ -372,77 +375,25 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		foreach ($simulated as $attr){
 			$content .= $padding.$attr->getSqlColumn()."\n";
 		}
-		/*if ($this->getUrlRewrite()){
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('url_key');
-			$attr->setLabel('URL key');
-			$attr->setType('text');
-			$content .= $padding.$attr->getSqlColumn()."\n";
+		return substr($content,0, strlen($content) - strlen("\n"));
+	}
+	/**
+	 * get the ddl sql for attributes
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getAttributesDdlSql(){
+		$padding = "\t";
+		$content = '';
+		$content.= $this->getParentEntitiesFkAttributes($padding, true);
+		foreach ($this->getAttributes() as $attribute){
+			$content .= $padding.$attribute->getDdlSqlColumn()."\n";
 		}
-		if($this->getAddStatus()){
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('status');
-			$attr->setLabel('Status');
-			$attr->setType('yesno');
-			$content .= $padding.$attr->getSqlColumn()."\n";
+		$simulated = $this->_getSimulatedAttributes(null, false);
+		foreach ($simulated as $attr){
+			$content .= $padding.$attr->getDdlSqlColumn()."\n";
 		}
-		if ($this->getIsTree()){
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('parent_id');
-			$attr->setLabel('Parent id');
-			$attr->setType('int');
-			$content .= $padding.$attr->getSqlColumn()."\n";
-			
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('path');
-			$attr->setLabel('Path');
-			$attr->setType('text');
-			$content .= $padding.$attr->getSqlColumn()."\n";
-			
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('position');
-			$attr->setLabel('Position');
-			$attr->setType('int');
-			$content .= $padding.$attr->getSqlColumn()."\n";
-			
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('level');
-			$attr->setLabel('Level');
-			$attr->setType('int');
-			$content .= $padding.$attr->getSqlColumn()."\n";
-			
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('children_count');
-			$attr->setLabel('Children count');
-			$attr->setType('int');
-			$content .= $padding.$attr->getSqlColumn()."\n";
-		}
-		if($this->getRss()){
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('in_rss');
-			$attr->setLabel('In RSS');
-			$attr->setType('yesno');
-			$content .= $padding.$attr->getSqlColumn()."\n";
-		}
-		if ($this->getFrontendAddSeo()){
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('meta_title');
-			$attr->setLabel('Meta title');
-			$attr->setType('text');
-			$content .= $padding.$attr->getSqlColumn()."\n";
-			
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('meta_keywords');
-			$attr->setLabel('Meta keywords');
-			$attr->setType('textarea');
-			$content .= $padding.$attr->getSqlColumn()."\n";
-			
-			$attr = Mage::getModel('modulecreator/attribute');
-			$attr->setCode('meta_description');
-			$attr->setLabel('Meta description');
-			$attr->setType('textarea');
-			$content .= $padding.$attr->getSqlColumn()."\n";
-		}*/
 		return substr($content,0, strlen($content) - strlen("\n"));
 	}
 	/**
@@ -784,7 +735,7 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 	 * @return string
 	 * @author Marius Strajeru <marius.strajeru@gmail.com>
 	 */
-	public function getParentEntitiesFkAttributes($padding){
+	public function getParentEntitiesFkAttributes($padding, $ddl = false){
 		$parents = $this->getRelatedEntities(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_CHILD);
 		$content = '';
 		foreach ($parents as $parent){
@@ -792,7 +743,12 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 			$attr->setCode($parent->getNameSingular().'_id');
 			$attr->setLabel($parent->getLabelSingular());
 			$attr->setType('int');
-			$content .= $padding.$attr->getSqlColumn()."\n";
+			if ($ddl){
+				$content .= $padding.$attr->getDdlSqlColumn()."\n";
+			}
+			else{
+				$content .= $padding.$attr->getSqlColumn()."\n";
+			}
 		}
 		return $content;
 	}
@@ -808,6 +764,24 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		$content = '';
 		foreach ($parents as $parent){
 			$content .= ', '."\n".$padding."KEY `FK_".strtoupper($this->getModule()->getModuleName())."_".strtoupper($this->getNameSingular())."_".strtoupper($parent->getNameSingular())."` (`".$parent->getNameSingular()."_id`)\n";
+		}
+		return $content;
+	}
+	/**
+	 * get foreign keys for sql (Ddl)
+	 * @access public
+	 * @param string $padding
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getParentEntitiesFksDdl($padding){
+		$parents = $this->getRelatedEntities(Ultimate_ModuleCreator_Helper_Data::RELATION_TYPE_CHILD);
+		$content = '';
+		
+		$module = strtolower($this->getModule()->getModuleName());
+		foreach ($parents as $parent){
+			$parentName = strtolower($parent->getNameSingular());
+			$content .= "\n".$padding."->addIndex($"."this->getIdxName('".$module.'/'.$parentName."', array('".$parentName."_id')), array('".$parentName."_id'))";
 		}
 		return $content;
 	}

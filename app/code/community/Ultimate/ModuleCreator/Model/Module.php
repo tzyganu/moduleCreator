@@ -978,4 +978,22 @@ class Ultimate_ModuleCreator_Model_Module extends Ultimate_ModuleCreator_Model_A
 		}
 		return $relations;
 	}
+	/**
+	 * get use ddl
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getUseDdl(){
+		return Mage::getStoreConfigFlag('modulecreator/settings/use_ddl');
+	}
+	/**
+	 * get not use ddl
+	 * @access public
+	 * @return bool
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getNotUseDdl(){
+		return !$this->getUseDdl();
+	}
 }

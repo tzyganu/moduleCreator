@@ -338,6 +338,7 @@
 "Use {{Namespace}} as a placeholder for namespace, {{Module}} as a placeholder for the module name and {{Y}} as placeholder for current year.","Use {{Namespace}} as a placeholder for namespace, {{Module}} as a placeholder for the module name and {{Y}} as placeholder for current year.","false"
 "Use {{Namespace}} as a placeholder for namespace, {{Module}} as a placeholder for the module name and {{Y}} for current year","Use {{Namespace}} as a placeholder for namespace, {{Module}} as a placeholder for the module name and {{Y}} for current year","false"
 "Use {{Namespace}} as a placeholder for namespace, {{Module}} as a placeholder for the module name and {{Y}} for current year.","Use {{Namespace}} as a placeholder for namespace, {{Module}} as a placeholder for the module name and {{Y}} for current year.","false"
+"Use DDL for install script","Use DDL for install script"
 "View widget","View widget","false"
 "WISIWYG helper block.","WISIWYG helper block.","false"
 "Website","Website","true"

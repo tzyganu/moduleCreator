@@ -22,7 +22,7 @@ class {{Namespace}}_{{Module}}_Block_Adminhtml_{{Entity}}_Edit_Tabs extends Mage
 		$this->setTemplate('widget/tabshoriz.phtml');
 	}
 	/**
-	 * Retrieve {{siblingLabel}} entity
+	 * Retrieve {{entityLabel}} entity
 	 * @access public
 	 * @return {{Namespace}}_{{Module}}_Model_{{Entity}}
 	 * {{qwertyuiop}}

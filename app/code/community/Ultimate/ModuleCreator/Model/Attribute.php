@@ -162,6 +162,42 @@ class Ultimate_ModuleCreator_Model_Attribute extends Ultimate_ModuleCreator_Mode
 		return $this->getTypeInstance()->getSqlColumn();
 	}
 	/**
+	 * get the sql column
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getDdlSqlColumn(){
+		$ddl = '';
+		$ddl .= "->addColumn('{$this->getCode()}', Varien_Db_Ddl_Table::".$this->getTypeDdl().", ".$this->getSizeDdl().", array(\n";
+		if ($this->getRequired()){
+			$ddl .= "\t\t"."'nullable'  => false,\n";
+		}
+		if ($this->getType() == 'int'){
+			$ddl .= "\t\t"."'unsigned'  => true,\n";
+		}
+		$ddl .= "\t\t), '".$this->getLabel()."')\n";
+		return $ddl; 
+	}
+	/**
+	 * get column ddl type
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getTypeDdl(){
+		return $this->getTypeInstance()->getTypeDdl();
+	}
+	/**
+	 * get column ddl size
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getSizeDdl(){
+		return $this->getTypeInstance()->getSizeDdl();
+	}
+	/**
 	 * get the frontend html
 	 * @access public
 	 * @return string

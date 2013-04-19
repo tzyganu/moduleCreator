@@ -45,3 +45,5 @@ class {{Namespace}}_{{Module}}_Block_{{Entity}}_Rss extends Mage_Rss_Block_Abstr
 		);
 		$rssObj->_addHeader($data);
 		$collection = Mage::getModel('{{module}}/{{entity}}')->getCollection()
+			->addStoreFilter(Mage::app()->getStore())
+

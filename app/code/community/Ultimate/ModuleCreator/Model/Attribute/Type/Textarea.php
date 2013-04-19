@@ -23,6 +23,11 @@
  */ 
 class Ultimate_ModuleCreator_Model_Attribute_Type_Textarea extends Ultimate_ModuleCreator_Model_Attribute_Type_Abstract{
 	/**
+	 * sql colum ddl size
+	 * @var string
+	 */
+	protected $_sizeDdl 	= "'64k'";
+	/**
 	 * the textarea attributes are not allowed in the admin grid
 	 * @access public
 	 * @return bool

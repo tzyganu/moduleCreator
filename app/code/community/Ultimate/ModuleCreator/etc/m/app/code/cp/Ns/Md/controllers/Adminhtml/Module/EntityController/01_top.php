@@ -29,7 +29,10 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Module}}_{{Entity}}Controller extends
 	 * {{qwertyuiop}}
 	 */
 	public function indexAction() {
-		$this->loadLayout()->renderLayout();
+		$this->loadLayout();
+		$this->_title(Mage::helper('{{module}}')->__('{{Module}}'))
+			 ->_title(Mage::helper('{{module}}')->__('{{EntitiesLabel}}'));
+		$this->renderLayout();
 	}
 	/**
 	 * grid action
@@ -60,6 +63,14 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Module}}_{{Entity}}Controller extends
 		}
 		Mage::register('{{entity}}_data', ${{entity}});
 		$this->loadLayout();
+		$this->_title(Mage::helper('{{module}}')->__('{{Module}}'))
+			 ->_title(Mage::helper('{{module}}')->__('{{EntitiesLabel}}'));
+		if (${{entity}}->getId()){
+			$this->_title(${{entity}}->get{{EntityNameMagicCode}}());
+		}
+		else{
+			$this->_title(Mage::helper('{{module}}')->__('Add {{entityLabel}}'));
+		}
 		if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) { 
 			$this->getLayout()->getBlock('head')->setCanLoadTinyMce(true); 
 		}

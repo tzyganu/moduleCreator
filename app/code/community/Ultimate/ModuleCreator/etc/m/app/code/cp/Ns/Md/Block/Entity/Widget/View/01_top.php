@@ -19,4 +19,6 @@ class {{Namespace}}_{{Module}}_Block_{{Entity}}_Widget_View extends Mage_Core_Bl
 		parent::_beforeToHtml();
 		${{entity}}Id = $this->getData('{{entity}}_id');
 		if (${{entity}}Id) {
-			${{entity}} = Mage::getModel('{{module}}/{{entity}}')->load(${{entity}}Id);
+			${{entity}} = Mage::getModel('{{module}}/{{entity}}')
+				->setStoreId(Mage::app()->getStore()->getId())
+				->load(${{entity}}Id);

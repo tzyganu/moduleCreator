@@ -17,3 +17,4 @@ class {{Namespace}}_{{Module}}_Block_{{Entity}}_List extends Mage_Core_Block_Tem
  	public function __construct(){
 		parent::__construct();
  		${{entities}} = Mage::getResourceModel('{{module}}/{{entity}}_collection')
+ 						->addStoreFilter(Mage::app()->getStore())

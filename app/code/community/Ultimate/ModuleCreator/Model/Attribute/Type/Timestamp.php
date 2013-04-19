@@ -23,6 +23,11 @@
  */ 
 class Ultimate_ModuleCreator_Model_Attribute_Type_Timestamp extends Ultimate_ModuleCreator_Model_Attribute_Type_Abstract{
 	/**
+	 * sql colum ddl type
+	 * @var string
+	 */
+	protected $_typeDdl 	= 'TYPE_DATETIME';
+	/**
 	 * get the type for the form
 	 * @access public
 	 * @return string

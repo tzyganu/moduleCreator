@@ -2,7 +2,7 @@
 {{License}}
 
 /**
- * {{EntityLavel}} chooser for Wysiwyg CMS widget
+ * {{EntityLabel}} chooser for Wysiwyg CMS widget
  *
  * @category   {{Namespace}}
  * @package{{Namespace}}_{{Module}}

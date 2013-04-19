@@ -23,6 +23,16 @@
  */ 
 class Ultimate_ModuleCreator_Model_Attribute_Type_Yesno extends Ultimate_ModuleCreator_Model_Attribute_Type_Abstract{
 	/**
+	 * sql colum ddl type
+	 * @var string
+	 */
+	protected $_typeDdl 	= 'TYPE_INTEGER';
+	/**
+	 * sql colum ddl size
+	 * @var string
+	 */
+	protected $_sizeDdl 	= 'null';
+	/**
 	 * get the type for the form
 	 * @access public
 	 * @return string

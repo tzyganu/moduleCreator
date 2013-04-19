@@ -1,3 +1,6 @@
 					<{{entity}}>
 						<table>{{module}}_{{entity}}</table>
 					</{{entity}}>
+					<{{entity}}_store>
+						<table>{{module}}_{{entity}}_store</table>
+					</{{entity}}_store>

@@ -18,3 +18,5 @@ class {{Namespace}}_{{Module}}_Block_Catalog_Product_List_{{Entity}} extends Mag
 		if (!$this->hasData('{{entity}}_collection')){
 			$product = Mage::registry('product');
 			$collection = Mage::getResourceSingleton('{{module}}/{{entity}}_collection')
+				->addStoreFilter(Mage::app()->getStore())
+

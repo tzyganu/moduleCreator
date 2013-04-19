@@ -1,10 +1,10 @@
 		<wsdl:operation name="{{module}}{{Entity}}List">
-			<wsdl:documentation>Retrieve list of articles</wsdl:documentation>
+			<wsdl:documentation>Retrieve list of {{entitiesLabel}}</wsdl:documentation>
 			<wsdl:input message="typens:{{module}}{{Entity}}ListRequest" />
 			<wsdl:output message="typens:{{module}}{{Entity}}ListResponse" />
 		</wsdl:operation>
 		<wsdl:operation name="{{module}}{{Entity}}Info">
-			<wsdl:documentation>Retrieve article info</wsdl:documentation>
+			<wsdl:documentation>Retrieve {{entityLabel}} info</wsdl:documentation>
 			<wsdl:input message="typens:{{module}}{{Entity}}InfoRequest" />
 			<wsdl:output message="typens:{{module}}{{Entity}}InfoResponse" />
 		</wsdl:operation>

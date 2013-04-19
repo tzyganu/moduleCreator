@@ -4,3 +4,4 @@
 				return;
 			}
 			catch (Exception $e) {
+				Mage::logException($e);

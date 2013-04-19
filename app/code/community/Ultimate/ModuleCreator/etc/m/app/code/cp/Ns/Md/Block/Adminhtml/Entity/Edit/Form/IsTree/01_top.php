@@ -29,7 +29,7 @@ class {{Namespace}}_{{Module}}_Block_Adminhtml_{{Entity}}_Edit_Form extends {{Na
 	 * prepare the layout
 	 * @access protected
 	 * @return {{Namespace}}_{{Module}}_Block_Adminhtml_{{Entity}}_Edit_Form
-	 * {{qwrtyuiop}}
+	 * {{qwertyuiop}}
 	 */
 	protected function _prepareLayout(){
 		${{entity}} = $this->get{{Entity}}();

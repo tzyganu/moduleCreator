@@ -24,7 +24,7 @@
 <config>
 	<modules>
 		<Ultimate_ModuleCreator>
-			<version>1.5.0</version>
+			<version>1.6.0</version>
 		</Ultimate_ModuleCreator>
 	</modules>
 	<global>
@@ -94,7 +94,7 @@ http://opensource.org/licenses/mit-license.php
 @copyright  	Copyright (c) {{Y}}
 @license		http://opensource.org/licenses/mit-license.php MIT License
 ]]></license>
-				
+			<use_ddl>1</use_ddl>	
 			</settings>
 			<entity_defaults>
 				<use_frontend>1</use_frontend>

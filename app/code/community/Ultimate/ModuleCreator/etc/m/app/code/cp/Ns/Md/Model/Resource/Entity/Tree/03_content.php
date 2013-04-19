@@ -19,7 +19,7 @@
 	}
 
 	/**
-	 * Get {{entitiesLabel} collection
+	 * Get {{entitiesLabel}} collection
 	 * @access public
 	 * @param boolean $sorted
 	 * @return {{Namespace}}_{{Module}}_Model_Resource_{{Entity}}_Collection

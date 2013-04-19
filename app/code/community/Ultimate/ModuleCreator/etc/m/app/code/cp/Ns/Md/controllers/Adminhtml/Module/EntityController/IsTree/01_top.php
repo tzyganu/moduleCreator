@@ -99,6 +99,8 @@ class {{Namespace}}_{{Module}}_Adminhtml_{{Module}}_{{Entity}}Controller extends
 			return;
 		}
 		$this->loadLayout();
+		$this->_title(Mage::helper('{{module}}')->__('{{Module}}'))
+			 ->_title(Mage::helper('{{module}}')->__('{{EntitiesLabel}}'));
 		$this->_setActiveMenu('{{module}}/{{entity}}');
 		$this->getLayout()->getBlock('head')->setCanLoadExtJs(true)
 			->setContainerCssClass('{{entity}}');

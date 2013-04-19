@@ -23,6 +23,16 @@
  */ 
 class Ultimate_ModuleCreator_Model_Attribute_Type_Decimal extends Ultimate_ModuleCreator_Model_Attribute_Type_Int{
 	/**
+	 * sql colum ddl type
+	 * @var string
+	 */
+	protected $_typeDdl 	= 'TYPE_DECIMAL';
+	/**
+	 * sql colum ddl size
+	 * @var string
+	 */
+	protected $_sizeDdl 	= "'12,4'";
+	/**
 	 * get the sql column format
 	 * @access public
 	 * @return string

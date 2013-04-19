@@ -23,6 +23,11 @@
  */ 
 class Ultimate_ModuleCreator_Model_Attribute_Type_Country extends Ultimate_ModuleCreator_Model_Attribute_Type_Abstract{
 	/**
+	 * sql colum ddl size
+	 * @var string
+	 */
+	protected $_sizeDdl 	= '2';
+	/**
 	 * get the type for the form
 	 * @access public
 	 * @return string

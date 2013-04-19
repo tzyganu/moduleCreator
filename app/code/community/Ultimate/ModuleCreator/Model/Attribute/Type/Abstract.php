@@ -26,12 +26,22 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Abstract extends Varien_Object
 	 * separator for options
 	 * @var string
 	 */
-	const OPTION_SEPARATOR = "\t\t\t";
+	const OPTION_SEPARATOR 	= "\t\t\t";
 	/**
 	 * attribute memebr
 	 * @var mixed(null|Ultimate_ModuleCreator_Model_Attribute)
 	 */
-	protected $_attribute = null;
+	protected $_attribute 	= null;
+	/**
+	 * sql colum ddl type
+	 * @var string
+	 */
+	protected $_typeDdl 	= 'TYPE_TEXT';
+	/**
+	 * sql colum ddl size
+	 * @var string
+	 */
+	protected $_sizeDdl 	= '255';
 	/**
 	 * set attribute
 	 * @access public
@@ -162,5 +172,23 @@ class Ultimate_ModuleCreator_Model_Attribute_Type_Abstract extends Varien_Object
 	 */
 	public function getRssText(){
 		return '			$'.'description .= $item->get'.$this->getAttribute()->getMagicMethodCode().'();';
+	}
+	/**
+	 * get column ddl type
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getTypeDdl(){
+		return $this->_typeDdl;
+	}
+	/**
+	 * get column ddl size
+	 * @access public
+	 * @return string
+	 * @author Marius Strajeru <marius.strajeru@gmail.com>
+	 */
+	public function getSizeDdl(){
+		return $this->_sizeDdl;
 	}
 }

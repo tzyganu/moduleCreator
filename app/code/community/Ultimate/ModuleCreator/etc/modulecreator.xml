@@ -64,48 +64,51 @@
 					</depend>
 				</file>
 				<file>
-					<name>07_created_at.php</name>
+					<name>07_stores.php</name>
+				</file>
+				<file>
+					<name>08_created_at.php</name>
 					<depend>
 						<created_to_grid />
 					</depend>
 				</file>
 				<file>
-					<name>08_updated_at.php</name>
+					<name>09_updated_at.php</name>
 					<depend>
 						<updated_to_grid />
 					</depend>
 				</file>
 				<file>
-					<name>09_grid_actions.php</name>
+					<name>10_grid_actions.php</name>
 				</file>
 				<file>
-					<name>10_grid_export.php</name>
+					<name>11_grid_export.php</name>
 				</file>
 				<file>
-					<name>11_columns_footer.php</name>
+					<name>12_columns_footer.php</name>
 				</file>
 				<file>
-					<name>12_mass_action_top.php</name>
+					<name>13_mass_action_top.php</name>
 				</file>
 				<file>
-					<name>13_mass_action_status.php</name>
+					<name>14_mass_action_status.php</name>
 					<depend>
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>14_mass_action_flags.php</name>
+					<name>15_mass_action_flags.php</name>
 					<scope>attribute</scope>
 					<depend_type>
 						<yesno />
 					</depend_type>
 				</file>
 				<file>
-					<name>15_mass_action_parents.php</name>
+					<name>16_mass_action_parents.php</name>
 					<scope>parents</scope>
 				</file>
 				<file>
-					<name>16_footer.php</name>
+					<name>17_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -187,17 +190,26 @@
 					<name>01_top.php</name>
 				</file>
 				<file>
-					<name>02_relations_tabs.php</name>
+					<name>02_seo.php</name>
+					<depend>
+						<frontend_add_seo />
+					</depend>
+				</file>
+				<file>
+					<name>03_stores.php</name>
+				</file>
+				<file>
+					<name>04_relations_tabs.php</name>
 					<scope>siblings</scope>
 				</file>
 				<file>
-					<name>03_product_relation.php</name>
+					<name>05_product_relation.php</name>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>04_footer.php</name>
+					<name>06_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -216,17 +228,26 @@
 					<name>01_top.php</name>
 				</file>
 				<file>
-					<name>02_relations_tabs.php</name>
+					<name>02_seo.php</name>
+					<depend>
+						<frontend_add_seo />
+					</depend>
+				</file>
+				<file>
+					<name>03_stores.php</name>
+				</file>
+				<file>
+					<name>04_relations_tabs.php</name>
 					<scope>siblings</scope>
 				</file>
 				<file>
-					<name>03_product_relation.php</name>
+					<name>05_product_relation.php</name>
 					<depend>
 						<link_product />
 					</depend>
 				</file>
 				<file>
-					<name>04_footer.php</name>
+					<name>06_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -421,68 +442,74 @@
 					<name>03_constructor.php</name>
 				</file>
 				<file>
-					<name>04_tree.php</name>
+					<name>04_not_tree.php</name>
+					<depend>
+						<not_is_tree />
+					</depend>
+				</file>
+				<file>
+					<name>05_tree.php</name>
 					<depend>
 						<is_tree />
 					</depend>
 				</file>
 				<file>
-					<name>05_tree_before_save_no_url_rewrite.php</name>
+					<name>06_tree_before_save_no_url_rewrite.php</name>
 					<depend>
 						<is_tree />
 						<not_url_rewrite />
 					</depend>
 				</file>
 				<file>
-					<name>06_tree_before_save_url_rewrite.php</name>
+					<name>07_tree_before_save_url_rewrite.php</name>
 					<depend>
 						<is_tree />
 						<url_rewrite />
 					</depend>
 				</file>
 				<file>
-					<name>07_children_no_status.php</name>
+					<name>08_children_no_status.php</name>
 					<depend>
 						<is_tree />
 						<not_add_status />
 					</depend>
 				</file>
 				<file>
-					<name>08_children_status.php</name>
+					<name>09_children_status.php</name>
 					<depend>
 						<is_tree />
 						<add_status />
 					</depend>
 				</file>
 				<file>
-					<name>09_content.php</name>
+					<name>10_content.php</name>
 					<depend>
 						<is_tree />
 					</depend>
 				</file>
 				<file>
-					<name>10_url_rewrite_status.php</name>
+					<name>11_url_rewrite_status.php</name>
 					<depend>
 						<add_status />
 						<url_rewrite />
 					</depend>
 				</file>
 				<file>
-					<name>11_url_rewrite_not_status.php</name>
+					<name>12_url_rewrite_not_status.php</name>
 					<depend>
 						<not_add_status />
 						<url_rewrite />
 					</depend>
 				</file>
 				<file>
-					<name>12_url_rewrite_before_save_not_tree.php</name>
+					<name>13_url_rewrite_before_save_not_tree.php</name>
 					<depend>
 						<url_rewrite />
 						<not_is_tree />
 					</depend>
 				</file>
 				<file>
-					<name>13_footer.php</name>
+					<name>14_footer.php</name>
 				</file>
 			</content>
 		</file>
@@ -1292,7 +1319,7 @@
 					</depend>
 				</file>
 				<file>
-					<name>12_seo.php</name>
+					<name>12_stores.php</name>
 					<depend>
 						<frontend_add_seo />
 					</depend>
@@ -1320,7 +1347,38 @@
 				</file>
 			</content>
 		</file>
-		
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin meta attributes tab.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<frontend_add_seo />
+			</depend>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tab/Meta/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/Meta.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
+			<title>Flat entity admin stores tab.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<frontend_add_seo />
+			</depend>
+			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tab/Stores/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/Stores.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
 		<file translate="title"	module="modulecreator">
 			<title>WISIWYG helper block.</title>
 			<scope>global</scope>
@@ -1401,8 +1459,44 @@
 		<file translate="title" module="modulecreator">
 			<title>Install script</title>
 			<scope>global</scope>
+			<depend>
+				<not_use_ddl />
+			</depend>
 			<filetype>php</filetype>
 			<from>app/code/cp/Ns/Md/sql/namespace_module_setup/install-0.0.1/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/sql/{{namespace}}_{{module}}_setup/install-0.0.1.php</to>
+			<content>
+				<file>
+					<name>01_top.php</name>
+				</file>
+				<file>
+					<name>02_entity.php</name>
+					<scope>entity</scope>
+				</file>
+				<file>
+					<name>03_product_relation.php</name>
+					<scope>entity</scope>
+					<depend>
+						<link_product />
+					</depend>
+				</file>
+				<file>
+					<name>04_sibling_relation.php</name>
+					<scope>siblings</scope>
+				</file>
+				<file>
+					<name>05_footer.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Install script</title>
+			<scope>global</scope>
+			<depend>
+				<use_ddl />
+			</depend>
+			<filetype>php</filetype>
+			<from>app/code/cp/Ns/Md/sql/namespace_module_setup/install-0.0.1-ddl/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/sql/{{namespace}}_{{module}}_setup/install-0.0.1.php</to>
 			<content>
 				<file>
