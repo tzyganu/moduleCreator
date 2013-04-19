@@ -1,0 +1,51 @@
+/**
+ * Ultimate_ModuleCreator extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE_UMC.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category   	Ultimate
+ * @package		Ultimate_ModuleCreator
+ * @copyright  	Copyright (c) 2012
+ * @license		http://opensource.org/licenses/mit-license.php MIT License
+ */ 
+.modulecreator-entity .box .form-list td.value input.input-text, 
+.modulecreator-entity .box .form-list td.value textarea {
+    width: 203px;
+}
+.modulecreator-entity .box .form-list td.value select{
+	width: 209px;
+}
+
+.modulecreator-entity .form-list td.label label{
+	width:155px;
+}
+.modulecreator-attribute .form-list td.label{
+	width:160px;
+}
+.modulecreator-attribute .form-list td.label label{
+	width:150px;
+}
+.modulecreator-attribute .box .form-list td.value input.input-text, 
+.modulecreator-attribute .box .form-list td.value textarea {
+    width: 180px;
+}
+.modulecreator-attribute .box .form-list td.value select{
+	width: 186px;
+}
+.modulecreator-toggle{
+	width:19px;
+	height:18px;
+}
+ul.tabs a.modulecreator-system span{
+	font-weight: bold!important;
+	/*background:url("") no-repeat scroll 20px 2px transparent;*/
+	background-image: url(images/ultimate_modulecreator/logo.png)!important;
+	background-repeat: no-repeat!important;
+	background-position: 20px 2px!important;
+	padding-left:45px!important;
+}
