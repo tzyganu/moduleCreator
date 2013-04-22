@@ -1369,7 +1369,6 @@
 			<filetype>php</filetype>
 			<depend>
 				<flat />
-				<frontend_add_seo />
 			</depend>
 			<from>app/code/cp/Ns/Md/Block/Adminhtml/Entity/Edit/Tab/Stores/</from>
 			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/Adminhtml/{{Entity}}/Edit/Tab/Stores.php</to>
