@@ -36,7 +36,7 @@ class {{Namespace}}_{{Module}}_Block_Adminhtml_{{Entity}}_Edit_Tabs extends Mage
 	 * @return {{Namespace}}_{{Module}}_Block_Adminhtml_{{Entity}}_Edit_Tabs
 	 */
 	protected function _prepareLayout(){
-		$this->addTab('form_section', array(
+		$this->addTab('form_{{entity}}', array(
 			'label'		=> Mage::helper('{{module}}')->__('{{EntityLabel}}'),
 			'title'		=> Mage::helper('{{module}}')->__('{{EntityLabel}}'),
 			'content' 	=> $this->getLayout()->createBlock('{{module}}/adminhtml_{{entity}}_edit_tab_form')->toHtml(),

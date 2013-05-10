@@ -47,7 +47,7 @@
 	 */
 	public function draw{{Entity}}(${{entity}}, $level = 0){
 		$html = '';
-		$storeIds = Mage::getResourceSingleton('news/section')->lookupStoreIds($section->getId());
+		$storeIds = Mage::getResourceSingleton('{{module}}/{{entity}}')->lookupStoreIds(${{entity}}->getId());
 		$validStoreIds = array(0, Mage::app()->getStore()->getId());
 		if (!array_intersect($storeIds, $validStoreIds)){
 			continue;
