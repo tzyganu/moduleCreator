@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Magento Ultimate Module Creator - Documentation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Magento Ultimate Module Creator Documentation" />
+	<meta name="author" content="Marius Strajeru" />
+	<link href="css/bootstrap.css" rel="stylesheet" />
+	<link href="css/styles.css" rel="stylesheet" />
+	<!--[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="fancybox/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+	<link rel="shortcut icon" href="img/favicon.ico">
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" id="main-nav-bar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="index.html"><img src="img/logo.png" width="30" height="30" alt="w3resource logo"></a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li class="active"><a href="docs.html">Documentation</a></li>
+						<li><a href="release-notes.html">Release Notes</a></li>
+						<li><a href="download.html">Download</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<p><small>(under construction)</small></p>
+		<div class="row">
+			<div class="span3">
+				<ul class="nav nav-list affix">
+					<li><a href="#install"><i class="icon-chevron-right"></i>Install/Uninstall</a></li>
+					<li><a href="#list"><i class="icon-chevron-right"></i>Module list</a></li>
+					<li><a href="#add"><i class="icon-chevron-right"></i>Create module</a></li>
+				</ul>
+			</div>
+			<div class="span9">
+        		<section id="install">
+        			<h2>Installation</h2>
+          			<div class="tabbable">
+						<ul class="nav nav-tabs">
+				    		<li class="active">
+				    			<a href="#requirements" data-toggle="tab">Requirements</a>
+				    		</li>
+				    		<li>
+				    			<a href="#installation" data-toggle="tab">Installation</a>
+				    		</li>
+				    		<li>
+				    			<a href="#uninstall" data-toggle="tab">Uninstall</a>
+				    		</li>
+				  		</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="requirements">
+								<p>UMC requires Magento CE 1.7. It might work on CE 1.8.0.0-alpha but it hasn't been fully tested yet.</p>
+								<p>UMC does not work on CE versions lower than 1.7, or does not produce the desired result.</p>
+								<p>Before installing UMC, make sure the compilation is disabled.</p>
+								<p><span class="label label-warning">Warning:</span> UMC is for development use. Do not use in UMC in production environments.</p>
+							</div>
+							<div class="tab-pane" id="installation">
+								<h3>Magento Connect installation.</h3>
+								<p>You can install UMC directly from <a href="http://www.magentocommerce.com/magento-connect/">Magento Connect.</a></p>
+								<p>UMC can be found at this url: <a href="http://www.magentocommerce.com/magento-connect/utilities/developer-tools/ultimate-modulecreator-8949.html">http://www.magentocommerce.com/magento-connect/utilities/developer-tools/ultimate-modulecreator-8949.html</a></p>
+								<p>The extension key for UMC is <i>http://connect20.magentocommerce.com/community/Ultimate_ModuleCreator</i></p>
+								<h3>Github installation.</h3>
+								<p>You can also download UMC from <a href="https://github.com/tzyganu/moduleCreator">github</a> as an archive. Unzip the archive over your Magento instance (app and skin folders over the matching folder). Nothing should be overwritten.</p>
+								<br />
+								<p>After the install process is done make sure you clear the cache.</p>
+								<p>
+									If the installation was successful you should see the UMC menu item in the backend under the `System` menu
+									<br />
+									<img src="img/screen/menu.png" alt="menu" />
+								</p>
+							</div>
+							<div class="tab-pane" id="uninstall">
+								<h3>Uninstalling UMC</h3>
+								<p>
+									If you want to uninstall UMC delete the following (paths are relative to Magento root):
+								</p>
+								<table class="table table-striped">
+									<tbody>
+										<tr>
+											<td>app/code/local/Ultimate/ModuleCreator/</td>
+											<td>folder</td>
+										</tr>
+										<tr>
+											<td>app/design/adminhtml/default/default/layout/ultimate_modulecreator.xml</td>
+											<td>file</td>
+										</tr>
+										<tr>
+											<td>app/design/adminhtml/default/default/template/ultimate_modulecreator/</td>
+											<td>folder</td>
+										</tr>
+										<tr>
+											<td>app/etc/modules/Ultimate_ModuleCreator.xml</td>
+											<td>file</td>
+										</tr>
+										<tr>
+											<td>app/locale/en_US/Ultimate_ModuleCreator.csv</td>
+											<td>file</td>
+										</tr>
+										<tr>
+											<td>skin/adminhtml/default/default/ultimate_modulecreator.css</td>
+											<td>file</td>
+										</tr>
+										<tr>
+											<td>LICENSE_UMC.txt</td>
+											<td>file</td>
+										</tr>
+										<tr>
+											<td>readme_UMC.txt</td>
+											<td>file</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>
+									To delete any settings from the database run the following query (add table prefix if you have one): 
+								</p>
+								<em>DELETE FROM `core_config_data` where `path` LIKE 'modulecreator/%';</em>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section id="list">
+					<h2>Module List</h2>
+					<p>After clicking on the 'Module creator' menu you should see an empty grid. This will list the modules you will create with UMC.</p>
+					<p>Click on 'Create new module' to start your module.</p>
+				</section>
+				<section id="add">
+					<h2>Create a module</h2>
+					<p>The 'create module screen' should contain 3 tabs. Later might be 4 tabs but initially there are 3. </p>
+					<p>While going through the tabs I will create a module as a tutorial. It will be a simple blog module with blog posts and tags.</p>
+					<p>At the end of each tab description below you will find the values needed you need to fill in to make it work. </p>
+					<div class="tabbable">
+						<ul class="nav nav-tabs">
+				    		<li class="active">
+				    			<a href="#general" data-toggle="tab">General settings tab</a>
+				    		</li>
+				    		<li>
+				    			<a href="#entities" data-toggle="tab">Entities tab</a>
+				    		</li>
+				    		<li>
+				    			<a href="#relations" data-toggle="tab">Relations tab</a>
+				    		</li>
+				    		<li>
+				    			<a href="#help" data-toggle="tab">Help tab</a>
+				    		</li>
+				  		</ul>
+				  		<div class="tab-content">
+							<div class="tab-pane active" id="general">
+								<a href="img/screen/general_tab_large.png" class="fancybox-button">
+									<img src="img/screen/general_tab.png" alt="General tab" align="left" class="left" />
+								</a>
+								<p>In the <strong>General settings</strong> tab you can define the meta-information about your module.</p>
+								<p>Most of the values are filled with a default value. To see how to change these values visit the <a href="#configuration">Configuration section</a></p>
+								<table class="table">
+									<tr>
+										<th>Field name</th>
+										<th>Description</th>
+										<th>Has default value</th>
+									</tr>
+									<tr>
+										<td>Namespace</td>
+										<td>This is not actually a namespace. This is the folder name of your new extension. Your company name should go here. Use only letters and numbers. Start with a capital letter.</td>
+										<td>Yes</td>
+									</tr>
+									<tr>
+										<td>Module name</td>
+										<td>
+											<p>This is your extension/module name. It should be something meaningful and not very long.</p>
+											<p>Try to use a noun in singular form. Start with a capital letter.</p>
+											<p>For security reasons, to avoid module name collisions with the Magento core you cannot name a module just like an existing one even in a different namespace: "Catalog", "Sales", "Checkout"...</p>
+										</td>
+										<td>No</td>
+									</tr>
+									<tr>
+										<td>Code pool</td>
+										<td>
+											<p>The codepool is the folder where your extensnion will be placed. Magento has by deafult 3 codepools: core, local &amp; community.</p>
+											<p>In this dropdown only local and community are available. Always keep the core clean.</p>
+											<p>If the extensnion you create with UMC only for internal use then choose 'local'. If you plan to put it on magento-connect or sell it, select 'community'.</p>
+										</td>
+										<td>Yes</td>
+									</tr>
+									<tr>
+										<td>Action</td>
+										<td>
+											<p>UMC allows you to direcly install the module you create on the current Magento instance, or create a zip with it and install it later.</p>
+											<p><span class="label label-warning">Warning:</span>. The zip is not compatible with Magento Connect. It's just a simple archive with the files of the module.</p>
+											<p>If you choose to install the module directly no file will be overwritten. If by a human error or UMC error a file should be overwritten then the 'Action' is changed to 'Create an archive. I will install it later.' and you will be notified of the files that were not overwritten.</p>
+										</td>
+										<td>Yes</td>
+									</tr>
+									<tr>
+										<td>Frontend package</td>
+										<td>
+											<p>This is the name of the design interface (package) of your mangento instance. If you don't know what goes here put "base". </p>
+											<p>For more information on what package/interface is, see the <a href="http://www.magentocommerce.com/resources/magento-user-guide">Magento User guide</a></p>
+										</td>
+										<td>Yes</td>
+									</tr>
+									<tr>
+										<td>Frontend theme - templates</td>
+										<td>
+											<p>This is the name of the theme of your mangento instance for the template files. If you don't know what goes here put "default". </p>
+											<p>For more information on what a theme is, see the <a href="http://www.magentocommerce.com/resources/magento-user-guide">Magento User guide</a></p>
+										</td>
+										<td>Yes</td>
+									</tr>
+									<tr>
+										<td>Frontend theme - layout</td>
+										<td>
+											<p>This is the name of the theme of your mangento instance for the layout files. If you don't know what goes here put "default". </p>
+											<p>For more information on what a theme is, see the <a href="http://www.magentocommerce.com/resources/magento-user-guide">Magento User guide</a></p>
+										</td>
+										<td>Yes</td>
+									</tr>
+									<tr>
+										<td>License</td>
+										<td>
+											<p>The text you put here will be added at the top of (almost) each file in the module you create.</p>
+											<p>Use {{Namespace}} as a placeholder for namespace, {{Module}} as a placeholder for the module name and {{Y}} as placeholder for current year.</p>
+											<p>If you don't want any License text on your files just leave this field empty.</p>
+										</td>
+										<td>Yes</td>
+									</tr>
+									<tr>
+										<td>Menu sort order</td>
+										<td>
+											<p>The module you create should be accessable in the back-end through a menu item. In this field you should put the sort order for that menu item</p>
+											<p>In case you don't know what to puut there, click on the link below the field and you should see the current menus and be able to fit your menu items between 2 of them or at the start or the end of the menu items.</p>
+										</td>
+										<td>No</td>
+									</tr>
+								</table>
+								<p>For the blog module these values can be:</p>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Field</th>
+											<th>Value</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Namespace</td>
+											<td>Easylife</td>
+										</tr>
+										<tr>
+											<td>Module name</td>
+											<td>Blog</td>
+										</tr>
+										<tr>
+											<td>Code pool</td>
+											<td>local</td>
+										</tr>
+										<tr>
+											<td>Action</td>
+											<td>Install new extension on the current instance.</td>
+										</tr>
+										<tr>
+											<td>Frontend package</td>
+											<td>base</td>
+										</tr>
+										<tr>
+											<td>Frontend theme - templates</td>
+											<td>default</td>
+										</tr>
+										<tr>
+											<td>Frontend theme - layouts</td>
+											<td>default</td>
+										</tr>
+										<tr>
+											<td>License</td>
+											<td>{{Namespace}}_{{Module}} extension<br />Built for demo purposes in {{Y}}</td>
+										</tr>
+										<tr>
+											<td>Menu sort order</td>
+											<td>45</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tab-pane" id="entities">
+								<a href="img/screen/entity_tab_large.png" class="fancybox-button">
+									<img src="img/screen/entity_tab.png" alt="Entities tab" align="left" class="left" />
+								</a>
+								<p>This is the section where you can add your custom entities.</p>
+								<p>You can add as many as you want.</p>
+								<p>For each entity you can add its properties (table fields).</p>
+								<p>After clicking on 'Add entity' you should see a form like the image on the left.</p>
+								<p>
+									Most of the values are filled with a default value. To change these values visit the Configuration section
+								</p>
+								<p>In an entity configuration the following fields can be configured.</p>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Field name</th>
+											<th>Description</th>
+											<th>Has default value</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td colspan="3"><strong>Name settings</strong></td>
+										</tr>
+										<tr>
+											<td>Entity label - singular</td>
+											<td>
+												<p>Each entity must have a lable used for buttons, links, messages.</p>
+												<p>This is the singular form of the label. For example in a blog module, the post entity will have the label in singular form 'Post'</p>
+												<p><span class="label label-info">Info:</span>Try to use English words for this label. It's not mandatory, but it makes the taxonomy more readable. UMC will create a language file for the modules it generates and you can translate your module.</p>
+												<p><span class="label label-info">Info:</span>I recommend the first letter to be uppercase.</p>
+											</td>
+											<td>No</td>
+										</tr>
+										<tr>
+											<td>Entity label - plural</td>
+											<td>
+												<p>This is the plural form of the label above. It will be used for lists. (For example: 'Posts')</p>
+												<p><span class="label label-info">Info:</span>Try to use English words for this label. It's not mandatory, but it makes the taxonomy more readable. UMC will create a language file for the modules it generates and you can translate your module.</p>
+												<p><span class="label label-info">Info:</span>I recommend the first letter to be uppercase.</p>
+											</td>
+											<td>No</td>
+										</tr>
+										<tr>
+											<td>Entity code - singular</td>
+											<td>
+												<p>UMC generates the code in a 'human readable' form. It's easier to figure out what the code is about when the variables and methods have a propper name. </p>
+												<p>For exmaple it's easier to read <span class="tag">foreach ($_posts as $_post){...}</span> or <span class="tag">$_post-&gt;getTags()</span> than <span class="tag">foreach ($_list as $_item){...}</span> or <span class="tag">$_entity-&gt;getRelated('tags');</span></p>
+												<p>The value you fill in here will be used for variable names, file names and table names. </p>
+												<p><span class="label label-info">Info:</span>Use only letters. No numbers, no underscores, all in lowercase.</p>
+												<p><span class="label label-info">Info:</span>There are some restrictions to these values, because there are reserved strings that might make the code not function properly. For example: 'resource', 'setup'. For a complete list of restrictions see <span class="tag">Ultimate_ModuleCreator_Helper_Data::$_restrictedEntityNames</span></p>
+											</td>
+											<td>No</td>
+										</tr>
+										<tr>
+											<td>Entity code - plural</td>
+											<td>
+												<p>This is the plural value of the entity code above. For example 'posts'.</p>
+												<p><span class="label label-info">Info:</span>Use only letters. No numbers, no underscores, all in lowercase.</p>
+											</td>
+											<td>No</td>
+										</tr>
+										<tr>
+											<td colspan="3"><strong>Admin</strong></td>
+										</tr>
+										<tr>
+											<td>Behaves as tree</td>
+											<td>
+												<p>If this is set to 'Yes' then your entity will behave as the default Magento categories to. It will have the same UI as the categories module have.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add "Created at" to admin grid</td>
+											<td>
+												<p>The entities created with UMC will have a field called 'created_at' field with the creation date of any entity instance.</p>
+												<p>If this is set to 'Yes' the 'Created at' field will be added to the admin grid.</p>
+												<p><span class="label label-warning">Warning</span>This option is not available if the entity has 'tree' behavior.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add "Updated at" to admin grid</td>
+											<td>
+												<p>The entities created with UMC will have a field called 'updated_at' field with the date of the last modification for each entity instance.</p>
+												<p>If this is set to 'Yes' the 'Updated at' field will be added to the admin grid.</p>
+												<p><span class="label label-warning">Warning</span>This option is not available if the entity has 'tree' behavior.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add "Status" field</td>
+											<td>
+												<p>If this is set to 'Yes' a boolean field called 'status' will be added to your entity. With this field you can controll what entities will appear on frontend.</p>
+												<p>If this is set to 'No' then all the entity instances will be considered enabled.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add to admin global search</td>
+											<td>
+												<p>The Magento admin Global search (at the top of every admin page) searches for the text you enter in products, customers and orders.</p>
+												<p>If you set this to 'Yes' than it will search in your entity also.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create API</td>
+											<td>
+												<p>Magento offers a SOAP API for managing products, categories, orders and other entities.</p>
+												<p>If this is set to 'Yes', then your entity will also be available for managing through the SOAP API.</p>
+												<p>It generates the classes and xml files needed for API V1, API V2 and API V2 with WSI complience.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td colspan="3"><strong>Frontend</strong></td>
+										</tr>
+										<tr>
+											<td>Create fronend files</td>
+											<td>
+												<p>If this is set to 'Yes' then the frontend files of your entity will be created.</p>
+												<p>If this is set to 'No', all the other fields in this section will not be available.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create entity list page</td>
+											<td>
+												<p>If this is set to 'Yes', a link will be added to the footer to a page where your entity instances will be sisted. The page has a toolbar for pagination, and it will list the titles of the entity instances.</p>
+											</td>
+											<td>Yes</td>
+										</tr> 
+										<tr>
+											<td>Entity list page template</td>
+											<td>
+												<p>From this dropdown you can select the layout of your entity list page from the available page formats.</p>
+												<p>All the Magento page layouts are listed here: 1column, 2columns-left, ....</p>
+												<p>If you have any other page layout it will appear here.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create entity view page </td>
+											<td>
+												<p>If this is set to 'Yes', the files needed for the page details of your entity are created.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Entity view page template</td>
+											<td>
+												<p>From this dropdown you can select the layout of your entity view page from the available page formats.</p>
+												<p>All the Magento page layouts are listed here: 1column, 2columns-left, ....</p>
+												<p>If you have any other page layout it will appear here.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create URL rewrites for entity view page</td>
+											<td>
+												<p>If you set this to 'Yes', a new field will be added to your entity called 'url_key'.</p>
+												<p>This will allow you to use SEF url's for your entity view pages. Example: http://mysite.com/some-key-here.html</p>
+												<p>If is set to 'No' your entity view page will be accessed in the default way http://mysite.com/module/controller/action/id/7</p>
+												<p><span class="label label-warning">warning</span>This field is available only if 'Create entity view page' is set to 'Yes'.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add SEO attributes</td>
+											<td>
+												<p>If this is set to 'Yes', 3 extra fields will be added to your entity, 'meta_title', 'meta_keywords' and 'meta_description'. The values of these fields will be added used for the details page of your entity.</p>
+												<p><span class="label label-warning">warning</span>This field is available only if 'Create entity view page' is set to 'Yes'.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create RSS feed</td>
+											<td>
+												<p>If this is set to 'Yes', a RSS feed with your entities will be added to the list or Magento RSS feeds.</p>
+												<p>Also a new fields called 'in_rss' will be added to your entity. This will allow you to filter the entities listed in the RSS feed.</p>
+												<p>You can disable the RSS feature later from the configuration section of your module.</p>
+												<p><span class="label label-warning">Known issue:</span>If all the default Magento RSS feeds are disabled, but the general RSS feed is enabled and the RSS feed for your entity is also enabled a message will apprear on the RSS list page: 'There are no Rss Feeds'. This happens because Magento RSS list functionality does not allow adding custom RSS feeds without overriding a block.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create Link/View widget</td>
+											<td>
+												<p>If this is set to 'Yes', 2 new widgets will be added to the list of widgets that can be used in CMS pages and CMS blocks.</p>
+												<p>One widget will allow you to add a link to your entity instance and one will allow you to add a few details about your entity in CMS page or block.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td colspan="3">Catalog</td>
+										</tr>
+										<tr>
+											<td>Link "many to many" with products</td>
+											<td>
+												<p>If this is set to 'Yes', a new tab will be added to the product add/edit form, with a list of your entities. Something similar to the 'Related products' tab.</p>
+												<p>Also on your entity add/edit page a similar tab listing all the products will be added.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Show associated entities on product page</td>
+											<td>
+												<p>If this is set to 'Yes', a new section with the list of your entities related to a specific product will be added to the product view page.</p>
+												<p>This happens for the default Magento theme and for themes with similar format for the product view page. For custom themes there the block might not appear. Visit the FAQ page to see how you can make it work on your theme.</p>
+												<p><span class="label label-info">Info:</span> This field is available only if 'Link "many to many" with products' is set to 'Yes'.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Show associated product on entity page </td>
+											<td>
+												<p>If this is set to 'Yes', on your entity details page a new section will appear listing all the available product names associated to your entity.</p>
+												<p><span class="label label-info">Info:</span> This field is available only if 'Link "many to many" with products' and 'Create entity view page' are set to 'Yes'.</p>
+											</td>
+											<td>Yes</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>In the blog module I am creating as a tutorial there will be 2 entities.</p>
+								<p>One for blog posts and one for blog tags.</p>
+								<p>Here are the settings needed for them.</p>
+								<table class="table">
+									<tbody>
+										<tr>
+											<th colspan="2">Post</th>
+										</tr>
+										<tr>
+											<th>Field</th>
+											<th>Value</th>
+										</tr>
+										<tr>
+											<td>Entity label - singular</td>
+											<td>Blog post</td>
+										</tr>
+										<tr>
+											<td>Entity label - plural</td>
+											<td>Blog posts</td>
+										</tr>
+										<tr>
+											<td>Entity code - singular</td>
+											<td>blogpost</td>
+										</tr>
+										<tr>
+											<td>Entity label - plural</td>
+											<td>blogposts</td>
+										</tr>
+										<tr>
+											<td>Behaves as tree</td>
+											<td>No</td>
+										</tr>
+										<tr>
+											<td>Add "Created at" to admin grid </td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add "Updated at" to admin grid </td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add "Status" field</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add to admin global search</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create API</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create frontend files</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create entity list page</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Entity list page template </td>
+											<td>2 columns with left bar.</td>
+										</tr>
+										<tr>
+											<td>Create entity view page</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create URL rewrites for entity view page</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Entity view page template </td>
+											<td>2 columns with right bar</td>
+										</tr>
+										<tr>
+											<td>Add SEO attributes</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create RSS feed</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create Link/View widget</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Link "many to many" with products</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Show associated entities on product page</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Show associated product on entity page</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<th colspan="2">Tag</th>
+										</tr>
+										<tr>
+											<th>Field</th>
+											<th>Value</th>
+										</tr>
+										<tr>
+											<td>Entity label - singular</td>
+											<td>Blog tag</td>
+										</tr>
+										<tr>
+											<td>Entity label - plural</td>
+											<td>Blog tagss</td>
+										</tr>
+										<tr>
+											<td>Entity code - singular</td>
+											<td>blogtag</td>
+										</tr>
+										<tr>
+											<td>Entity label - plural</td>
+											<td>blogtags</td>
+										</tr>
+										<tr>
+											<td>Behaves as tree</td>
+											<td>No</td>
+										</tr>
+										<tr>
+											<td>Add "Created at" to admin grid </td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add "Updated at" to admin grid </td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add "Status" field</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Add to admin global search</td>
+											<td>No</td>
+										</tr>
+										<tr>
+											<td>Create API</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create frontend files</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create entity list page</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Entity list page template </td>
+											<td>3 columns</td>
+										</tr>
+										<tr>
+											<td>Create entity view page</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create URL rewrites for entity view page</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Entity view page template </td>
+											<td>3 columns</td>
+										</tr>
+										<tr>
+											<td>Add SEO attributes</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create RSS feed</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Create Link/View widget</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Link "many to many" with products</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Show associated entities on product page</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Show associated product on entity page</td>
+											<td>Yes</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="tab-pane" id="relations">
+								Relations
+							</div>
+							<div class="tab-pane" id="help">
+								Help
+							</div>
+						</div>
+				  	</div>
+				</section>
+			</div>
+    	</div>
+	</div>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="fancybox/jquery.fancybox.pack.js?v=2.1.4"></script>
+	<script type="text/javascript" src="fancybox/helpers/jquery.fancybox-buttons.js"></script>
+	<script type="text/javascript" src="fancybox/helpers/jquery.fancybox-media.js"></script>
+	<script type="text/javascript" src="fancybox/helpers/jquery.fancybox-thumbs.js"></script>
+	<script src="js/js.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			jQuery('.fancybox-button').fancybox();
+		});
+	</script>
+</body>
+</html>
