@@ -848,6 +848,24 @@
 			</content>
 		</file>
 		<file translate="title"	module="modulecreator">
+			<title>Flat entity subtree widget.</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<flat />
+				<use_frontend />
+				<widget />
+				<is_tree />
+			</depend>
+			<from>app/code/cp/Ns/Md/Block/Entity/Widget/Subtree/</from>
+			<to>app/code/{{codepool}}/{{Namespace}}/{{Module}}/Block/{{Entity}}/Widget/Subtree.php</to>
+			<content>
+				<file>
+					<name>01_content.php</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title"	module="modulecreator">
 			<title>Flat entity admin controller.</title>
 			<scope>entity</scope>
 			<filetype>php</filetype>
@@ -1542,7 +1560,15 @@
 					</depend>
 				</file>
 				<file>
-					<name>03_footer.xml</name>
+					<name>03_tree.xml</name>
+					<scope>entity</scope>
+					<depend>
+						<widget />
+						<is_tree />
+					</depend>
+				</file>
+				<file>
+					<name>04_footer.xml</name>
 				</file>
 			</content>
 		</file>
@@ -1758,60 +1784,68 @@
 					</depend>
 				</file>
 				<file>
-					<name>04_default_footer.xml</name>
+					<name>04_subtree.xml</name>
+					<scope>global</scope>
+					<depend>
+						<use_frontend />
+						<has_tree />
+					</depend>
+				</file>
+				<file>
+					<name>05_default_footer.xml</name>
 					<depend>
 						<frontend_list />
 					</depend>
 				</file>
 				<file>
-					<name>05_list.xml</name>
+					<name>06_list.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<frontend_list />
 					</depend>
 				</file>
 				<file>
-					<name>06_view.xml</name>
+					<name>07_view.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<frontend_view />
 					</depend>
 				</file>
 				<file>
-					<name>07_entity_rss.xml</name>
+					<name>08_entity_rss.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<rss />
 					</depend>
 				</file>
 				<file>
-					<name>08_rss_top.xml</name>
+					<name>09_rss_top.xml</name>
 					<depend>
 						<rss />
 					</depend>
 				</file>
 				<file>
-					<name>09_rss.xml</name>
+					<name>10_rss.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<rss />
 					</depend>
 				</file>
 				<file>
-					<name>10_rss_footer.xml</name>
+					<name>11_rss_footer.xml</name>
 					<depend>
 						<rss />
 					</depend>
 				</file>
 				<file>
-					<name>11_relation_product.xml</name>
+					<name>12_relation_product.xml</name>
 					<scope>entity</scope>
 					<depend>
 						<show_on_product />
 					</depend>
 				</file>
 				<file>
-					<name>12_footer.xml</name>
+					<name>13_footer.xml</name>
 				</file>
 			</content>
 		</file>
@@ -2063,6 +2097,22 @@
 			</depend>
 			<from>app/design/frontend/base/default/template/namespace_module/entity/widget/view/</from>
 			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/widget/view.phtml</to>
+			<content>
+				<file>
+					<name>01_content.phtml</name>
+				</file>
+			</content>
+		</file>
+		<file translate="title" module="modulecreator">
+			<title>Subtree widget</title>
+			<scope>entity</scope>
+			<filetype>php</filetype>
+			<depend>
+				<widget />
+				<is_tree />
+			</depend>
+			<from>app/design/frontend/base/default/template/namespace_module/entity/widget/subtree/</from>
+			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/widget/subtree.phtml</to>
 			<content>
 				<file>
 					<name>01_content.phtml</name>

@@ -10,4 +10,16 @@
 		$html .= '</li>';
 		return $html;
 	}
+	/**
+	 * get recursion
+	 * @access public
+	 * @return int
+	 * {{qwertyuiop}}
+	 */
+	public function getRecursion(){
+		if (!$this->hasData('recursion')){
+			$this->setData('recursion', Mage::getStoreConfig('{{module}}/{{entity}}/recursion'));
+		}
+		return $this->getData('recursion');
+	}
 }

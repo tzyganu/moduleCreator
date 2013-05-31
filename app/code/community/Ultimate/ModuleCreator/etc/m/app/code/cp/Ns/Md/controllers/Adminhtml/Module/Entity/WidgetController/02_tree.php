@@ -5,8 +5,8 @@
 	 * {{qwertyuiop}}
 	 */
 	public function {{entities}}JsonAction(){
-		if ($faqcatsId = (int) $this->getRequest()->getPost('id')) {
-			$faqcat = Mage::getModel('{{module}}/{{entity}}')->load(${{entity}}Id);
+		if (${{entity}}Id = (int) $this->getRequest()->getPost('id')) {
+			${{entity}} = Mage::getModel('{{module}}/{{entity}}')->load(${{entity}}Id);
 			if (${{entity}}->getId()) {
 				Mage::register('{{entity}}', ${{entity}});
 				Mage::register('current_{{entity}}', ${{entity}});

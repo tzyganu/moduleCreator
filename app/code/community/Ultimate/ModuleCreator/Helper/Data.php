@@ -39,7 +39,8 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 		'flat', 'data', 
 		'collection', 'adminhtml', 
 		'widget', 'observer', 
-		'tree', 'image'
+		'tree', 'image',
+		'node'
 	);
 	/**
 	 * get a list with "special attribute" names and error messages
@@ -61,6 +62,7 @@ class Ultimate_ModuleCreator_Helper_Data extends Mage_Core_Helper_Data{
 		$names['children_count']	= $this->__('"children_count" is a reserved attribute name.');
 		$names['path']				= $this->__('"path" is a reserved attribute name.');
 		$names['url_key']			= $this->__('If you want to use URL keys set "Create URL rewrites for entity view page" to "Yes"');
+		$names['node'] 				= $this->__('An attribute cannot be named %s', 'node');
 		return $names;
 	}
 	/**

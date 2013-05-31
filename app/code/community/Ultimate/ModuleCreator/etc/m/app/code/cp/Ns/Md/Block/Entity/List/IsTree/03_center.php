@@ -47,6 +47,10 @@
 	 */
 	public function draw{{Entity}}(${{entity}}, $level = 0){
 		$html = '';
+		$recursion = $this->getRecursion();
+		if ($recursion !== '0' && $level >= $recursion){
+			return '';
+		}
 		$storeIds = Mage::getResourceSingleton('{{module}}/{{entity}}')->lookupStoreIds(${{entity}}->getId());
 		$validStoreIds = array(0, Mage::app()->getStore()->getId());
 		if (!array_intersect($storeIds, $validStoreIds)){

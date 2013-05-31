@@ -413,6 +413,7 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		}
 		if ($this->getIsTree()){
 			$content .= $padding.'<tree>1</tree>'."\n";
+			$content .= $padding.'<recursion>0</recursion>'."\n";
 		}
 		return substr($content,0, strlen($content) - strlen("\n"));
 	}
@@ -451,6 +452,18 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 			$content .= $padding.'</tree>'."\n";
 			$position += 10;
 		}
+		if ($this->getIsTree() && $this->getWidget()){
+			$content .= $padding.'<recursion translate="label" module="'.strtolower($this->getModule()->getModuleName()).'">'."\n";
+			$content .= $padding.$tab.'<label>Recursion level</label>'."\n";
+			$content .= $padding.$tab.'<frontend_type>text</frontend_type>'."\n";
+			$content .= $padding.$tab.'<sort_order>'.$position.'</sort_order>'."\n";
+			$content .= $padding.$tab.'<show_in_default>1</show_in_default>'."\n";
+			$content .= $padding.$tab.'<show_in_website>1</show_in_website>'."\n";
+			$content .= $padding.$tab.'<show_in_store>1</show_in_store>'."\n";
+			$content .= $padding.'</recursion>'."\n";
+			$position += 10;
+		}
+		
 		if ($this->getFrontendAddSeo() && $this->getFrontendList()){
 			$content .= $padding.'<meta_title translate="label" module="'.strtolower($this->getModule()->getModuleName()).'">'."\n";
 			$content .= $padding.$tab.'<label>Meta title for '.strtolower($this->getLabelPlural()).' list page</label>'."\n";
@@ -685,7 +698,6 @@ class Ultimate_ModuleCreator_Model_Entity extends Ultimate_ModuleCreator_Model_A
 		if ($this->getIsTree()){
 			$content .= '<reference name="head">'."\n";
 			$content .= "\t\t\t".'<action method="addItem" ifconfig="'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'/tree"><type>skin_js</type><js>js/'.strtolower($this->getModule()->getNamespace()).'_'.strtolower($this->getModule()->getModuleName()).'/tree.js</js></action>'."\n";
-			$content .= "\t\t\t".'<action method="addCss" ifconfig="'.strtolower($this->getModule()->getModuleName()).'/'.strtolower($this->getNameSingular()).'/tree"><js>css/'.strtolower($this->getModule()->getNamespace()).'_'.strtolower($this->getModule()->getModuleName()).'/tree.css</js></action>'."\n";
 			$content .= "\t\t".'</reference>'."\n";
 			$content .= "\t\t";
 		}

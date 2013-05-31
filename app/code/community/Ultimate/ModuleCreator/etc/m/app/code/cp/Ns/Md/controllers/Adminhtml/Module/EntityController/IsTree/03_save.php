@@ -9,6 +9,5 @@
 			return;
 		}
 		$refreshTree = 'false';
-		if ($data = $this->getRequest()->getPost()) {
-			${{entity}}->addData($data['{{entity}}']);
-			
+		if ($data = $this->getRequest()->getPost('{{entity}}')) {
+			${{entity}}->addData($data);
