@@ -1338,9 +1338,6 @@
 				</file>
 				<file>
 					<name>12_stores.php</name>
-					<depend>
-						<frontend_add_seo />
-					</depend>
 				</file>
 				<file>
 					<name>13_add_values_not_tree.php</name>
@@ -2371,7 +2368,7 @@
 			<scope>entity</scope>
 			<filetype>php</filetype>
 			<depend>
-				<show_on_product />
+				<show_products />
 			</depend>
 			<from>app/design/frontend/base/default/template/namespace_module/entity/catalog/product/list/</from>
 			<to>app/design/frontend/{{package}}/{{theme_template}}/template/{{namespace}}_{{module}}/{{entity}}/catalog/product/list.phtml</to>
