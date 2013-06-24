@@ -713,12 +713,246 @@
 										</tr>
 									</tbody>
 								</table>
+								<p><strong>Fields.</strong></p>
+								<p>Each entity must have a set of fields. These are the fields to the DB table of your entity</p>
+								<p>The fields that have a special meaning are added automatically to the table. (Primary key, created_at, updated_at...)</p>
+								<p>Some other field names are restricted because their magic getter would conflict with an existing method.</p>
+								<p>Here is the list of restricted field names.</p>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Field code</th>
+											<th>Details</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>created_at</td>
+											<td>An attribute named "created_at" will be added by default to your entity</td>
+										</tr>
+										<tr>
+											<td>updated_at</td>
+											<td>An attribute named "updated_at" will be added by default to your entity</td>
+										</tr>
+										<tr>
+											<td>status</td>
+											<td>If you want to add it, set "Add Status field" to "Yes"</td>
+										</tr>
+										<tr>
+											<td>in_rss</td>
+											<td>If you want to add it, set "Create RSS feed" to "Yes"</td>
+										</tr>
+										<tr>
+											<td>meta_title, meta_description, meta_keywords</td>
+											<td>If you want to add then, set "Add SEO Attributes" to "Yes"</td>
+										</tr>
+										<tr>
+											<td>parent_id, leve, children_count, path</td>
+											<td>These are reserved attribute codes for tree behaving entities</td>
+										</tr>
+										<tr>
+											<td>url_key</td>
+											<td>If you want to use URL keys set "Create URL rewrites for entity view page" to "Yes"</td>
+										</tr>
+										<tr>
+											<td>node</td>
+											<td>this cannot be used because it will conflict with the tree entity methods.</td>
+										</tr>
+									</tbody>
+								</table>
+								<p><strong>Field/Attribute configuration</strong></p>
+								<p>Each field supports the following settings:</p>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Setting</th>
+											<th>Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Attribute Label</td>
+											<td>This is the label that will be shown in the add/edit form</td>
+										</tr>
+										<tr>
+											<td>Attribute Code</td>
+											<td>This is a unique identifier for the attribute. It will be used as column name.</td>
+										</tr>
+										<tr>
+											<td>Attribute Type</td>
+											<td>Can be one of: Text, Textarea, Integer, Decimal, Yes/No, Timestamp, Image, File, Website &amp; Country</td>
+										</tr>
+										<tr>
+											<td>Position</td>
+											<td>This is the sort order number of the field in the add/edit form</td>
+										</tr>
+										<tr>
+											<td>Note</td>
+											<td>Short description that will be shown in the add/edit form under the field.</td>
+										</tr>
+										<tr>
+											<td>Acts as name</td>
+											<td>Each entity must have one and only one field that acts as a name. This is a special field that will be used in your entity listing. It is available only for attribtues with type Text, Decimal and Integer.</td>
+										</tr>
+										<tr>
+											<td>Is required</td>
+											<td>This will determine if the field is required or not when adding/editing an entity. Is not available for file  &amp; image fields.</td>
+										</tr>
+										<tr>
+											<td>Use WYSIWYG editor</td>
+											<td>This is available only for Textarea fields. It determines if the field has a WYSISYG editor attached to it.</td>
+										</tr>
+										<tr>
+											<td>Add in admin grid</td>
+											<td>This will place your field in the admin grid. It's not available for textarea, image &amp; file fields</td>
+										</tr>
+										<tr>
+											<td>Show in frontend</td>
+											<td>This will determine if the field is visible on the frontend view page. It is available only if your entity is configured to support view page.</td>
+										</tr>
+										<tr>
+											<td>Show in widget</td>
+											<td>This will determine if the field is visible on the view widget. It is available only if your entity is configured to support widgets.</td>
+										</tr>
+										<tr>
+											<td>Show in rss</td>
+											<td>This will determine if the field is visible on the rss page. It is available only if your entity is configured to support rss feeds.</td>
+										</tr>
+									</tbody>
+								</table>
+								<p>For the blog module we are building as a demo the following attributes can be added to the entities</p>
+								<p>The settings for Position and Note were skipped because they can be anything (including empty)</p>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Blog post entity</th>
+										</tr>
+										<tr>
+											<th>Attr. name</th>
+											<th>Attr. code</th>
+											<th>Type</th>
+											<th>Acts as name</th>
+											<th>Is required</th>
+											<th>Use WYSIWYG editor</th>
+											<th>Show in frontend</th>
+											<th>Show in widget</th>
+											<th>Show in rss</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Title</td>
+											<td>title</td>
+											<td>Text</td>
+											<td>Yes</td>
+											<td>Yes</td>
+											<td>N/A</td>
+											<td>Yes</td>
+											<td>Yes</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Short description</td>
+											<td>short_description</td>
+											<td>Textarea</td>
+											<td>N/A</td>
+											<td>Yes</td>
+											<td>No</td>
+											<td>Yes</td>
+											<td>Yes</td>
+											<td>Yes</td>
+										</tr>
+										<tr>
+											<td>Description</td>
+											<td>description</td>
+											<td>Textarea</td>
+											<td>N/A</td>
+											<td>Yes</td>
+											<td>Yes</td>
+											<td>Yes</td>
+											<td>No</td>
+											<td>No</td>
+										</tr>
+										<tr>
+											<td>Author</td>
+											<td>author</td>
+											<td>Text</td>
+											<td>No</td>
+											<td>Yes</td>
+											<td>N/A</td>
+											<td>Yes</td>
+											<td>Yes</td>
+											<td>Yes</td>
+										</tr>
+									</tbody>
+								</table>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Blog tag entity</th>
+										</tr>
+										<tr>
+											<th>Attr. name</th>
+											<th>Attr. code</th>
+											<th>Type</th>
+											<th>Acts as name</th>
+											<th>Is required</th>
+											<th>Use WYSIWYG editor</th>
+											<th>Show in frontend</th>
+											<th>Show in widget</th>
+											<th>Show in rss</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Tag</td>
+											<td>tag</td>
+											<td>Text</td>
+											<td>Yes</td>
+											<td>Yes</td>
+											<td>N/A</td>
+											<td>Yes</td>
+											<td>Yes</td>
+											<td>Yes</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 							<div class="tab-pane" id="relations">
-								Relations
+								<p>This tab will appear only if you have at least 2 entities in your module.</p>
+								<p>For each combination of 2 entities from the ones you have, a dropdown will be generated in this section to allow you to establish the relation between them.</p>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Relation type</th>
+											<th>Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>--None--</td>
+											<td>This means there is no relation between your entities</td>
+										</tr>
+										<tr>
+											<td>Is Parent for</td>
+											<td>This will set a one to many relation between your entities, where the first entity will be the parent of the second entity. In the add/edit form of the child entity you will see a dropdown with all the instances of the parent entity.</td>
+										</tr>
+										<tr>
+											<td>Is Child of</td>
+											<td>This is the same as 'Is parent for' but the other way arround. The second entity is the parent in this case.</td>
+										</tr>
+										<tr>
+											<td>Is Sibling with</td>
+											<td>
+												<p>This will create a many to many relation between your entities. In the add/edit form for each of them you will see an additional tab from which you can select the related entity.</p>
+												<p><span class="label label-warning">Warning:</span> You cannot create sibling relations between to tree behaving entities.</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 							<div class="tab-pane" id="help">
-								Help
+								<p>The "Help" tab is a small section explaining basically what this documentation describes. It is there so you don't need to access any other resource for tips on how to use the extension.</p>
 							</div>
 						</div>
 				  	</div>
