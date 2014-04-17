@@ -1,7 +1,7 @@
 Ultimate Module Creator 
 =============
 
-*Notice:*  
+**Notice:**  
 This Magento extension will be discontinued  (or 'is' depending on when your read this) starting May 1st 2014.  
 Thee will be no support and no updates, I will just leave it here for posterity.  
 
